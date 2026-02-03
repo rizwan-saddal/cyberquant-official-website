@@ -1,0 +1,236 @@
+{
+    "nav": {
+        "solutions": "Soluções",
+        "useCases": "Casos de Uso",
+        "platform": "Plataforma (MVP)",
+        "contact": "Contato"
+    },
+    "hero": {
+        "mvp_banner": "Plataforma MVP Ativa: Acesso Exclusivo",
+        "title_prefix": "Garanta Sua",
+        "title_highlight": "Soberania Digital",
+        "subtitle": "Alcance o controlo absoluto sobre o seu território digital. A primeira plataforma impulsionada por IA que protege as redes soberanas com criptografia pós-quântica aprovada pelo NIST.",
+        "cta_request": "Solicitar Acesso",
+        "cta_explore": "Explorar Casos",
+        "stats": {
+            "foreign_access": "Acesso Estrangeiro",
+            "pqc_standard": "Padrão NIST",
+            "compliance": "GDPR / Schrems II",
+            "ai_risk": "Risco Quant"
+        }
+    },
+    "solutions": {
+        "title": "O Paradoxo da Nuvem Soberana",
+        "description": "Residência de Dados não é Soberania. Se o seu provedor está sujeito a jurisdições estrangeiras, os seus dados não têm fronteiras. Garantimos uma verdadeira autonomia digital.",
+        "card1": {
+            "title": "Imunidade Jurisdicional",
+            "text": "Geofencing automatizado garante que dados críticos nunca deixem suas fronteiras legais. Oferecemos imunidade contra solicitações de dados extraterritoriais por design."
+        },
+        "card2": {
+            "title": "Pronto para o Quântico",
+            "text": "O RSA-2048 será quebrado. A Sent-Quant implementa criptografia pós-quântica aprovada pelo NIST (Kyber/Dilithium) para derrotar ameaças de \"Armazenar Agora, Descriptografar Depois\"."
+        },
+        "card3": {
+            "title": "Defesa Quantitativa",
+            "text": "Vá além do status \"Vermelho/Verde\". Nossa IA calcula porcentajes específicas de probabilidade de risco para cada nó em seu ambiente híbrido."
+        }
+    },
+    "use_cases": {
+        "title": "Casos de Uso Estratégicos",
+        "case1": {
+            "title": "Defensa Nacional",
+            "desc": "Proteja comunicações air-gapped e compartilhamento de inteligência.",
+            "feat1": "Criptografia de Grau Militar",
+            "feat2": "Implantação Agnóstica de Hardware"
+        },
+        "case2": {
+            "title": "Banco Central e CBDC",
+            "desc": "Proteja livros-razão de moeda digital contra ataques de descriptografia quântica.",
+            "feat1": "Blockchain Segura Quântica",
+            "feat2": "Logs de Auditoria Imutáveis"
+        },
+        "case3": {
+            "title": "Soberania Genômica",
+            "desc": "Garanta que bancos de dados genômicos nacionais permaneçam dentro das fronteiras.",
+            "feat1": "Compatível com HIPAA e GDPR",
+            "feat2": "Integridade de Dados de Longo Prazo"
+        }
+    },
+    "platform": {
+        "badge": "Beta MVP Ao Vivo",
+        "title": "A Plataforma <1>Sent-Quant</1>",
+        "desc": "Experimente o painel que visualiza sua soberania digital. O Sent-Quant fornece uma visão unificada dos fluxos de dados, status de conformidade e níveis de ameaça quântica em toda a sua infraestrutura.",
+        "feat1": {
+            "title": "Mapeamento de Dados em Tempo Real:",
+            "text": "Visualize exatamente onde seus dados residem fisicamente."
+        },
+        "feat2": {
+            "title": "Automação de Conformidade:",
+            "text": "Relatórios de auditoria de um clique para GDPR, HIPAA e Leis de Soberania Locais."
+        },
+        "feat3": {
+            "title": "Mapas de Calor de Ameaças:",
+            "text": "Scores de risco quantitativo gerados por IA para cada nó de rede."
+        },
+        "cta_demo": "Agendar Demo Ao Vivo"
+    },
+    "comparison": {
+        "title": "A VANTAGEM SOBERANA",
+        "desc": "Hyperscalers públicos agem como \"senhorios digitais\", retendo o controle final sobre sua infraestrutura. A Sent-Quant capacita você a ser o <1>proprietário soberano</1> de seu território digital, apoiando-o com defesa quântica de grau militar.",
+        "headers": {
+            "feature": "Recurso",
+            "us": "Sent-Quant (Soberano)",
+            "hyperscalers": "Hyperscalers dos EUA",
+            "legacy": "Segurança Legada"
+        },
+        "row1": {
+            "feature": "Jurisdição Legal",
+            "us": "Imunidade Total (Geofenced)",
+            "others": "Sujeito ao US CLOUD Act",
+            "legacy": "Conformidade Fragmentada"
+        },
+        "row2": {
+            "feature": "Padrão de Criptografia",
+            "us": "NIST PQC (Kyber/Dilithium)",
+            "others": "Padrão RSA-2048 (Vulnerável)",
+            "legacy": "Padrão AES"
+        },
+        "row3": {
+            "feature": "Acesso a Dados",
+            "us": "Apenas Proprietário (Sem Backdoors)",
+            "others": "Intimável por Tribunais",
+            "legacy": "Dependente do Fornecedor"
+        },
+        "row4": {
+            "feature": "Detecção de Ameaças",
+            "us": "Quantificação de IA em Tempo Real",
+            "others": "Registro Reativo",
+            "legacy": "Revisão Manual de SIEM"
+        }
+    },
+    "contact": {
+        "title": "PRONTO PARA IMPLANTAR?",
+        "subtitle": "Junte-se ao programa piloto apenas para convidados para defesa de nuvem soberana. Credenciais são emitidas pendentes de verificação manual.",
+        "placeholder_name": "NOME COMPLETO",
+        "placeholder_email": "INSIRA E-MAIL GOVERNAMENTAL OU CORPORATIVO",
+        "submit": "Solicitar Credenciais"
+    },
+    "footer": {
+        "security": "Protocolos de Segurança",
+        "compliance": "Conformidade Soberana",
+        "vuln": "Divulgação de Vulnerabilidade",
+        "rights": "© 2026 CYBERQUANT SYSTEMS. TODOS OS DIREITOS RESERVADOS."
+    },
+    "security": {
+        "title": "Segurança e Conformidade",
+        "subtitle": "Transparência e rigor são os pilares da arquitetura soberana da CyberQuant.",
+        "protocols_title": "Protocolos de Segurança",
+        "protocols_desc": "A Sent-Quant utiliza uma estratégia de defesa em profundidade multicamadas projetada para a era pós-quântica."
+    },
+    "market_report": {
+        "title": "Relatório do Panorama do Mercado 2026",
+        "subtitle": "Sent-Quant e a Re-Arquitetura Estratégica da Cibersegurança Global",
+        "intro": "O cenário global de cibersegurança no início de 2026 é definido por um estado de 'hiperfragmentação digital', onde a colisão de IA agente e ameaças pós-quânticas exige uma nova arquitetura soberana.",
+        "deep_dive_desc": "Nosso relatório detalhado inclui benchmarks competitivos detalhados contra Microsoft Sentinel, Splunk e CrowdStrike, juntamente com análise de estrutura financeira usando o modelo Gordon-Loeb.",
+        "cta_header": "Acesse a Inteligência Estratégica Completa",
+        "section1_title": "Hiperfragmentação Digital",
+        "section1_desc": "A fragmentação das redes globais deu origem a 'Bunkers Jurisdicionais' — regiões como Suíça e Singapura que oferecem imunidade contra acesso a dados extraterritoriais.",
+        "section2_title": "Vigilância Nativa de MCP",
+        "section2_desc": "Sent-Quant é a primeira plataforma a oferecer vigilância nativa para o Protocolo de Contexto de Modelo (MCP), protegendo as chamadas de ferramentas de agentes de IA contra injeção de prompt e escalonamento de credenciais.",
+        "section3_title": "Prontidão Pós-Quântica",
+        "section3_desc": "Com a aceleração dos cronogramas de descriptografia quântica, a Sent-Quant implementa FIPS 203, 204 e 205 (ML-KEM, ML-DSA) para proteger contra estratégias de 'Colher Agora, Descriptografar Depois'.",
+        "section4_title": "Modelo de TCO Fixo",
+        "section4_desc": "Interrompendo os preços baseados no consumo do setor, a Sent-Quant oferece um modelo de Custo Total de Propiedade (TCO) fixo, resultando em economias de até 90% em comparação com os hiperscaladores legados.",
+        "impact_title": "Análise de Impacto Econômico",
+        "impact_subtitle": "Comparação de Custos Operacionais (Mensal USD)",
+        "impact_desc": "A segurança corporativa está mudando de um custo irrecuperável para um impulsionador de previsibilidade operacional. O modelo TCO fixo da CyberQuant elimina a 'taxa de nuvem' e as penalidades de dimensionamento.",
+        "radar_title": "Radar de Maturidade de Segurança",
+        "radar_subtitle": "Análise de Alinhamento Arquitetônico",
+        "radar_desc": "Sent-Quant supera as arquiteturas legadas em dimensões soberanas: Resiliência Pós-Quântica, Vigilância Nativa de IA e Isolamento Jurisdicional.",
+        "beehive_title": "A Colmeia Soberana",
+        "beehive_subtitle": "Arquitetura Jurisdicional Distribuída",
+        "beehive_desc": "Uma malha de bunkers jurisdicionais isolados (Singapura, Suíça, Islândia) garantindo imunidade total contra a apreensão de dados extraterritoriais.",
+        "cta": "Exibir Relatório Completo (Interativo)",
+        "report_modal": {
+            "full": {
+                "section1_title": "1. Re-Arquitetura Geopolítica Estratégica: \"Resiliência Soberana\"",
+                "section1_p": "O paradigma de segurança global transitou para uma era definida pela <strong>Resiliência Soberana</strong>. Empresas e atores estatais estão re-arquitetando fundamentalmente a infraestrutura para priorizar a imunidade jurisdicional absoluta. Organizações que unificam com sucesso identidade, nuvem soberana e endpoints pós-quânticos (Plataformização) comandam atualmente múltiplos de avaliação superiores a 12x.",
+                "section1_quote": "A segurança estratégica está transitando de um custo operacional irrecuperável para um motor primário de previsibilidade fiscal, reduzindo o TCO em até 92%.",
+                "section2_title": "2. Eficiência Fiscal Comparativa e Auditoria de TCO",
+                "section2_p": "Os orçamentos de segurança estatal e corporativa em 2026 estão cada vez mais comprometidos por \"Penalidades de Ingestão Variável\". A Sent-Quant interrompe essa volatilidade com um modelo fiscal mensal fixo que desvincula os custos de segurança operacional dos picos de volume de dados.",
+                "section2_table_data_volume": "Volume Diário de Ingestão de Dados",
+                "section2_table_sq": "Sent-Quant (Fixo)",
+                "section2_table_ms": "MS Sentinel (Estimado)",
+                "section2_table_splunk": "Splunk Cloud (Estimado)",
+                "section2_risks_title": "Riscos Sistémicos de TCO (Infraestrutura Legada)",
+                "section2_risks_item1": "Taxas de execução de Logic App sem limite (Hyperscaler)",
+                "section2_risks_item2": "Esgotamento de unidades SVC durante operações de busca (SIEM Legado)",
+                "section2_risks_item3": "15-20% de \"Imposto Oculto\" de Egresso Jurisdicional",
+                "section2_efficiency_title": "Eficiência Fiscal Soberana Sent-Quant",
+                "section2_efficiency_item1": "Zero Penalidades por Excesso de Ingestão",
+                "section2_efficiency_item2": "Vigilância Nativa de MCP (Zero Licenciamento de Terceiros)",
+                "section2_efficiency_item3": "Processamento em Borda Soberana (Zero Taxas de Egresso Incorridas)",
+                "section3_title": "3. Benchmarks Estratégicos e Estruturas Econômicas",
+                "section3_p": "Esta análise está ancorada nos seguintes benchmarks de mercado global de 2026 e estruturas econômicas formais:",
+                "section3_ef_title": "Estrutura Econômica",
+                "section3_ef_p": "<strong>O Modelo Gordon-Loeb (Regra dos 37%):</strong> Uma estrutura matemática para otimizar investimentos em segurança para proteger conjuntos de informações com base em métricas de vulnerabilidade e impacto potencial.",
+                "section3_mb_title": "Benchmark de Mercado Global",
+                "section3_mb_p": "<strong>O impacto de $10,5 Trilhões:</strong> Custo anual projetado do crime cibernético global até 2026, necessitando uma transição para a defesa arquitetônica soberana (Fonte: Auditoria de Mercado 2026).",
+                "section3_sg_title": "Expansão do Setor",
+                "section3_sg_p": "<strong>Proliferação de Nuvem Soberana:</strong> O aumento de $195,35 Bilhões nos requisitos de residência de dados prioritários por jurisdição globalmente.",
+                "section4_title": "4. Auditoria de Superioridade Técnica na Era Quântica",
+                "section4_p": "A arquitetura Sent-Quant é definida como \"PQC Native\", mitigando os riscos sistémicos de \"Armazenar Agora, Descriptografar Depois\" (SNDL) através de agilidade criptográfica proativa.",
+                "section4_qri": "Índice de Resiliência Quântica",
+                "section4_sync": "Sincronização Global de Listas de Bloqueio",
+                "section4_leakage": "Vazamento de Egresso de Dados",
+                "section4_item1": "<strong>Operações de Resposta Autónoma:</strong> Utiliza Correlação Neural Nativa de Gemini para identificar ameaças não determinísticas que ignoram a lógica tradicional baseada em regras.",
+                "section4_item2": "<strong>Inteligência Ponto a Ponto:</strong> Clusters soberanos trocam exclusivamente assinaturas de metadados criptografados, mantendo 100% de residência de dados regional.",
+                "section5_title": "5. Imersão Estratégica em Valores Específicos do Setor",
+                "section5_defense_title": "Defesa e Inteligência Nacional",
+                "section5_defense_p": "Facilita Operações Multidomínio com \"Sincronização Air-Gapped\" e Hubs Zero Trust para pipelines de dados seguros do sensor ao atirador.",
+                "section5_banking_title": "Banco Central e Soberania Financeira",
+                "section5_banking_p": "Mitiga o risco SNDL para liquidação transfronteiriça. Implementa \"SWIFT PQC\" proprietário e cadeias de logs de auditoria imutáveis para integridade transacional de alto valor.",
+                "section6_title": "6. Métricas Estruturais de Hiperfragmentação Digital",
+                "section6_spending": "Gastos Globais de TI Projetados (2026P)",
+                "section6_savings": "Redução Máxima Projetada de TCO Operacional",
+                "footer_rights": "© 2026 CYBERQUANT SYSTEMS. TODOS OS DIREITOS RESERVADOS.",
+                "footer_confidential": "ESTRITAMENTE CONFIDENCIAL",
+                "footer_investors": "APENAS PARA INVESTIDORES QUALIFICADOS",
+                "header_subtitle": "Análise Estratégica Confidencial",
+                "header_title": "Panorama do Mercado de Cibersegurança <1>2026</1>"
+            },
+            "nodes": {
+                "title": "Inteligência de Nó Jurisdicional: {{type}}",
+                "desc": "Este nó representa um bunker jurisdicional isolado de alta integridade. Está arquitetonicamente desacoplado do alcance legal extraterritorial (imunidade ao US CLOUD Act).",
+                "sectors_label": "Setores Estratégicos Alvo",
+                "residency_label": "Escudo de Residência",
+                "standard_label": "Padrão Operacional",
+                "residence_item": "Residência de Dados Local: Hospedagem primária em data centers soberanos de nível 4 em {{type}}.",
+                "connectivity_item": "Conectividade: Backhaul de satélite privado disponível para requisitos extremos de isolamento (air-gap).",
+                "mesh_item": "Rede Ponto a Ponto: Compartilhamento de inteligência entre nós sem egresso de dados.",
+                "data": {
+                    "SINGAPORE": {
+                        "sectors": "Finanças, Tecnologia Estratégica, Logística Marítima",
+                        "laws": "PDPA, Lei de Cibersegurança 2024",
+                        "metric": "Hospedagem Padrão Ouro Nível 4"
+                    },
+                    "SWITZERLAND": {
+                        "sectors": "Bancário, Farmacêutico, Gestão de Patrimônio",
+                        "laws": "Swiss FADP (Revisão 2024)",
+                        "metric": "Acesso a Bunker Alpino de Grau Militar"
+                    },
+                    "ICELAND": {
+                        "sectors": "Energia, Computação de Alto Desempenho, Arquivamento de Dados",
+                        "laws": "EU GDPR + Adendo Soberano Local",
+                        "metric": "Operações 100% Geotérmicas Carbono Neutras"
+                    },
+                    "default": {
+                        "sectors": "Governo, Infraestrutura Crítica",
+                        "laws": "Protocolos Soberanos Locais",
+                        "metric": "Isolamento Soberano Padrão"
+                    }
+                }
+            }
+        }
+    }
+}

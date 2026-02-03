@@ -1,0 +1,242 @@
+{
+    "nav": {
+        "solutions": "Solutions",
+        "useCases": "Use Cases",
+        "platform": "Platform (MVP)",
+        "marketReport": "Market Report",
+        "contact": "Contact",
+        "back_home": "Back to Home"
+    },
+    "hero": {
+        "mvp_banner": "MVP Platform Live: Exclusive Access",
+        "title_prefix": "Secure Your",
+        "title_highlight": "Digital Sovereignty",
+        "subtitle": "Achieve absolute control over your digital territory. The first AI-driven platform protecting sovereign networks with NIST-approved Post-Quantum Cryptography.",
+        "cta_request": "Request Access",
+        "cta_explore": "Explore Use Cases",
+        "stats": {
+            "foreign_access": "Foreign Access",
+            "pqc_standard": "NIST Standard",
+            "compliance": "GDPR / Schrems II",
+            "ai_risk": "Risk Quant"
+        }
+    },
+    "solutions": {
+        "title": "The Sovereign Cloud Paradox",
+        "description": "Data Residency is not Sovereignty. If your provider is subject to foreign jurisdiction, your data has no borders. We ensure true digital autonomy.",
+        "card1": {
+            "title": "Jurisdictional Immunity",
+            "text": "Automated geofencing ensures critical data never leaves your legal borders. We provide immunity from extraterritorial data requests (subpoenas) by design."
+        },
+        "card2": {
+            "title": "Quantum-Ready",
+            "text": "RSA-2048 will be broken. Sent-Quant implements NIST-approved post-quantum cryptography (Kyber/Dilithium) to defeat \"Store Now, Decrypt Later\" threats."
+        },
+        "card3": {
+            "title": "Quantitative Defense",
+            "text": "Move beyond \"Red/Green\" status. Our AI calculates specific risk probability percentages for every node in your hybrid environment."
+        }
+    },
+    "use_cases": {
+        "title": "Strategic Use Cases",
+        "case1": {
+            "title": "National Defense",
+            "desc": "Secure air-gapped communications and intelligence sharing.",
+            "feat1": "Military-grade Encryption",
+            "feat2": "Hardware Agnostic Deployment"
+        },
+        "case2": {
+            "title": "Central Banking & CBDC",
+            "desc": "Protect digital currency ledgers from quantum decryption attacks.",
+            "feat1": "Quantum-Safe Blockchain",
+            "feat2": "Immutable Audit Logs"
+        },
+        "case3": {
+            "title": "Genomic Sovereignty",
+            "desc": "Ensure national genomic data databases remain within borders.",
+            "feat1": "HIPAA & GDPR Compliant",
+            "feat2": "Long-term Data Integrity"
+        }
+    },
+    "platform": {
+        "badge": "Live MVP Beta",
+        "title": "The <1>Sent-Quant</1> Platform",
+        "desc": "Experience the dashboard that visualizes your digital sovereignty. Sent-Quant provides a unified view of data flows, compliance status, and quantum-threat levels across your entire infrastructure.",
+        "feat1": {
+            "title": "Real-Time Data Mapping:",
+            "text": "Visualize exactly where your data resides physically."
+        },
+        "feat2": {
+            "title": "Compliance Automation:",
+            "text": "One-click audit reports for GDPR, HIPAA, and Local Sovereignty Laws."
+        },
+        "feat3": {
+            "title": "Threat Heatmaps:",
+            "text": "AI-generated quantitative risk scores for every network node."
+        },
+        "cta_demo": "Schedule a Live Platform Demo"
+    },
+    "comparison": {
+        "title": "THE SOVEREIGN ADVANTAGE",
+        "desc": "Public hyperscalers act as \"digital landlords,\" retaining ultimate control over your infrastructure. Sent-Quant empowers you to be the <1>sovereign owner</1> of your digital territory, backing it with military-grade quantum defense.",
+        "headers": {
+            "feature": "Feature",
+            "us": "Sent-Quant (Sovereign)",
+            "hyperscalers": "US Hyperscalers (AWS/Azure)",
+            "legacy": "Legacy Security"
+        },
+        "row1": {
+            "feature": "Legal Jurisdiction",
+            "us": "Full Immunity (Geofenced)",
+            "others": "Subject to US CLOUD Act",
+            "legacy": "Fragmented Compliance"
+        },
+        "row2": {
+            "feature": "Encryption Standard",
+            "us": "NIST PQC (Kyber/Dilithium)",
+            "others": "Standard RSA-2048 (Vulnerable)",
+            "legacy": "Standard AES"
+        },
+        "row3": {
+            "feature": "Data Access",
+            "us": "Owner Only (No Backdoors)",
+            "others": "Subpoena-able by Courts",
+            "legacy": "Vendor Dependent"
+        },
+        "row4": {
+            "feature": "Threat Detection",
+            "us": "AI Real-Time Quantification",
+            "others": "Reactive Logging",
+            "legacy": "Manual SIEM Review"
+        }
+    },
+    "contact": {
+        "title": "READY TO DEPLOY?",
+        "title_prefix": "Contact",
+        "subtitle": "Join the invitation-only pilot program for sovereign cloud defense. Credentials are issued pending manual verification.",
+        "placeholder_name": "FULL NAME",
+        "placeholder_email": "ENTER GOVERNMENT OR CORPORATE EMAIL",
+        "submit": "Request Credentials",
+        "sales_inquiries": "Sales & Inquiries",
+        "back_home": "Back to Home"
+    },
+    "footer": {
+        "security": "Security Protocols",
+        "compliance": "Sovereign Compliance",
+        "vuln": "Vulnerability Disclosure",
+        "marketReport": "2026 Market Report",
+        "rights": "© 2026 CYBERQUANT SYSTEMS. ALL RIGHTS RESERVED."
+    },
+    "security": {
+        "title": "Security & Compliance",
+        "subtitle": "Transparency and rigor are the cornerstones of CyberQuant's sovereign architecture.",
+        "protocols_title": "Security Protocols",
+        "protocols_desc": "Sent-Quant employs a multi-layered defense-in-depth strategy designed for the post-quantum era."
+    },
+    "market_report": {
+        "title": "2026 Market Landscape Report",
+        "subtitle": "Sent-Quant and the Strategic Re-Architecting of Global Cybersecurity",
+        "intro": "The global cybersecurity landscape in early 2026 is defined by a state of 'digital hyper-fragmentation,' where the collision of agentic AI and post-quantum threats demands a new sovereign architecture.",
+        "deep_dive_desc": "Our deep-dive report includes detailed competitive benchmarks against Microsoft Sentinel, Splunk, and CrowdStrike, along with financial framework analysis using the Gordon-Loeb model.",
+        "cta_header": "Access the Full Strategic Intelligence",
+        "section1_title": "Digital Hyper-Fragmentation",
+        "section1_desc": "The fragmenting of global networks has birthed 'Jurisdictional Bunkers'—regions like Switzerland and Singapore that offer immunity from extraterritorial data access.",
+        "section2_title": "Native MCP Surveillance",
+        "section2_desc": "Sent-Quant is the first platform to offer native surveillance for the Model Context Protocol (MCP), securing AI agent tool-calling against prompt injection and credential escalation.",
+        "section3_title": "Post-Quantum Readiness",
+        "section3_desc": "With the acceleration of quantum decryption timelines, Sent-Quant implements FIPS 203, 204, and 205 (ML-KEM, ML-DSA) to protect against 'Harvest Now, Decrypt Later' strategies.",
+        "section4_title": "Fixed TCO Model",
+        "section4_desc": "Disrupting the industry's consumption-based pricing, Sent-Quant offers a fixed Total Cost of Ownership model, resulting in up to 90% savings compared to legacy hyperscalers.",
+        "impact_title": "Economic Impact Analysis",
+        "impact_subtitle": "Operational Cost Comparison (Monthly USD)",
+        "impact_desc": "Enterprise security is shifting from a sunk cost to an operational predictability driver. CyberQuant's fixed TCO model eliminates 'cloud tax' and scaling penalties.",
+        "radar_title": "Security Maturity Radar",
+        "radar_subtitle": "Architectural Alignment Analysis",
+        "radar_desc": " Sent-Quant outperforms legacy architectures in sovereign dimensions: Post-Quantum Resilience, AI-Native Surveillance, and Jurisdictional Isolation.",
+        "beehive_title": "The Sovereign Beehive",
+        "beehive_subtitle": "Distributed Jurisdictional Architecture",
+        "beehive_desc": "A mesh of isolated jurisdictional bunkers (Singapore, Switzerland, Iceland) ensuring total immunity from extraterritorial data seizure.",
+        "cta": "View Full Report (Interactive)",
+        "report_modal": {
+            "full": {
+                "section1_title": "1. Strategic Geopolitical Re-Architecting: \"Sovereign Resilience\"",
+                "section1_p": "The global security paradigm has transitioned into an era defined by <strong>Sovereign Resilience</strong>. Enterprises and state actors are fundamentally re-architecting infrastructure to prioritize absolute jurisdictional immunity. Organizations that successfully unify identity, sovereign cloud, and post-quantum endpoints (Platformization) currently command valuation multiples exceeding 12x.",
+                "section1_quote": "Strategic security is transitioning from a sunk operational cost to a primary driver of fiscal predictability, reducing TCO by up to 92%.",
+                "section2_title": "2. Comparative Fiscal Efficiency & TCO Audit",
+                "section2_p": "State and enterprise security budgets in 2026 are increasingly compromised by \"Variable Ingestion Penalties.\" Sent-Quant disrupts this volatility with a fixed-monthly fiscal model that decouples operational security costs from data volume surges.",
+                "section2_table_data_volume": "Daily Data Ingestion Volume",
+                "section2_table_sq": "Sent-Quant (Fixed)",
+                "section2_table_ms": "MS Sentinel (Estimated)",
+                "section2_table_splunk": "Splunk Cloud (Estimated)",
+                "section2_risks_title": "Systemic TCO Risks (Legacy Infrastructure)",
+                "section2_risks_item1": "Uncapped Logic App execution fees (Hyperscaler)",
+                "section2_risks_item2": "SVC unit depletion during search operations (Legacy SIEM)",
+                "section2_risks_item3": "15-20% Jurisdictional Egress \"Hidden Tax\"",
+                "section2_efficiency_title": "Sent-Quant Sovereign Fiscal Efficiency",
+                "section2_efficiency_item1": "Zero Ingestion Overage Penalties",
+                "section2_efficiency_item2": "Native MCP Surveillance (Zero Third-Party Licensing)",
+                "section2_efficiency_item3": "Sovereign Edge Processing (Zero Incurred Egress Fees)",
+                "section3_title": "3. Strategic Benchmarks & Economic Frameworks",
+                "section3_p": "This analysis is anchored in the following 2026 global market benchmarks and formal economic frameworks:",
+                "section3_ef_title": "Economic Framework",
+                "section3_ef_p": "<strong>The Gordon-Loeb Model (37% Rule):</strong> A mathematical framework for optimising security investments to protect information sets based on vulnerability and potential impact metrics.",
+                "section3_mb_title": "Global Market Benchmark",
+                "section3_mb_p": "<strong>The $10.5 Trillion Threat:</strong> Projected annual global cybercrime cost by 2026, necessitating a transition to sovereign architectural defense (Source: 2026 Market Audit).",
+                "section3_sg_title": "Sector Expansion",
+                "section3_sg_p": "<strong>Sovereign Cloud Proliferation:</strong> The $195.35 Billion surge in jurisdictional-first data residency requirements globally.",
+                "section4_title": "4. Quantum-Era Technical Superiority Audit",
+                "section4_p": "The Sent-Quant architecture is defined as \"PQC Native,\" mitigating the systemic \"Store Now, Decrypt Later\" (SNDL) risks through proactive cryptographic agility.",
+                "section4_qri": "Quantum Resilience Index",
+                "section4_sync": "Global Blocklist Sync",
+                "section4_leakage": "Data Egress Leakage",
+                "section4_item1": "<strong>Autonomous Response Operations:</strong> Utilises Gemini-Native Neural Correlation to identify non-deterministic threats that bypass traditional rule-based logic.",
+                "section4_item2": "<strong>Peer-to-Peer Intelligence:</strong> Sovereign clusters exchange encrypted metadata signatures exclusively, maintaining 100% regional data residency.",
+                "section5_title": "5. Industry-Specific Strategic Value Deep-Dive",
+                "section5_defense_title": "Defense & National Intelligence",
+                "section5_defense_p": "Facilitates Multi-Domain Operations with \"Air-Gapped Sync\" and Zero Trust Hubs for secure sensor-to-shooter data pipelines.",
+                "section5_banking_title": "Central Banking & Financial Sovereignity",
+                "section5_banking_p": "Mitigates SNDL risk for cross-border settlement. Implements proprietary \"SWIFT PQC\" and immutable audit log chains for high-value transactional integrity.",
+                "section6_title": "6. Digital Hyper-Fragmentation Structural Metrics",
+                "section6_spending": "Projected Global IT Spending (2026P)",
+                "section6_savings": "Max Projected Operational TCO Reduction",
+                "footer_rights": "© 2026 CYBERQUANT SYSTEMS. ALL RIGHTS RESERVED.",
+                "footer_confidential": "STRICTLY CONFIDENTIAL",
+                "footer_investors": "FOR QUALIFIED INVESTORS ONLY",
+                "header_subtitle": "Confidential Strategic Analysis",
+                "header_title": "Cybersecurity Market Landscape <1>2026</1>"
+            },
+            "nodes": {
+                "title": "Jurisdictional Node Intelligence: {{type}}",
+                "desc": "This node represents a high-integrity, isolated jurisdictional bunker. It is architecturally decoupled from extraterritorial legal reach (US CLOUD Act immunity).",
+                "sectors_label": "Target Strategic Sectors",
+                "residency_label": "Residency Shield",
+                "standard_label": "Operational Standard",
+                "residence_item": "Local Data Residence: Primary hosting in {{type}} tier-4 sovereign data centers.",
+                "connectivity_item": "Connectivity: Private satellite backhaul available for extreme air-gap requirements.",
+                "mesh_item": "Peer-to-Peer Mesh: Cross-node intelligence sharing without data egress.",
+                "data": {
+                    "SINGAPORE": {
+                        "sectors": "Finance, Strategic Tech, Maritime Logistics",
+                        "laws": "PDPA, Cybersecurity Act 2024",
+                        "metric": "Tier-4 Gold Standard Hosting"
+                    },
+                    "SWITZERLAND": {
+                        "sectors": "Banking, Pharmaceuticals, Private Wealth",
+                        "laws": "Swiss FADP (2024 Revision)",
+                        "metric": "Military-Grade Alpine Bunker Access"
+                    },
+                    "ICELAND": {
+                        "sectors": "Energy, High-Performance Computing, Data Archival",
+                        "laws": "EU GDPR + Local Sovereign Addendum",
+                        "metric": "100% Geothermal Carbon-Neutral Ops"
+                    },
+                    "default": {
+                        "sectors": "Government, Critical Infrastructure",
+                        "laws": "Local Sovereign Protocols",
+                        "metric": "Standard Sovereign Isolation"
+                    }
+                }
+            }
+        }
+    }
+}

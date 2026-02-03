@@ -1,0 +1,1078 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026 Market Report | CyberQuant</title>
+    <meta name="description"
+        content="Sent-Quant and the Strategic Re-Architecting of Global Cybersecurity: A 2026 Market Landscape Report.">
+    <meta name="robots" content="index, follow">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="icon" type="image/webp" href="logo.png">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Outfit:wght@400;500;700;900&family=Tajawal:wght@300;400;500;700;800;900&display=swap"
+        rel="stylesheet">
+
+    <!-- Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- i18next & Dependencies -->
+    <script src="https://unpkg.com/i18next@23.2.3/dist/umd/i18next.min.js"></script>
+    <script src="https://unpkg.com/i18next-http-backend@2.2.1/i18nextHttpBackend.min.js"></script>
+    <script
+        src="https://unpkg.com/i18next-browser-languagedetector@7.1.0/i18nextBrowserLanguageDetector.min.js"></script>
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        cyber: {
+                            dark: 'var(--color-dark)',
+                            slate: 'var(--color-slate)',
+                            blue: 'var(--color-blue)',
+                            neon: 'var(--color-neon)',
+                            purple: 'var(--color-purple)',
+                            accent: 'var(--color-accent)',
+                            danger: 'var(--color-danger)'
+                        }
+                    },
+                    fontFamily: {
+                        sans: [ 'Inter', 'sans-serif' ],
+                        display: [ 'Outfit', 'sans-serif' ],
+                    }
+                }
+            }
+        }
+    </script>
+    <script src="scripts/theme.js"></script>
+    <style>
+        /* CSS Theme Variables */
+        :root {
+            --color-dark: #0a192f;
+            --color-slate: #112240;
+            --color-blue: #318e78;
+            --color-neon: #ccd6f6;
+            --color-purple: #8892b0;
+            --color-accent: #318e78;
+            --color-danger: #ff6b6b;
+            --color-blue-glow: rgba(100, 255, 218, 0.15);
+        }
+
+        /* Dark Mode Theme Variables Override */
+        .dark {
+            --color-blue: #64ffda;
+            --color-accent: #64ffda;
+        }
+
+        body:lang(ar) {
+            font-family: 'Tajawal', sans-serif !important;
+        }
+
+        body {
+            background-color: #f9fafb;
+            background-image:
+                linear-gradient(to right, rgba(100, 100, 100, 0.04) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(100, 100, 100, 0.04) 1px, transparent 1px);
+            background-size: 24px 24px;
+            color: #111827;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .dark body {
+            background-color: var(--color-dark) !important;
+            color: #f8fafc;
+            background-image:
+                linear-gradient(to right, rgba(100, 255, 218, 0.05) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(100, 255, 218, 0.05) 1px, transparent 1px);
+        }
+
+        /* Scanline effect */
+        .scanline {
+            width: 100%;
+            height: 100px;
+            z-index: 10;
+            background: linear-gradient(0deg,
+                    rgba(0, 0, 0, 0) 0%,
+                    rgba(49, 142, 120, 0.02) 50%,
+                    rgba(0, 0, 0, 0) 100%);
+            opacity: 0.1;
+            position: fixed;
+            bottom: 100%;
+            left: 0;
+            pointer-events: none;
+            animation: scanline 10s linear infinite;
+        }
+
+        @keyframes scanline {
+            0% {
+                bottom: 100%;
+            }
+
+            80% {
+                bottom: 100%;
+            }
+
+            100% {
+                bottom: -100px;
+            }
+        }
+
+        /* Adaptive Glass Card */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(203, 213, 225, 0.6);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .dark .glass-card {
+            background: rgba(15, 23, 42, 0.5);
+            border: 1px solid rgba(56, 189, 248, 0.1);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Realistic Staggered Honeycomb */
+        .beehive-wrapper {
+            padding: 4rem 0;
+            overflow-x: auto;
+            display: flex;
+            justify-content: center;
+        }
+
+        .beehive-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: flex-start;
+            --s: 155px;
+            /* hex width */
+            --m: 5px;
+            /* gap */
+            width: calc(4 * (var(--s) + 2 * var(--m)) + 40px);
+            /* Fit exactly 4 per row */
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .hexagon {
+            width: var(--s);
+            height: calc(var(--s) * 1.1);
+            margin: var(--m);
+            margin-bottom: calc(var(--m) - var(--s) * 0.28);
+            /* Pull next row up to interlock */
+            clip-path: polygon(0% 25%, 0% 75%, 50% 100%, 100% 75%, 100% 25%, 50% 0%);
+            background: rgba(49, 142, 120, 0.05);
+            border: 1px solid rgba(49, 142, 120, 0.2);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            position: relative;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: pointer;
+            -webkit-backdrop-filter: blur(8px);
+            backdrop-filter: blur(8px);
+            z-index: 1;
+        }
+
+        /* Shift the second row (items 5, 6, 7) by half a hex width */
+        .hexagon:nth-child(4n+5) {
+            margin-left: calc(var(--s) / 2 + var(--m) + var(--m));
+        }
+
+        .dark .hexagon {
+            background: rgba(100, 255, 218, 0.03);
+            border-color: rgba(100, 255, 218, 0.1);
+        }
+
+        .hexagon:hover {
+            transform: scale(1.1) translateY(-5px);
+            background: rgba(49, 142, 120, 0.15);
+            box-shadow: 0 0 40px rgba(49, 142, 120, 0.3);
+            border-color: var(--color-blue);
+            z-index: 10;
+        }
+
+        .hexagon .node-icon {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+            color: var(--color-blue);
+            transition: transform 0.3s ease;
+        }
+
+        .hexagon:hover .node-icon {
+            transform: scale(1.2) rotate(5deg);
+        }
+
+        .hexagon span {
+            font-size: 0.65rem;
+            font-weight: 800;
+            letter-spacing: 0.15em;
+            color: var(--color-blue);
+            text-shadow: 0 0 10px rgba(49, 142, 120, 0.1);
+        }
+
+        .hexagon .status-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: #10b981;
+            position: absolute;
+            top: 15%;
+            left: 50%;
+            transform: translateX(-50%);
+            box-shadow: 0 0 10px #10b981;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: translateX(-50%) scale(1);
+                opacity: 1;
+            }
+
+            50% {
+                transform: translateX(-50%) scale(1.8);
+                opacity: 0.3;
+            }
+
+            100% {
+                transform: translateX(-50%) scale(1);
+                opacity: 1;
+            }
+        }
+
+        .beehive-grid>div {
+            font-size: initial;
+        }
+
+        @media (max-width: 768px) {
+            .beehive-grid {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .hexagon:nth-child(4n+5) {
+                margin-left: var(--m);
+            }
+        }
+
+        /* Report Modal Overlay */
+        #report-modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 100;
+            padding: 2rem;
+            background: rgba(10, 25, 47, 0.95);
+            -webkit-backdrop-filter: blur(20px);
+            backdrop-filter: blur(20px);
+            overflow-y: auto;
+        }
+
+        .report-paper {
+            background: #fff;
+            color: #1a1a1a;
+            max-width: 900px;
+            margin: 0 auto;
+            min-height: 100%;
+            padding: 4rem;
+            border-radius: 4px;
+            box-shadow: 0 40px 100px rgba(0, 0, 0, 0.5);
+            position: relative;
+            font-family: 'Inter', serif;
+            line-height: 1.8;
+        }
+
+        .dark .report-paper {
+            background: #f8fafc;
+            /* Keep paper light even in dark mode for realism, or slightly off-white */
+        }
+
+        .report-header {
+            border-bottom: 2px solid #000;
+            margin-bottom: 3rem;
+            padding-bottom: 1rem;
+        }
+
+        .report-section {
+            margin-bottom: 3rem;
+        }
+
+        .report-section h3 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--color-blue);
+        }
+
+        .pricing-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            font-size: 0.9rem;
+        }
+
+        .pricing-table th {
+            text-align: left;
+            padding: 1rem;
+            background: #f1f5f9;
+            border: 1px solid #e2e8f0;
+        }
+
+        .pricing-table td {
+            padding: 1rem;
+            border: 1px solid #e2e8f0;
+        }
+
+        .close-report {
+            position: fixed;
+            top: 2rem;
+            right: 2rem;
+            background: var(--color-blue);
+            color: #fff;
+            width: 3rem;
+            height: 3rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .close-report:hover {
+            transform: rotate(90deg) scale(1.1);
+        }
+    </style>
+</head>
+
+<body class="antialiased selection:bg-cyber-blue selection:text-white pb-20">
+
+
+    <!-- Map Watermark -->
+    <img src="world_map_watermark.svg" alt="Sovereignty Map Watermark"
+        class="fixed inset-0 w-full h-full object-cover z-0 pointer-events-none opacity-[0.07] mix-blend-multiply dark:mix-blend-overlay dark:opacity-[0.7] dark:invert transition-all duration-300">
+
+    <!-- Navigation -->
+    <nav id="main-nav"
+        class="fixed w-full z-50 top-0 start-0 border-b border-gray-200 dark:border-white/10 glass-card transition-all duration-300">
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between py-2 md:py-4 gap-4">
+                <a href="index.html" class="flex items-center gap-2 md:gap-4 group">
+                    <div class="relative w-12 h-12 md:w-20 md:h-20 flex items-center justify-center">
+                        <img src="logo.png" alt="CyberQuant Shield"
+                            class="w-full h-full object-contain filter drop-shadow-[0_0_8px_rgba(49,142,120,0.5)]">
+                    </div>
+                    <span
+                        class="text-xl md:text-4xl font-display font-bold text-gray-900 dark:text-white uppercase tracking-tight">CYBER<span
+                            class="text-cyber-blue">QUANT</span></span>
+                </a>
+                <div class="flex items-center gap-2 sm:gap-4 flex-wrap justify-center text-sm">
+                    <!-- Language Switcher -->
+                    <div class="relative group">
+                        <button type="button" aria-label="Change language"
+                            class="flex items-center gap-2 bg-gray-100 dark:bg-white/5 border border-transparent hover:border-gray-300 dark:hover:border-white/20 px-3 py-1.5 rounded-full text-gray-900 dark:text-gray-300 hover:text-cyber-blue dark:hover:text-cyber-neon transition-all">
+                            <i class="ph-duotone ph-globe text-base"></i>
+                            <span id="current-lang" class="text-[10px] font-bold tracking-tighter">EN</span>
+                            <i class="ph-bold ph-caret-down text-[8px] opacity-70"></i>
+                        </button>
+                        <!-- Dropdown -->
+                        <div class="absolute right-0 top-full pt-2 w-32 hidden group-hover:block hover:block z-50">
+                            <div
+                                class="bg-white/95 dark:bg-gray-900/95 backdrop-blur-xl rounded-xl shadow-2xl border border-gray-100 dark:border-white/10 py-1 overflow-hidden">
+                                <button onclick="changeLanguage('en')"
+                                    class="block w-full text-left px-3 py-1.5 text-xs text-gray-900 dark:text-gray-300 hover:bg-cyber-blue/10 hover:text-cyber-blue transition-colors flex items-center justify-between">
+                                    <span>English</span>
+                                    <span class="text-[10px] opacity-50">🇺🇸</span>
+                                </button>
+                                <button onclick="changeLanguage('es')"
+                                    class="block w-full text-left px-3 py-1.5 text-xs text-gray-900 dark:text-gray-300 hover:bg-cyber-blue/10 hover:text-cyber-blue transition-colors flex items-center justify-between">
+                                    <span>Español</span>
+                                    <span class="text-[10px] opacity-50">🇪🇸</span>
+                                </button>
+                                <button onclick="changeLanguage('zh')"
+                                    class="block w-full text-left px-3 py-1.5 text-xs text-gray-900 dark:text-gray-300 hover:bg-cyber-blue/10 hover:text-cyber-blue transition-colors flex items-center justify-between">
+                                    <span>中文</span>
+                                    <span class="text-[10px] opacity-50">🇨🇳</span>
+                                </button>
+                                <button onclick="changeLanguage('ar')"
+                                    class="block w-full text-left px-3 py-1.5 text-xs text-gray-900 dark:text-gray-300 hover:bg-cyber-blue/10 hover:text-cyber-blue transition-colors flex items-center justify-between">
+                                    <span>العربية</span>
+                                    <span class="text-[10px] opacity-50">🇸🇦</span>
+                                </button>
+                                <button onclick="changeLanguage('pt')"
+                                    class="block w-full text-left px-3 py-1.5 text-xs text-gray-900 dark:text-gray-300 hover:bg-cyber-blue/10 hover:text-cyber-blue transition-colors flex items-center justify-between">
+                                    <span>Português</span>
+                                    <span class="text-[10px] opacity-50">🇧🇷</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Theme Toggle -->
+                    <button id="theme-toggle" type="button" aria-label="Toggle theme" title="Toggle theme"
+                        class="bg-gray-100 dark:bg-white/5 border border-transparent hover:border-gray-300 dark:hover:border-white/20 p-2 rounded-full text-gray-900 dark:text-gray-400 hover:text-cyber-blue dark:hover:text-cyber-neon transition-all">
+                        <i id="theme-icon" class="ph-duotone ph-sun text-base"></i>
+                    </button>
+
+                    <a href="index.html"
+                        class="text-xs md:text-sm font-semibold text-gray-800 dark:text-gray-400 hover:text-cyber-blue dark:hover:text-cyber-neon transition flex items-center gap-1">
+                        <i class="ph-bold ph-arrow-left"></i> <span data-i18n="nav.back_home">Back to Home</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="pt-48 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        <header class="mb-16 text-center">
+            <div
+                class="inline-block px-3 py-1 mb-4 text-xs font-semibold tracking-wider text-cyber-blue dark:text-cyber-neon uppercase bg-cyber-blue/10 dark:bg-cyber-neon/10 rounded-full border border-cyber-blue/20 dark:border-cyber-neon/20">
+                2026 Strategic Intelligence
+            </div>
+            <h1 class="text-4xl md:text-6xl font-display font-bold text-gray-900 dark:text-white mb-6"
+                data-i18n="market_report.title">2026 Market Landscape Report</h1>
+            <p class="text-xl md:text-2xl text-cyber-blue dark:text-cyber-neon font-semibold mb-8"
+                data-i18n="market_report.subtitle">
+                Sent-Quant and the Strategic Re-Architecting of Global Cybersecurity
+            </p>
+            <p class="text-lg text-gray-800 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed"
+                data-i18n="market_report.intro">
+                The global cybersecurity landscape in early 2026 is defined by a state of 'digital hyper-fragmentation,'
+                where the collision of agentic AI and post-quantum threats demands a new sovereign architecture.
+            </p>
+        </header>
+
+        <div class="grid md:grid-cols-2 gap-8 mb-16">
+            <!-- Section 1 -->
+            <div
+                class="glass-card p-8 rounded-2xl border-l-4 border-l-cyber-blue hover:translate-y-[-4px] transition-transform">
+                <i class="ph-duotone ph-map-trifold text-4xl text-cyber-blue mb-4"></i>
+                <h2 class="text-2xl font-display font-bold text-gray-900 dark:text-white mb-4"
+                    data-i18n="market_report.section1_title">Digital Hyper-Fragmentation</h2>
+                <p class="text-gray-800 dark:text-gray-400 leading-relaxed" data-i18n="market_report.section1_desc">
+                    The fragmenting of global networks has birthed 'Jurisdictional Bunkers'—regions like Switzerland and
+                    Singapore that offer immunity from extraterritorial data access.
+                </p>
+            </div>
+
+            <!-- Section 2 -->
+            <div
+                class="glass-card p-8 rounded-2xl border-l-4 border-l-cyber-accent hover:translate-y-[-4px] transition-transform">
+                <i class="ph-duotone ph-cpu text-4xl text-cyber-accent mb-4"></i>
+                <h2 class="text-2xl font-display font-bold text-gray-900 dark:text-white mb-4"
+                    data-i18n="market_report.section2_title">Native MCP Surveillance</h2>
+                <p class="text-gray-800 dark:text-gray-400 leading-relaxed" data-i18n="market_report.section2_desc">
+                    Sent-Quant is the first platform to offer native surveillance for the Model Context Protocol (MCP),
+                    securing AI agent tool-calling against prompt injection and credential escalation.
+                </p>
+            </div>
+
+            <!-- Section 3 -->
+            <div
+                class="glass-card p-8 rounded-2xl border-l-4 border-l-cyber-purple hover:translate-y-[-4px] transition-transform">
+                <i class="ph-duotone ph-atom text-4xl text-cyber-purple mb-4"></i>
+                <h2 class="text-2xl font-display font-bold text-gray-900 dark:text-white mb-4"
+                    data-i18n="market_report.section3_title">Post-Quantum Readiness</h2>
+                <p class="text-gray-800 dark:text-gray-400 leading-relaxed" data-i18n="market_report.section3_desc">
+                    With the acceleration of quantum decryption timelines, Sent-Quant implements FIPS 203, 204, and 205
+                    (ML-KEM, ML-DSA) to protect against 'Harvest Now, Decrypt Later' strategies.
+                </p>
+            </div>
+
+            <!-- Section 4 -->
+            <div
+                class="glass-card p-8 rounded-2xl border-l-4 border-l-cyber-blue hover:translate-y-[-4px] transition-transform">
+                <i class="ph-duotone ph-currency-circle-dollar text-4xl text-cyber-blue mb-4"></i>
+                <h2 class="text-2xl font-display font-bold text-gray-900 dark:text-white mb-4"
+                    data-i18n="market_report.section4_title">Fixed TCO Model</h2>
+                <p class="text-gray-800 dark:text-gray-400 leading-relaxed" data-i18n="market_report.section4_desc">
+                    Disrupting the industry's consumption-based pricing, Sent-Quant offers a fixed Total Cost of
+                    Ownership model, resulting in up to 90% savings compared to legacy hyperscalers.
+                </p>
+            </div>
+        </div>
+
+        <!-- NEW VISUALS SECTION -->
+        <div class="space-y-16 mb-20">
+            <!-- Economic Impact -->
+            <section class="glass-card p-8 md:p-12 rounded-3xl overflow-hidden">
+                <div class="grid lg:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <h2 class="text-3xl font-display font-bold text-gray-900 dark:text-white mb-4"
+                            data-i18n="market_report.impact_title">Economic Impact Analysis</h2>
+                        <p class="text-cyber-blue font-bold mb-4 uppercase tracking-widest text-sm"
+                            data-i18n="market_report.impact_subtitle">Operational Cost Comparison (Monthly USD)</p>
+                        <p class="text-gray-800 dark:text-gray-400 leading-relaxed mb-8"
+                            data-i18n="market_report.impact_desc">
+                            Enterprise security is shifting from a sunk cost to an operational predictability driver.
+                            CyberQuant's fixed TCO model eliminates 'cloud tax' and scaling penalties.
+                        </p>
+                        <ul class="space-y-4">
+                            <li class="flex items-center gap-3 text-sm text-gray-700 dark:text-gray-300">
+                                <i class="ph-bold ph-check text-cyber-blue"></i> No multi-layer ingestion fees
+                            </li>
+                            <li class="flex items-center gap-3 text-sm text-gray-700 dark:text-gray-300">
+                                <i class="ph-bold ph-check text-cyber-blue"></i> Unlimited Log Retention
+                                (Jurisdictional)
+                            </li>
+                            <li class="flex items-center gap-3 text-sm text-gray-700 dark:text-gray-300">
+                                <i class="ph-bold ph-check text-cyber-blue"></i> AI-Agent Autonomous Remediations
+                            </li>
+                        </ul>
+                    </div>
+                    <div
+                        class="bg-gray-900/5 dark:bg-black/20 p-6 rounded-3xl border border-gray-200 dark:border-white/10 shadow-inner backdrop-blur-sm h-[350px] flex items-center justify-center">
+                        <canvas id="costChart"></canvas>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Maturity Radar -->
+            <section class="glass-card p-8 md:p-12 rounded-3xl border-r-4 border-r-cyber-accent">
+                <div class="grid lg:grid-cols-2 gap-12 items-center">
+                    <div
+                        class="order-2 lg:order-1 flex justify-center bg-gray-900/5 dark:bg-black/20 p-8 rounded-3xl border border-gray-200 dark:border-white/10 backdrop-blur-sm">
+                        <div class="w-full max-w-sm aspect-square flex items-center justify-center">
+                            <canvas id="radarChart"></canvas>
+                        </div>
+                    </div>
+                    <div class="order-1 lg:order-2">
+                        <h2 class="text-3xl font-display font-bold text-gray-900 dark:text-white mb-4"
+                            data-i18n="market_report.radar_title">Security Maturity Radar</h2>
+                        <p class="text-cyber-accent font-bold mb-4 uppercase tracking-widest text-sm"
+                            data-i18n="market_report.radar_subtitle">Architectural Alignment Analysis</p>
+                        <p class="text-gray-800 dark:text-gray-400 leading-relaxed mb-6"
+                            data-i18n="market_report.radar_desc">
+                            Sent-Quant outperforms legacy architectures in sovereign dimensions: Post-Quantum
+                            Resilience, AI-Native Surveillance, and Jurisdictional Isolation.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Beehive -->
+            <section class="glass-card p-8 md:p-12 rounded-3xl text-center">
+                <h2 class="text-3xl font-display font-bold text-gray-900 dark:text-white mb-4"
+                    data-i18n="market_report.beehive_title">The Sovereign Beehive</h2>
+                <p class="text-cyber-purple font-bold mb-4 uppercase tracking-widest text-sm"
+                    data-i18n="market_report.beehive_subtitle">Distributed Jurisdictional Architecture</p>
+                <p class="text-gray-800 dark:text-gray-400 leading-relaxed mb-12 max-w-2xl mx-auto"
+                    data-i18n="market_report.beehive_desc">
+                    A mesh of isolated jurisdictional bunkers (Singapore, Switzerland, Iceland) ensuring total immunity
+                    from extraterritorial data seizure.
+                </p>
+
+                <div class="beehive-wrapper">
+                    <div class="beehive-grid">
+                        <div class="hexagon" onclick="openReport('SINGAPORE')">
+                            <div class="status-dot"></div>
+                            <i class="ph-duotone ph-buildings node-icon"></i>
+                            <span>SINGAPORE</span>
+                        </div>
+                        <div class="hexagon" onclick="openReport('SWITZERLAND')">
+                            <div class="status-dot"></div>
+                            <i class="ph-duotone ph-mountains node-icon"></i>
+                            <span>SWITZERLAND</span>
+                        </div>
+                        <div class="hexagon" onclick="openReport('ICELAND')">
+                            <div class="status-dot"></div>
+                            <i class="ph-duotone ph-snowflake node-icon"></i>
+                            <span>ICELAND</span>
+                        </div>
+                        <div class="hexagon" onclick="openReport('NORWAY')">
+                            <div class="status-dot"></div>
+                            <i class="ph-duotone ph-wind node-icon"></i>
+                            <span>NORWAY</span>
+                        </div>
+                        <div class="hexagon" onclick="openReport('UAE')">
+                            <div class="status-dot"></div>
+                            <i class="ph-duotone ph-mosque node-icon"></i>
+                            <span>UAE</span>
+                        </div>
+                        <div class="hexagon" onclick="openReport('GLOBAL')">
+                            <div class="status-dot"></div>
+                            <i class="ph-duotone ph-globe-hemisphere-west node-icon"></i>
+                            <span>GLOBAL</span>
+                        </div>
+                        <div class="hexagon" onclick="openReport('SOVEREIGN')">
+                            <div class="status-dot"></div>
+                            <i class="ph-duotone ph-fingerprint node-icon"></i>
+                            <span>SOVEREIGN</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- CTA Section -->
+        <section class="glass-card p-12 rounded-3xl text-center relative overflow-hidden group">
+            <div class="absolute top-0 right-0 p-8 opacity-5 group-hover:opacity-10 transition-opacity">
+                <i class="ph-duotone ph-file-pdf text-9xl text-cyber-blue"></i>
+            </div>
+            <h2 class="text-3xl font-display font-bold text-gray-900 dark:text-white mb-6"
+                data-i18n="market_report.cta_header">Access the Full Strategic
+                Intelligence</h2>
+            <p class="text-gray-800 dark:text-gray-400 mb-8 max-w-2xl mx-auto" data-i18n="market_report.deep_dive_desc">
+                Our deep-dive report includes detailed competitive benchmarks against Microsoft Sentinel, Splunk, and
+                CrowdStrike, along with financial framework analysis using the Gordon-Loeb model.
+            </p>
+            <button onclick="openReport('full')"
+                class="inline-flex items-center gap-3 px-8 py-4 bg-cyber-blue text-white font-bold rounded-full hover:bg-blue-600 shadow-[0_0_20px_rgba(14,165,233,0.3)] transition-all">
+                <i class="ph-bold ph-eye"></i>
+                <span data-i18n="market_report.cta">View Full Report (Interactive)</span>
+            </button>
+        </section>
+
+    </main>
+
+    <!-- Report Modal -->
+    <div id="report-modal">
+        <div class="close-report" onclick="closeReport()"><i class="ph-bold ph-x text-2xl"></i></div>
+        <article class="report-paper">
+            <div class="report-header flex justify-between items-center">
+                <div>
+                    <p class="text-xs font-bold tracking-widest text-gray-500 uppercase mb-1"
+                        data-i18n="market_report.report_modal.full.header_subtitle">Confidential Strategic Analysis</p>
+                    <h1 class="text-2xl md:text-3xl font-display font-black uppercase"
+                        data-i18n="market_report.report_modal.full.header_title">Cybersecurity Market Landscape <span
+                            class="text-cyber-blue">2026</span></h1>
+                </div>
+                <div class="text-right flex items-center gap-4">
+                    <div class="hidden sm:block">
+                        <p class="text-[10px] font-mono text-gray-400">REF: CQ-2026-X-ALPHA</p>
+                    </div>
+                    <img src="logo.png" alt="CyberQuant"
+                        class="w-12 h-12 md:w-20 md:h-20 object-contain grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all">
+                </div>
+            </div>
+
+            <div id="report-dynamic-content">
+                <!-- Content injected via JS -->
+            </div>
+
+            <footer
+                class="mt-20 pt-8 border-t border-gray-100 flex justify-between items-center text-[10px] text-gray-400 font-mono">
+                <p data-i18n="market_report.report_modal.full.footer_rights">© 2026 CYBERQUANT SYSTEMS. ALL RIGHTS
+                    RESERVED.</p>
+                <div class="flex gap-4">
+                    <span data-i18n="market_report.report_modal.full.footer_confidential">STRICTLY CONFIDENTIAL</span>
+                    <span data-i18n="market_report.report_modal.full.footer_investors">FOR QUALIFIED INVESTORS
+                        ONLY</span>
+                </div>
+            </footer>
+        </article>
+    </div>
+
+    <script>
+        const languageMap = {
+            'en': 'EN',
+            'es': 'ES',
+            'zh': 'ZH',
+            'ar': 'AR',
+            'pt': 'PT'
+        };
+
+        function updateContent ()
+        {
+            document.querySelectorAll( '[data-i18n]' ).forEach( element =>
+            {
+                try
+                {
+                    const key = element.getAttribute( 'data-i18n' );
+                    const options = element.getAttribute( 'data-i18n-options' );
+                    const parsedOptions = options ? JSON.parse( options ) : {};
+
+                    let translation = i18next.t( key, parsedOptions );
+
+                    if ( translation.includes( '<1>' ) )
+                    {
+                        translation = translation.replace( /<1>/g, '<span class="text-cyber-blue font-bold">' ).replace( /<\/1>/g, '</span>' );
+                    }
+
+                    element.innerHTML = translation;
+                } catch ( e )
+                {
+                    console.error( 'Error updating i18n element:', element, e );
+                }
+            } );
+
+            try
+            {
+                const currentLang = i18next.language.split( '-' )[ 0 ];
+                const displayLang = languageMap[ currentLang ] || 'EN';
+                const langDisplay = document.getElementById( 'current-lang' );
+                if ( langDisplay ) langDisplay.textContent = displayLang;
+
+                const html = document.documentElement;
+                if ( currentLang === 'ar' )
+                {
+                    html.setAttribute( 'dir', 'rtl' );
+                    html.setAttribute( 'lang', 'ar' );
+                } else
+                {
+                    html.setAttribute( 'dir', 'ltr' );
+                    html.setAttribute( 'lang', currentLang );
+                }
+            } catch ( e )
+            {
+                console.error( 'Error handling language UI:', e );
+            }
+        }
+
+        document.addEventListener( 'DOMContentLoaded', () =>
+        {
+            const initLang = localStorage.getItem( 'user-language' ) || 'en';
+
+            i18next
+                .use( i18nextHttpBackend )
+                .init( {
+                    lng: initLang,
+                    fallbackLng: 'en',
+                    backend: {
+                        loadPath: '/locales/{{lng}}/translation.json', // Use absolute path for robustness
+                    }
+                }, ( err ) =>
+                {
+                    if ( err )
+                    {
+                        // If path fails, try relative as fallback
+                        i18next.init( {
+                            lng: initLang,
+                            fallbackLng: 'en',
+                            backend: { loadPath: 'locales/{{lng}}/translation.json' }
+                        }, () =>
+                        {
+                            updateContent();
+                            initCharts();
+                        } );
+                        return;
+                    }
+                    updateContent();
+                    initCharts();
+                } );
+        } );
+
+        // --- CHARTS INITIALIZATION ---
+        function initCharts ()
+        {
+            const isDark = document.documentElement.classList.contains( 'dark' );
+            const textColor = isDark ? '#94a3b8' : '#475569';
+            const gridColor = isDark ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.05)';
+            const accentColor = '#318e78'; // Cyber Blue/Accent
+
+            // 1. Cost Comparison Chart
+            const costCtx = document.getElementById( 'costChart' );
+            if ( costCtx )
+            {
+                new Chart( costCtx, {
+                    type: 'bar',
+                    data: {
+                        labels: [ 'Mid-Market (1PB)', 'Enterprise (10PB)', 'Global (100PB)' ],
+                        datasets: [
+                            {
+                                label: 'Legacy Cloud SIEM',
+                                data: [ 45000, 380000, 2900000 ],
+                                backgroundColor: 'rgba(255, 99, 132, 0.5)',
+                                borderColor: 'rgb(255, 99, 132)',
+                                borderWidth: 1
+                            },
+                            {
+                                label: 'Sent-Quant (Fixed TCO)',
+                                data: [ 12000, 85000, 450000 ],
+                                backgroundColor: 'rgba(49, 142, 120, 0.6)',
+                                borderColor: '#318e78',
+                                borderWidth: 1
+                            }
+                        ]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                grid: { color: gridColor },
+                                ticks: { color: textColor, callback: ( v ) => '$' + v.toLocaleString() }
+                            },
+                            x: {
+                                grid: { display: false },
+                                ticks: { color: textColor }
+                            }
+                        },
+                        plugins: {
+                            legend: { labels: { color: textColor, font: { family: 'Outfit', weight: 'bold' } } }
+                        }
+                    }
+                } );
+            }
+
+            // 2. Maturity Radar
+            const radarCtx = document.getElementById( 'radarChart' );
+            if ( radarCtx )
+            {
+                new Chart( radarCtx, {
+                    type: 'radar',
+                    data: {
+                        labels: [ 'PQC Readiness', 'Jurisdictional Isolation', 'AI Surveillance', 'Zero Trust', 'Edge Sovereignty' ],
+                        datasets: [
+                            {
+                                label: 'Legacy SIEM',
+                                data: [ 20, 10, 35, 60, 25 ],
+                                fill: true,
+                                backgroundColor: 'rgba(148, 163, 184, 0.2)',
+                                borderColor: '#94a3b8',
+                                pointBackgroundColor: '#94a3b8'
+                            },
+                            {
+                                label: 'Sent-Quant',
+                                data: [ 95, 100, 90, 85, 98 ],
+                                fill: true,
+                                backgroundColor: 'rgba(49, 142, 120, 0.2)',
+                                borderColor: '#318e78',
+                                pointBackgroundColor: '#318e78'
+                            }
+                        ]
+                    },
+                    options: {
+                        responsive: true,
+                        plugins: {
+                            legend: { labels: { color: textColor, font: { family: 'Outfit' } } }
+                        },
+                        scales: {
+                            r: {
+                                angleLines: { color: gridColor },
+                                grid: { color: gridColor },
+                                pointLabels: { color: textColor, font: { family: 'Outfit', size: 10 } },
+                                ticks: { display: false, stepSize: 20 }
+                            }
+                        }
+                    }
+                } );
+            }
+        }
+
+        // --- REPORT MODAL LOGIC ---
+        function openReport ( type )
+        {
+            const modal = document.getElementById( 'report-modal' );
+            const content = document.getElementById( 'report-dynamic-content' );
+            modal.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+
+            if ( type === 'full' )
+            {
+                content.innerHTML = `
+                    <div class="report-section">
+                        <h3>${ i18next.t( 'market_report.report_modal.full.section1_title' ) }</h3>
+                        <p>${ i18next.t( 'market_report.report_modal.full.section1_p' ) }</p>
+                        <div class="bg-blue-50 p-4 border-l-4 border-cyber-blue my-6 italic text-sm">
+                            "${ i18next.t( 'market_report.report_modal.full.section1_quote' ) }"
+                        </div>
+                    </div>
+
+                    <div class="report-section">
+                        <h3>${ i18next.t( 'market_report.report_modal.full.section2_title' ) }</h3>
+                        <p>${ i18next.t( 'market_report.report_modal.full.section2_p' ) }</p>
+                        
+                        <div class="overflow-x-auto">
+                            <table class="pricing-table">
+                                <thead>
+                                    <tr>
+                                        <th>${ i18next.t( 'market_report.report_modal.full.section2_table_data_volume' ) }</th>
+                                        <th>${ i18next.t( 'market_report.report_modal.full.section2_table_sq' ) }</th>
+                                        <th>${ i18next.t( 'market_report.report_modal.full.section2_table_ms' ) }</th>
+                                        <th>${ i18next.t( 'market_report.report_modal.full.section2_table_splunk' ) }</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>10 GB / Day</td>
+                                        <td><strong>$100</strong></td>
+                                        <td>$1,290</td>
+                                        <td>~$1,500</td>
+                                    </tr>
+                                    <tr>
+                                        <td>50 GB / Day</td>
+                                        <td><strong>$450</strong></td>
+                                        <td>$6,450</td>
+                                        <td>~$7,000</td>
+                                    </tr>
+                                    <tr>
+                                        <td>100 GB / Day</td>
+                                        <td><strong>$800</strong></td>
+                                        <td>$8,880</td>
+                                        <td>~$11,000</td>
+                                    </tr>
+                                    <tr>
+                                        <td>500 GB / Day</td>
+                                        <td><strong>$3,500</strong></td>
+                                        <td>$37,950</td>
+                                        <td>~$48,000</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="grid md:grid-cols-2 gap-6 mt-6">
+                            <div class="p-4 bg-red-50 border-l-4 border-red-200">
+                                <h4 class="text-xs font-bold uppercase text-red-800 mb-2">${ i18next.t( 'market_report.report_modal.full.section2_risks_title' ) }</h4>
+                                <ul class="text-[10px] space-y-1 text-red-900/70">
+                                    <li>• ${ i18next.t( 'market_report.report_modal.full.section2_risks_item1' ) }</li>
+                                    <li>• ${ i18next.t( 'market_report.report_modal.full.section2_risks_item2' ) }</li>
+                                    <li>• ${ i18next.t( 'market_report.report_modal.full.section2_risks_item3' ) }</li>
+                                </ul>
+                            </div>
+                            <div class="p-4 bg-green-50 border-l-4 border-green-200">
+                                <h4 class="text-xs font-bold uppercase text-green-800 mb-2">${ i18next.t( 'market_report.report_modal.full.section2_efficiency_title' ) }</h4>
+                                <ul class="text-[10px] space-y-1 text-green-900/70">
+                                    <li>• ${ i18next.t( 'market_report.report_modal.full.section2_efficiency_item1' ) }</li>
+                                    <li>• ${ i18next.t( 'market_report.report_modal.full.section2_efficiency_item2' ) }</li>
+                                    <li>• ${ i18next.t( 'market_report.report_modal.full.section2_efficiency_item3' ) }</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="report-section">
+                        <h3>${ i18next.t( 'market_report.report_modal.full.section3_title' ) }</h3>
+                        <p>${ i18next.t( 'market_report.report_modal.full.section3_p' ) }</p>
+                        <ul class="space-y-4 mt-4">
+                            <li class="border-b pb-2">
+                                <span class="block text-xs font-bold text-gray-500 uppercase">${ i18next.t( 'market_report.report_modal.full.section3_ef_title' ) }</span>
+                                <p class="text-sm">${ i18next.t( 'market_report.report_modal.full.section3_ef_p' ) }</p>
+                            </li>
+                            <li class="border-b pb-2">
+                                <span class="block text-xs font-bold text-gray-500 uppercase">${ i18next.t( 'market_report.report_modal.full.section3_mb_title' ) }</span>
+                                <p class="text-sm">${ i18next.t( 'market_report.report_modal.full.section3_mb_p' ) }</p>
+                            </li>
+                            <li class="border-b pb-2">
+                                <span class="block text-xs font-bold text-gray-500 uppercase">${ i18next.t( 'market_report.report_modal.full.section3_sg_title' ) }</span>
+                                <p class="text-sm">${ i18next.t( 'market_report.report_modal.full.section3_sg_p' ) }</p>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="report-section">
+                        <h3>${ i18next.t( 'market_report.report_modal.full.section4_title' ) }</h3>
+                        <p>${ i18next.t( 'market_report.report_modal.full.section4_p' ) }</p>
+                        <div class="grid md:grid-cols-3 gap-4 my-6">
+                            <div class="p-4 bg-slate-50 border border-slate-200 rounded text-center">
+                                <p class="text-2xl font-black text-cyber-blue">QRI 9.8</p>
+                                <p class="text-[10px] uppercase font-bold text-gray-400">${ i18next.t( 'market_report.report_modal.full.section4_qri' ) }</p>
+                            </div>
+                            <div class="p-4 bg-slate-50 border border-slate-200 rounded text-center">
+                                <p class="text-2xl font-black text-cyber-blue">&lt; 200ms</p>
+                                <p class="text-[10px] uppercase font-bold text-gray-400">${ i18next.t( 'market_report.report_modal.full.section4_sync' ) }</p>
+                            </div>
+                            <div class="p-4 bg-slate-50 border border-slate-200 rounded text-center">
+                                <p class="text-2xl font-black text-cyber-blue">0.0%</p>
+                                <p class="text-[10px] uppercase font-bold text-gray-400">${ i18next.t( 'market_report.report_modal.full.section4_leakage' ) }</p>
+                            </div>
+                        </div>
+                        <ul class="list-disc ps-5 space-y-2 text-sm text-gray-700">
+                            <li>${ i18next.t( 'market_report.report_modal.full.section4_item1' ) }</li>
+                            <li>${ i18next.t( 'market_report.report_modal.full.section4_item2' ) }</li>
+                        </ul>
+                    </div>
+
+                    <div class="report-section">
+                        <h3>${ i18next.t( 'market_report.report_modal.full.section5_title' ) }</h3>
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div class="p-4 border border-gray-100 rounded-lg">
+                                <h4 class="text-xs font-bold uppercase text-cyber-blue mb-1">${ i18next.t( 'market_report.report_modal.full.section5_defense_title' ) }</h4>
+                                <p class="text-xs text-gray-600">${ i18next.t( 'market_report.report_modal.full.section5_defense_p' ) }</p>
+                            </div>
+                            <div class="p-4 border border-gray-100 rounded-lg">
+                                <h4 class="text-xs font-bold uppercase text-cyber-blue mb-1">${ i18next.t( 'market_report.report_modal.full.section5_banking_title' ) }</h4>
+                                <p class="text-xs text-gray-600">${ i18next.t( 'market_report.report_modal.full.section5_banking_p' ) }</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="report-section">
+                        <h3>${ i18next.t( 'market_report.report_modal.full.section6_title' ) }</h3>
+                        <div class="grid grid-cols-2 gap-8 my-8">
+                            <div class="border-t pt-4">
+                                <p class="text-3xl font-bold font-display text-cyber-blue">$6.08T</p>
+                                <p class="text-[10px] uppercase font-bold text-gray-500">${ i18next.t( 'market_report.report_modal.full.section6_spending' ) }</p>
+                            </div>
+                            <div class="border-t pt-4">
+                                <p class="text-3xl font-bold font-display text-cyber-blue">92%</p>
+                                <p class="text-[10px] uppercase font-bold text-gray-400">${ i18next.t( 'market_report.report_modal.full.section6_savings' ) }</p>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            } else 
+            {
+                // Specialized Jurisdiction Reports
+                const sectors = i18next.t( `market_report.report_modal.nodes.data.${ type }.sectors`, { defaultValue: i18next.t( 'market_report.report_modal.nodes.data.default.sectors' ) } );
+                const laws = i18next.t( `market_report.report_modal.nodes.data.${ type }.laws`, { defaultValue: i18next.t( 'market_report.report_modal.nodes.data.default.laws' ) } );
+                const metric = i18next.t( `market_report.report_modal.nodes.data.${ type }.metric`, { defaultValue: i18next.t( 'market_report.report_modal.nodes.data.default.metric' ) } );
+
+                content.innerHTML = `
+                <div class="report-section">
+                    <h3>${ i18next.t( 'market_report.report_modal.nodes.title', { type } ) }</h3>
+                    <p class="mb-6">${ i18next.t( 'market_report.report_modal.nodes.desc' ) }</p>
+                    
+                    <div class="grid grid-cols-2 gap-4 mb-8">
+                        <div class="p-4 bg-blue-50/50 rounded-lg">
+                            <p class="text-[10px] font-bold text-cyber-blue uppercase mb-1">${ i18next.t( 'market_report.report_modal.nodes.sectors_label' ) }</p>
+                            <p class="text-xs font-semibold">${ sectors }</p>
+                        </div>
+                        <div class="p-4 bg-blue-50/50 rounded-lg">
+                            <p class="text-[10px] font-bold text-cyber-blue uppercase mb-1">${ i18next.t( 'market_report.report_modal.nodes.residency_label' ) }</p>
+                            <p class="text-xs font-semibold">${ laws }</p>
+                        </div>
+                    </div>
+
+                    <ul class="list-disc ps-5 space-y-3 mt-4 text-sm text-gray-700">
+                        <li><strong>${ i18next.t( 'market_report.report_modal.nodes.standard_label' ) }:</strong> ${ metric }</li>
+                        <li>${ i18next.t( 'market_report.report_modal.nodes.residence_item', { type } ) }</li>
+                        <li>${ i18next.t( 'market_report.report_modal.nodes.connectivity_item' ) }</li>
+                        <li>${ i18next.t( 'market_report.report_modal.nodes.mesh_item' ) }</li>
+                    </ul>
+                </div>
+                `;
+            }
+        }
+
+        function closeReport ()
+        {
+            document.getElementById( 'report-modal' ).style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        function changeLanguage ( lang )
+        {
+            i18next.changeLanguage( lang, () =>
+            {
+                updateContent();
+                localStorage.setItem( 'user-language', lang );
+            } );
+        }
+    </script>
+</body>
+
+</html>

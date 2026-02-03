@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Security | Sentinel-Quant</title>
+    <meta name="robots" content="noindex, follow">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="icon" type="image/webp" href="logo.png">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Outfit:wght@400;500;700;900&family=Tajawal:wght@300;400;500;700;800;900&display=swap"
+        rel="stylesheet">
+
+    <!-- Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- i18next & Dependencies -->
+    <script src="https://unpkg.com/i18next@23.2.3/dist/umd/i18next.min.js"></script>
+    <script src="https://unpkg.com/i18next-http-backend@2.2.1/i18nextHttpBackend.min.js"></script>
+    <script
+        src="https://unpkg.com/i18next-browser-languagedetector@7.1.0/i18nextBrowserLanguageDetector.min.js"></script>
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        cyber: {
+                            dark: 'var(--color-dark)',
+                            slate: 'var(--color-slate)',
+                            blue: 'var(--color-blue)',
+                            neon: 'var(--color-neon)',
+                            purple: 'var(--color-purple)',
+                            accent: 'var(--color-accent)',
+                            danger: 'var(--color-danger)'
+                        }
+                    },
+                    fontFamily: {
+                        sans: [ 'Inter', 'sans-serif' ],
+                        display: [ 'Outfit', 'sans-serif' ],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* CSS Theme Variables */
+        :root {
+            --color-dark: #1a0505;
+            --color-slate: #2d0a0a;
+            --color-blue: #ff3333;
+            --color-neon: #ff9999;
+            --color-purple: #aa0000;
+            --color-accent: #ffcc00;
+            --color-danger: #ff0000;
+            --color-blue-glow: rgba(255, 51, 51, 0.15);
+        }
+
+        :lang(ar) {
+            font-family: 'Tajawal', sans-serif !important;
+        }
+
+        body {
+            background-color: #f9fafb;
+            background-image:
+                linear-gradient(to right, rgba(100, 100, 100, 0.04) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(100, 100, 100, 0.04) 1px, transparent 1px);
+            background-size: 24px 24px;
+            color: #111827;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .dark body {
+            background-color: var(--color-dark) !important;
+            color: #f8fafc;
+            background-image:
+                linear-gradient(to right, rgba(14, 165, 233, 0.05) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(14, 165, 233, 0.05) 1px, transparent 1px);
+        }
+    </style>
+</head>
+
+<body class="antialiased selection:bg-cyber-blue selection:text-white pb-20">
+
+    <!-- Map Watermark -->
+    <img src="world_map_watermark.svg" alt="Sovereignty Map Watermark"
+        class="fixed inset-0 w-full h-full object-cover z-0 pointer-events-none opacity-[0.07] mix-blend-multiply dark:mix-blend-overlay dark:opacity-[0.7] dark:invert transition-all duration-300">
+
+    <!-- Navigation (Simplified) -->
+    <nav
+        class="fixed w-full z-40 top-0 start-0 border-b border-gray-200 dark:border-white/10 bg-white/80 dark:bg-black/80 backdrop-blur-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between py-4">
+                <a href="index.html" class="flex items-center space-x-0 group">
+                    <img src="logo.png" alt="Sentinel-Quant"
+                        class="w-16 h-16 md:w-24 md:h-24 object-contain -mr-2 md:-mr-4">
+                    <span
+                        class="text-2xl md:text-4xl font-display font-bold text-gray-900 dark:text-white">SENTINEL<span
+                            class="text-cyber-blue">-QUANT</span></span>
+                </a>
+                <div class="flex items-center gap-4">
+                    <a href="index.html"
+                        class="text-sm font-semibold text-gray-600 dark:text-gray-400 hover:text-cyber-blue dark:hover:text-cyber-neon transition flex items-center gap-2">
+                        <i class="ph-bold ph-arrow-left"></i> <span data-i18n="nav.back_home">Back to Home</span>
+                    </a>
+                    <a href="contact.html"
+                        class="text-sm font-semibold text-gray-600 dark:text-gray-400 hover:text-cyber-blue dark:hover:text-cyber-neon transition flex items-center gap-2">
+                        <i class="ph-bold ph-envelope"></i> <span data-i18n="nav.contact">Contact Us</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="pt-48 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        <header class="mb-16">
+            <h1 class="text-4xl md:text-5xl font-display font-bold text-gray-900 dark:text-white mb-6"
+                data-i18n="security.title">Security &
+                Compliance</h1>
+            <p class="text-xl text-gray-600 dark:text-gray-400" data-i18n="security.subtitle">
+                Transparency and rigor are the cornerstones of Sentinel-Quant's sovereign architecture.
+            </p>
+        </header>
+
+        <!-- Protocols -->
+        <section id="protocols" class="mb-16 scroll-mt-32">
+            <div class="flex items-center gap-4 mb-6">
+                <div
+                    class="w-12 h-12 rounded-lg bg-cyber-blue/10 flex items-center justify-center text-cyber-blue text-2xl">
+                    <i class="ph-bold ph-shield-check"></i>
+                </div>
+                <h2 class="text-3xl font-display font-bold text-gray-900 dark:text-white"
+                    data-i18n="security.protocols_title">Security Protocols</h2>
+            </div>
+            <div class="prose dark:prose-invert max-w-none text-gray-700 dark:text-gray-300">
+                <p data-i18n="security.protocols_desc">
+                    Sentinel-Quant employs a multi-layered defense-in-depth strategy designed for the post-quantum era.
+                </p>
+                <ul class="list-disc pl-5 space-y-2 mt-4">
+                    <li><strong>Post-Quantum Cryptography (PQC):</strong> All data in transit and at rest is encrypted
+                        using NIST-standardized algorithms (CRYSTALS-Kyber for key encapsulation and CRYSTALS-Dilithium
+                        for digital signatures).</li>
+                    <li><strong>Zero Trust Architecture:</strong> Strict identity verification for every person and
+                        device trying to access resources on a private network, regardless of whether they are sitting
+                        within or outside of the network perimeter.</li>
+                    <li><strong>Air-Gapped Options:</strong> Physical isolation capabilities for critical national
+                        security infrastructure.</li>
+                </ul>
+            </div>
+        </section>
+
+        <hr class="border-gray-200 dark:border-white/10 mb-16">
+
+        <!-- Compliance -->
+        <section id="compliance" class="mb-16 scroll-mt-32">
+            <div class="flex items-center gap-4 mb-6">
+                <div
+                    class="w-12 h-12 rounded-lg bg-cyber-accent/10 flex items-center justify-center text-cyber-accent text-2xl">
+                    <i class="fa-solid fa-file-contract"></i>
+                </div>
+                <h2 class="text-3xl font-display font-bold text-gray-900 dark:text-white">Sovereign Compliance</h2>
+            </div>
+            <div class="prose dark:prose-invert max-w-none text-gray-700 dark:text-gray-300">
+                <p>
+                    We guarantee strict adherence to regional data residency and sovereignty laws.
+                </p>
+                <div class="grid md:grid-cols-2 gap-6 mt-6">
+                    <div class="bg-gray-50 dark:bg-white/5 p-6 rounded-xl border border-gray-100 dark:border-white/10">
+                        <h3 class="font-bold text-lg mb-2 text-gray-900 dark:text-white">GDPR & Schrems II</h3>
+                        <p class="text-sm">Full compliance with EU General Data Protection Regulation. Mechanisms in
+                            place to prevent unlawful data transfers to non-adequate jurisdictions.</p>
+                    </div>
+                    <div class="bg-gray-50 dark:bg-white/5 p-6 rounded-xl border border-gray-100 dark:border-white/10">
+                        <h3 class="font-bold text-lg mb-2 text-gray-900 dark:text-white">US CLOUD Act Immunity</h3>
+                        <p class="text-sm">By structuring our legal entities and infrastructure outside of US
+                            jurisdiction scope for sovereign clients, we mitigate the risk of extraterritorial data
+                            seizure.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <hr class="border-gray-200 dark:border-white/10 mb-16">
+
+        <!-- Vulnerability -->
+        <section id="vulnerability" class="mb-16 scroll-mt-32">
+            <div class="flex items-center gap-4 mb-6">
+                <div
+                    class="w-12 h-12 rounded-lg bg-cyber-purple/10 flex items-center justify-center text-cyber-purple text-2xl">
+                    <i class="fa-solid fa-bug"></i>
+                </div>
+                <h2 class="text-3xl font-display font-bold text-gray-900 dark:text-white">Vulnerability Disclosure</h2>
+            </div>
+            <div class="prose dark:prose-invert max-w-none text-gray-700 dark:text-gray-300">
+                <p>
+                    CyberQuant welcomes collaboration with the security research community. If you believe you have
+                    found a vulnerability, please report it immediately.
+                </p>
+                <div class="mt-6 bg-cyber-blue/5 border border-cyber-blue/20 rounded-lg p-6">
+                    <p class="font-mono text-sm mb-4">PGP Key ID: 0x4B3A8F2C (Fingerprint on keyservers)</p>
+                    <a href="mailto:security@cyberquant.io"
+                        class="inline-flex items-center text-cyber-blue font-bold hover:underline">
+                        <i class="fa-solid fa-envelope mr-2"></i> security@cyberquant.io
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <script>
+        function updateContent ()
+        {
+            document.querySelectorAll( '[data-i18n]' ).forEach( element =>
+            {
+                const key = element.getAttribute( 'data-i18n' );
+                element.innerHTML = i18next.t( key );
+            } );
+
+            const currentLang = i18next.language.split( '-' )[ 0 ];
+            const html = document.documentElement;
+            if ( currentLang === 'ar' )
+            {
+                html.setAttribute( 'dir', 'rtl' );
+                html.setAttribute( 'lang', 'ar' );
+            } else
+            {
+                html.setAttribute( 'dir', 'ltr' );
+                html.setAttribute( 'lang', currentLang );
+            }
+        }
+
+        document.addEventListener( 'DOMContentLoaded', () =>
+        {
+            const initLang = localStorage.getItem( 'user-language' ) || 'en';
+
+            i18next
+                .use( i18nextHttpBackend )
+                .init( {
+                    lng: initLang,
+                    fallbackLng: 'en',
+                    backend: {
+                        loadPath: 'locales/{{lng}}/translation.json',
+                    }
+                }, ( err ) =>
+                {
+                    if ( err ) return console.error( err );
+                    updateContent();
+                } );
+        } );
+
+        // Theme Logic
+        const html = document.documentElement;
+        if ( localStorage.theme === 'dark' )
+        {
+            html.classList.add( 'dark' );
+        } else
+        {
+            html.classList.remove( 'dark' );
+        }
+    </script>
+</body>
+
+</html>

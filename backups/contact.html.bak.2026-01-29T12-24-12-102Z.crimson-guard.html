@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | Sentinel-Quant</title>
+    <meta name="robots" content="noindex, follow">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="icon" type="image/webp" href="logo.png">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Outfit:wght@400;500;700;900&family=Tajawal:wght@300;400;500;700;800;900&display=swap"
+        rel="stylesheet">
+
+    <!-- Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- i18next & Dependencies -->
+    <script src="https://unpkg.com/i18next@23.2.3/dist/umd/i18next.min.js"></script>
+    <script src="https://unpkg.com/i18next-http-backend@2.2.1/i18nextHttpBackend.min.js"></script>
+    <script
+        src="https://unpkg.com/i18next-browser-languagedetector@7.1.0/i18nextBrowserLanguageDetector.min.js"></script>
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        cyber: {
+                            dark: 'var(--color-dark)',
+                            slate: 'var(--color-slate)',
+                            blue: 'var(--color-blue)',
+                            neon: 'var(--color-neon)',
+                            purple: 'var(--color-purple)',
+                            accent: 'var(--color-accent)',
+                            danger: 'var(--color-danger)'
+                        }
+                    },
+                    fontFamily: {
+                        sans: [ 'Inter', 'sans-serif' ],
+                        display: [ 'Outfit', 'sans-serif' ],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* CSS Theme Variables */
+        :root {
+            --color-dark: #1c1c1c;
+            --color-slate: #2f3136;
+            --color-blue: #d4af37;
+            --color-neon: #d4af37;
+            --color-purple: #7289da;
+            --color-accent: #43b581;
+            --color-danger: #f04747;
+            --color-blue-glow: rgba(212, 175, 55, 0.15);
+        }
+
+        :lang(ar) {
+            font-family: 'Tajawal', sans-serif !important;
+        }
+
+        body {
+            background-color: #f9fafb;
+            background-image:
+                linear-gradient(to right, rgba(100, 100, 100, 0.04) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(100, 100, 100, 0.04) 1px, transparent 1px);
+            background-size: 24px 24px;
+            color: #111827;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .dark body {
+            background-color: var(--color-dark) !important;
+            color: #f8fafc;
+            background-image:
+                linear-gradient(to right, rgba(14, 165, 233, 0.05) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(14, 165, 233, 0.05) 1px, transparent 1px);
+        }
+    </style>
+</head>
+
+<body class="antialiased selection:bg-cyber-blue selection:text-white pb-20">
+
+    <!-- Map Watermark -->
+    <img src="world_map_watermark.svg" alt="Sovereignty Map Watermark"
+        class="fixed inset-0 w-full h-full object-cover z-0 pointer-events-none opacity-[0.07] mix-blend-multiply dark:mix-blend-overlay dark:opacity-[0.7] dark:invert transition-all duration-300">
+
+    <!-- Navigation (Simplified) -->
+    <nav
+        class="fixed w-full z-40 top-0 start-0 border-b border-gray-200 dark:border-white/10 bg-white/80 dark:bg-black/80 backdrop-blur-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between py-4">
+                <a href="index.html" class="flex items-center space-x-0 group">
+                    <img src="logo.png" alt="Sentinel-Quant"
+                        class="w-16 h-16 md:w-24 md:h-24 object-contain -mr-2 md:-mr-4">
+                    <span
+                        class="text-2xl md:text-4xl font-display font-bold text-gray-900 dark:text-white">SENTINEL<span
+                            class="text-cyber-blue">-QUANT</span></span>
+                </a>
+                <a href="index.html"
+                    class="text-sm font-semibold text-gray-600 dark:text-gray-400 hover:text-cyber-blue dark:hover:text-cyber-neon transition flex items-center gap-2">
+                    <i class="ph-bold ph-arrow-left"></i> <span data-i18n="contact.back_home">Back to Home</span>
+                </a>
+                <span class="text-sm font-semibold text-cyber-blue transition ml-4 cursor-default">
+                    Contact Us
+                </span>
+            </div>
+        </div>
+    </nav>
+
+    <main class="pt-48 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        <header class="mb-16">
+            <h1 class="text-4xl md:text-5xl font-display font-bold text-gray-900 dark:text-white mb-6">
+                <span data-i18n="contact.title_prefix">Contact</span>
+                <span class="text-cyber-blue">Sentinel-Quant</span>
+            </h1>
+            <p class="text-xl text-gray-600 dark:text-gray-400 leading-relaxed" data-i18n="contact.subtitle">
+                Initiate a secure channel. Join the sovereign defense network.
+            </p>
+        </header>
+
+        <section class="mb-20">
+            <div
+                class="bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-2xl p-8 md:p-12 shadow-xl backdrop-blur-sm">
+
+                <form class="max-w-md mx-auto flex flex-col space-y-4 mb-12"
+                    onsubmit="event.preventDefault(); alert('Request logged. Our secure terminal will contact you shortly.');">
+                    <div class="relative group">
+                        <input type="text" placeholder="FULL NAME" required
+                            data-i18n-placeholder="contact.placeholder_name"
+                            class="w-full bg-gray-50 dark:bg-white/5 border border-gray-300 dark:border-white/20 p-4 rounded text-center outline-none focus:border-cyber-blue focus:bg-white dark:focus:bg-white/10 transition text-gray-900 dark:text-gray-100 placeholder-gray-500">
+                    </div>
+                    <div class="relative group">
+                        <input type="email" placeholder="ENTER GOVERNMENT OR CORPORATE EMAIL" required
+                            data-i18n-placeholder="contact.placeholder_email"
+                            class="w-full bg-gray-50 dark:bg-white/5 border border-gray-300 dark:border-white/20 p-4 rounded text-center outline-none focus:border-cyber-blue focus:bg-white dark:focus:bg-white/10 transition text-gray-900 dark:text-gray-100 placeholder-gray-500">
+                        <div
+                            class="absolute inset-0 border border-cyber-blue/0 group-hover:border-cyber-blue/30 rounded pointer-events-none transition duration-500">
+                        </div>
+                    </div>
+                    <button type="submit"
+                        class="bg-cyber-blue text-white font-black p-4 rounded hover:bg-blue-600 transition duration-300 uppercase tracking-widest shadow-lg shadow-cyber-blue/20"
+                        data-i18n="contact.submit">
+                        Request Credentials
+                    </button>
+                </form>
+
+                <div class="flex flex-col items-center justify-center space-y-2">
+                    <span class="text-sm text-gray-500 tracking-widest uppercase"
+                        data-i18n="contact.sales_inquiries">Sales & Inquiries</span>
+                    <a href="tel:+13072182703"
+                        class="text-2xl font-display font-bold text-gray-900 dark:text-white hover:text-cyber-blue transition">
+                        +1 (307) 218-2703
+                    </a>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <script>
+        function updateContent ()
+        {
+            document.querySelectorAll( '[data-i18n]' ).forEach( element =>
+            {
+                const key = element.getAttribute( 'data-i18n' );
+                element.innerHTML = i18next.t( key );
+            } );
+
+            document.querySelectorAll( '[data-i18n-placeholder]' ).forEach( element =>
+            {
+                const key = element.getAttribute( 'data-i18n-placeholder' );
+                element.placeholder = i18next.t( key );
+            } );
+
+            const currentLang = i18next.language.split( '-' )[ 0 ];
+            const html = document.documentElement;
+            if ( currentLang === 'ar' )
+            {
+                html.setAttribute( 'dir', 'rtl' );
+                html.setAttribute( 'lang', 'ar' );
+            } else
+            {
+                html.setAttribute( 'dir', 'ltr' );
+                html.setAttribute( 'lang', currentLang );
+            }
+        }
+
+        // Initialize i18n
+        document.addEventListener( 'DOMContentLoaded', () =>
+        {
+            const initLang = localStorage.getItem( 'user-language' ) || 'en';
+
+            i18next
+                .use( i18nextHttpBackend )
+                .init( {
+                    lng: initLang,
+                    fallbackLng: 'en',
+                    backend: {
+                        loadPath: 'locales/{{lng}}/translation.json',
+                    }
+                }, ( err ) =>
+                {
+                    if ( err ) return console.error( err );
+                    updateContent();
+                } );
+        } );
+
+        // Theme Logic
+        const html = document.documentElement;
+        if ( localStorage.theme === 'dark' )
+        {
+            html.classList.add( 'dark' );
+        } else
+        {
+            html.classList.remove( 'dark' );
+        }
+    </script>
+</body>
+
+</html>

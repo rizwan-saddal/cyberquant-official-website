@@ -1,0 +1,32 @@
+runtime: python311
+
+handlers:
+# Serve the main HTML file
+- url: /
+  static_files: index.html
+  upload: index.html
+  secure: always
+
+# Serve index.html for root requests
+- url: /index.html
+  static_files: index.html
+  upload: index.html
+  secure: always
+
+# Serve images
+- url: /(.*\.(png|jpg|jpeg|gif|svg|webp|ico))
+  static_files: \1
+  upload: .*\.(png|jpg|jpeg|gif|svg|webp|ico)
+  secure: always
+  http_headers:
+    Cache-Control: "public, max-age=86400"
+
+# Serve any other static files
+- url: /(.*)
+  static_files: \1
+  upload: .*
+  secure: always
+
+# Enable HTTPS redirect
+env_variables:
+  HTTPS_REDIRECT: 'true'

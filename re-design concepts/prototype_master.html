@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CyberQuant | Redesign Concepts Prototype</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Outfit:wght@400;500;700;900&family=Tajawal:wght@300;400;500;700;800;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Tailwind CSS (CDN for Prototype Portability) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Theme Engine Configuration -->
+    <script>
+        // Define the 10 Professional Themes
+        const themes = {
+            'cyber-sovereign': {
+                name: 'Cyber Sovereign',
+                colors: {
+                    dark: '#030712', slate: '#0f172a', blue: '#0ea5e9', neon: '#00f0ff',
+                    purple: '#8b5cf6', accent: '#10b981', danger: '#ef4444'
+                },
+                desc: 'The original high-tech identity. Deep blues and neon cyans evoke digital mastery.'
+            },
+            'executive-navy': {
+                name: 'Executive Navy',
+                colors: {
+                    dark: '#0a192f', slate: '#112240', blue: '#64ffda', neon: '#ccd6f6',
+                    purple: '#8892b0', accent: '#64ffda', danger: '#ff6b6b'
+                },
+                desc: 'Deep navy and gold/teal accents. Trust, authority, and institutional stability.'
+            },
+            'quantum-noir': {
+                name: 'Quantum Noir',
+                colors: {
+                    dark: '#000000', slate: '#121212', blue: '#ffffff', neon: '#e0e0e0',
+                    purple: '#333333', accent: '#ffffff', danger: '#cf6679'
+                },
+                desc: 'Stark monochrome. Minimalist, high-fashion, and ultra-modern.'
+            },
+            'defense-grade': {
+                name: 'Defense Grade',
+                colors: {
+                    dark: '#1c1c1c', slate: '#2f3136', blue: '#d4af37', neon: '#d4af37',
+                    purple: '#7289da', accent: '#43b581', danger: '#f04747'
+                },
+                desc: 'Tactical slate greys with metallic gold accents. Military precision.'
+            },
+            'crimson-guard': {
+                name: 'Crimson Guard',
+                colors: {
+                    dark: '#1a0505', slate: '#2d0a0a', blue: '#ff3333', neon: '#ff9999',
+                    purple: '#aa0000', accent: '#ffcc00', danger: '#ff0000'
+                },
+                desc: 'Aggressive security posture. Dark reds and charcoals signalling active defense.'
+            },
+            'azure-horizon': {
+                name: 'Azure Horizon',
+                colors: {
+                    dark: '#f0f9ff', slate: '#e0f2fe', blue: '#0284c7', neon: '#0ea5e9',
+                    purple: '#6366f1', accent: '#3b82f6', danger: '#ef4444'
+                },
+                desc: 'Light, airy, and clean. Similar to modern SaaS platforms. Accessible and open.'
+            },
+            'sovereign-gold': {
+                name: 'Sovereign Gold',
+                colors: {
+                    dark: '#121212', slate: '#1e1e1e', blue: '#ffd700', neon: '#ffed4a',
+                    purple: '#b8860b', accent: '#daa520', danger: '#cd5c5c'
+                },
+                desc: 'Premium luxury. Black and Gold. Implies elite exclusivity and high value.'
+            },
+            'violet-matrix': {
+                name: 'Violet Matrix',
+                colors: {
+                    dark: '#13001f', slate: '#240046', blue: '#9d4edd', neon: '#e0aaff',
+                    purple: '#7b2cbf', accent: '#c77dff', danger: '#ff006e'
+                },
+                desc: 'Deep ultraviolet aesthetic. Futuristic, mysterious, and computational.'
+            },
+            'corporate-steel': {
+                name: 'Corporate Steel',
+                colors: {
+                    dark: '#1e293b', slate: '#334155', blue: '#94a3b8', neon: '#cbd5e1',
+                    purple: '#64748b', accent: '#475569', danger: '#ef4444'
+                },
+                desc: 'Cool greys and steel blues. Enterprise capabilities and robust engineering.'
+            },
+            'obsidian-glass': {
+                name: 'Obsidian Glass',
+                colors: {
+                    dark: '#050505', slate: '#101010', blue: '#38bdf8', neon: '#7dd3fc',
+                    purple: '#818cf8', accent: '#34d399', danger: '#fb7185'
+                },
+                desc: 'Deep blacks with high-contrast glassmorphism elements. Cutting edge.'
+            }
+        };
+
+        // Initialize Tailwind Config dynamically
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        cyber: {
+                            dark: 'var(--color-dark)',
+                            slate: 'var(--color-slate)',
+                            blue: 'var(--color-blue)',
+                            neon: 'var(--color-neon)',
+                            purple: 'var(--color-purple)',
+                            accent: 'var(--color-accent)',
+                            danger: 'var(--color-danger)'
+                        }
+                    },
+                    fontFamily: {
+                        sans: [ 'Inter', 'sans-serif' ],
+                        display: [ 'Outfit', 'sans-serif' ],
+                    },
+                    backgroundImage: {
+                        'radial-glow': "radial-gradient(circle at center, var(--color-blue-low-opacity) 0%, transparent 70%)"
+                    }
+                }
+            }
+        }
+
+        function applyTheme ( themeKey )
+        {
+            const theme = themes[ themeKey ];
+            const root = document.documentElement;
+
+            // Set CSS Variables
+            root.style.setProperty( '--color-dark', theme.colors.dark );
+            root.style.setProperty( '--color-slate', theme.colors.slate );
+            root.style.setProperty( '--color-blue', theme.colors.blue );
+            root.style.setProperty( '--color-neon', theme.colors.neon );
+            root.style.setProperty( '--color-purple', theme.colors.purple );
+            root.style.setProperty( '--color-accent', theme.colors.accent );
+            root.style.setProperty( '--color-danger', theme.colors.danger );
+
+            // Hex to RGB for opacity utils (simplified for prototype)
+            // Ideally we'd convert properly, but for prototype we'll mock the glow
+            root.style.setProperty( '--color-blue-low-opacity', theme.colors.blue + '20' ); // 20% opacity approx hex
+
+            // Visual feedback
+            document.getElementById( 'current-theme-name' ).textContent = theme.name;
+            document.getElementById( 'current-theme-desc' ).textContent = theme.desc;
+        }
+
+        // Apply default theme on load
+        window.addEventListener( 'DOMContentLoaded', () =>
+        {
+            applyTheme( 'cyber-sovereign' );
+        } );
+    </script>
+
+    <style>
+        :lang(ar) {
+            font-family: 'Tajawal', sans-serif !important;
+        }
+
+        /* CSS Variables Base */
+        :root {
+            --color-dark: #030712;
+            --color-slate: #0f172a;
+            --color-blue: #0ea5e9;
+            --color-neon: #00f0ff;
+            --color-purple: #8b5cf6;
+            --color-accent: #10b981;
+            --color-danger: #ef4444;
+            --color-blue-low-opacity: rgba(14, 165, 233, 0.15);
+        }
+
+        /* Dark Mode Override logic handled by vars now */
+        .dark body {
+            background-color: var(--color-dark) !important;
+            color: #f8fafc;
+        }
+
+        /* Prototype Switcher UI */
+        #theme-switcher {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.9);
+            border: 1px solid #333;
+            border-radius: 12px;
+            padding: 20px;
+            z-index: 9999;
+            width: 300px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            max-height: 80vh;
+            overflow-y: auto;
+            color: white;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .theme-btn {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 8px;
+            border-radius: 6px;
+            border: 1px solid #444;
+            background: #111;
+            color: #ccc;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .theme-btn:hover {
+            background: #222;
+            border-color: #666;
+            color: white;
+        }
+
+        .color-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin-right: 10px;
+            margin-left: auto;
+        }
+    </style>
+</head>
+
+<body class="antialiased selection:bg-cyber-blue selection:text-white dark">
+
+    <!-- THEME SWITCHER UI -->
+    <div id="theme-switcher">
+        <h3 class="text-xs font-bold uppercase tracking-widest text-gray-500 mb-4">Prototype Theme Engine</h3>
+
+        <div class="mb-6 pb-6 border-b border-gray-800">
+            <h2 id="current-theme-name" class="text-xl font-bold text-white mb-2">Cyber Sovereign</h2>
+            <p id="current-theme-desc" class="text-xs text-gray-400">The original high-tech identity.</p>
+        </div>
+
+        <div class="space-y-2">
+            <h4 class="text-xs font-bold text-gray-600 mb-2">SELECT PRESET</h4>
+
+            <button onclick="applyTheme('cyber-sovereign')" class="theme-btn">
+                <span>Original Sovereign</span>
+                <span class="color-dot" style="background:#0ea5e9; box-shadow: 0 0 5px #0ea5e9;"></span>
+            </button>
+            <button onclick="applyTheme('executive-navy')" class="theme-btn">
+                <span>Executive Navy</span>
+                <span class="color-dot" style="background:#64ffda; box-shadow: 0 0 5px #64ffda;"></span>
+            </button>
+            <button onclick="applyTheme('quantum-noir')" class="theme-btn">
+                <span>Quantum Noir</span>
+                <span class="color-dot" style="background:#ffffff; box-shadow: 0 0 5px #ffffff;"></span>
+            </button>
+            <button onclick="applyTheme('defense-grade')" class="theme-btn">
+                <span>Defense Grade</span>
+                <span class="color-dot" style="background:#d4af37; box-shadow: 0 0 5px #d4af37;"></span>
+            </button>
+            <button onclick="applyTheme('crimson-guard')" class="theme-btn">
+                <span>Crimson Guard</span>
+                <span class="color-dot" style="background:#ff3333; box-shadow: 0 0 5px #ff3333;"></span>
+            </button>
+            <button onclick="applyTheme('azure-horizon')" class="theme-btn">
+                <span>Azure Horizon</span>
+                <span class="color-dot" style="background:#0ea5e9; box-shadow: 0 0 5px #0ea5e9;"></span>
+            </button>
+            <button onclick="applyTheme('sovereign-gold')" class="theme-btn">
+                <span>Sovereign Gold</span>
+                <span class="color-dot" style="background:#ffd700; box-shadow: 0 0 5px #ffd700;"></span>
+            </button>
+            <button onclick="applyTheme('violet-matrix')" class="theme-btn">
+                <span>Violet Matrix</span>
+                <span class="color-dot" style="background:#9d4edd; box-shadow: 0 0 5px #9d4edd;"></span>
+            </button>
+            <button onclick="applyTheme('corporate-steel')" class="theme-btn">
+                <span>Corporate Steel</span>
+                <span class="color-dot" style="background:#94a3b8; box-shadow: 0 0 5px #94a3b8;"></span>
+            </button>
+            <button onclick="applyTheme('obsidian-glass')" class="theme-btn">
+                <span>Obsidian Glass</span>
+                <span class="color-dot" style="background:#38bdf8; box-shadow: 0 0 5px #38bdf8;"></span>
+            </button>
+
+            <div class="pt-4 mt-4 border-t border-gray-800">
+                <button onclick="applyToProd()"
+                    class="w-full py-2 bg-green-600 hover:bg-green-500 text-white font-bold rounded-lg transition-colors text-xs uppercase tracking-wider">
+                    Apply to Production
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function applyToProd ()
+        {
+            // In a real environment, this would call the backend.
+            // Since this is a prototype running in browser, we provide the command.
+            const currentThemeName = document.getElementById( 'current-theme-name' ).textContent;
+            // Reverse lookup theme key or store it
+            // Simplified: we will just alert the command for now as browser can't execute shell
+            // Find key by name (simple lookup for prototype)
+            let selectedKey = 'cyber-sovereign';
+            for ( const [ key, val ] of Object.entries( themes ) )
+            {
+                if ( val.name === currentThemeName ) selectedKey = key;
+            }
+
+            const command = `node "scripts/apply_theme.js" "${ selectedKey }"`;
+            alert( `To apply this theme to production (index.html):\n\nRun this command in your terminal:\n\n${ command }\n\n(This will automatically backup the current index.html first)` );
+
+            // Allow copy to clipboard
+            navigator.clipboard.writeText( command ).then( () =>
+            {
+                console.log( 'Command copied to clipboard' );
+            } );
+        }
+    </script>
+
+
+    <!-- MAIN CONTENT COPIED FROM INDEX.HTML (Simulated) -->
+    <!-- Note: Content structure mirrors main site but uses CSS vars for colors -->
+
+    <nav class="fixed w-full z-40 top-0 start-0 border-b border-gray-700 bg-cyber-slate/80 backdrop-blur-xl">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-wrap items-center justify-between mx-auto p-4">
+                <a href="#" class="flex items-center space-x-0 rtl:space-x-reverse group">
+                    <!-- Simplified Logo for Prototype -->
+                    <span
+                        class="self-center text-3xl md:text-5xl font-display font-bold whitespace-nowrap text-white tracking-wider">CYBER<span
+                            class="text-cyber-blue">QUANT</span></span>
+                </a>
+                <div class="hidden w-full md:block md:w-auto">
+                    <ul class="font-medium flex flex-col p-4 md:p-0 mt-4 md:flex-row md:space-x-8">
+                        <li><a href="#"
+                                class="block py-2 px-3 text-gray-300 hover:text-cyber-blue transition-colors">Solutions</a>
+                        </li>
+                        <li><a href="#"
+                                class="block py-2 px-3 text-gray-300 hover:text-cyber-blue transition-colors">Use
+                                Cases</a></li>
+                        <li><a href="#"
+                                class="block py-2 px-3 text-cyber-blue border border-cyber-blue/30 rounded hover:bg-cyber-blue/10 md:px-4 md:py-1 transition-all">Contact</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <section class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden bg-cyber-dark">
+        <!-- Glow Effect managed by CSS Var -->
+        <div class="absolute inset-0 bg-radial-glow z-0 pointer-events-none"></div>
+
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div
+                class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-cyber-blue/10 border border-cyber-blue/20 text-cyber-blue text-sm font-semibold mb-8">
+                <span class="w-2 h-2 rounded-full bg-cyber-neon animate-pulse"></span>
+                PROTOTYPE MODE: STYLE PREVIEW
+            </div>
+
+            <h1 class="text-5xl md:text-7xl font-display font-bold tracking-tight mb-6 text-white">
+                Secure Your <br>
+                <span
+                    class="text-transparent bg-clip-text bg-gradient-to-r from-cyber-blue to-cyber-neon neon-text">Digital
+                    Sovereignty</span>
+            </h1>
+
+            <p class="mt-4 text-xl text-gray-400 max-w-2xl mx-auto leading-relaxed">
+                The first AI-driven cybersecurity ecosystem immune to the
+                <span class="text-cyber-danger font-semibold">US CLOUD Act</span>.
+                Protecting sovereign networks with NIST-approved Post-Quantum Cryptography.
+            </p>
+
+            <div class="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="#"
+                    class="px-8 py-4 bg-cyber-blue text-white font-bold rounded-lg hover:opacity-90 shadow-[0_0_20px_rgba(14,165,233,0.3)] transition-all flex items-center justify-center gap-2">
+                    Request Access
+                    <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </div>
+
+            <!-- Cards Section to show secondary colors -->
+            <div class="grid md:grid-cols-3 gap-8 mt-24 text-left">
+                <div class="p-8 rounded-2xl border border-gray-700 bg-cyber-slate/50">
+                    <h3 class="text-xl font-bold text-white mb-3 text-cyber-blue">Jurisdictional Immunity</h3>
+                    <p class="text-gray-400">Automated geofencing ensuring data never leaves legal borders.</p>
+                </div>
+                <div class="p-8 rounded-2xl border border-gray-700 bg-cyber-slate/50">
+                    <h3 class="text-xl font-bold text-white mb-3 text-cyber-accent">Quantum-Ready</h3>
+                    <p class="text-gray-400">NIST-approved post-quantum cryptography (Kyber/Dilithium).</p>
+                </div>
+                <div class="p-8 rounded-2xl border border-gray-700 bg-cyber-slate/50">
+                    <h3 class="text-xl font-bold text-white mb-3 text-cyber-purple">Quantitative Defense</h3>
+                    <p class="text-gray-400">AI-calculated risk probability percentages for every node.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</body>
+
+</html>

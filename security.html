@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Security | CyberQuant</title>
+    <meta name="robots" content="noindex, follow">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="icon" type="image/webp" href="logo.png">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Outfit:wght@400;500;700;900&family=Tajawal:wght@300;400;500;700;800;900&display=swap"
+        rel="stylesheet">
+
+    <!-- Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- i18next & Dependencies -->
+    <script src="https://unpkg.com/i18next@23.2.3/dist/umd/i18next.min.js"></script>
+    <script src="https://unpkg.com/i18next-http-backend@2.2.1/i18nextHttpBackend.min.js"></script>
+    <script
+        src="https://unpkg.com/i18next-browser-languagedetector@7.1.0/i18nextBrowserLanguageDetector.min.js"></script>
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        cyber: {
+                            dark: 'var(--color-dark)',
+                            slate: 'var(--color-slate)',
+                            blue: 'var(--color-blue)',
+                            neon: 'var(--color-neon)',
+                            purple: 'var(--color-purple)',
+                            accent: 'var(--color-accent)',
+                            danger: 'var(--color-danger)'
+                        }
+                    },
+                    fontFamily: {
+                        sans: [ 'Inter', 'sans-serif' ],
+                        display: [ 'Outfit', 'sans-serif' ],
+                    }
+                }
+            }
+        }
+    </script>
+    <script src="scripts/theme.js"></script>
+    <style>
+        /* CSS Theme Variables */
+        :root {
+            --color-dark: #0a192f;
+            --color-slate: #112240;
+            --color-blue: #318e78;
+            --color-neon: #ccd6f6;
+            --color-purple: #8892b0;
+            --color-accent: #318e78;
+            --color-danger: #ff6b6b;
+            --color-blue-glow: rgba(100, 255, 218, 0.15);
+        }
+
+        /* Dark Mode Theme Variables Override */
+        .dark {
+            --color-blue: #64ffda;
+            --color-accent: #64ffda;
+        }
+
+        body:lang(ar) {
+            font-family: 'Tajawal', sans-serif !important;
+        }
+
+        body {
+            background-color: #f9fafb;
+            background-image:
+                linear-gradient(to right, rgba(100, 100, 100, 0.04) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(100, 100, 100, 0.04) 1px, transparent 1px);
+            background-size: 24px 24px;
+            color: #111827;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .dark body {
+            background-color: var(--color-dark) !important;
+            color: #f8fafc;
+            background-image:
+                linear-gradient(to right, rgba(14, 165, 233, 0.05) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(14, 165, 233, 0.05) 1px, transparent 1px);
+        }
+
+        /* Adaptive Glass Card */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            -webkit-backdrop-filter: blur(12px);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(203, 213, 225, 0.6);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .dark .glass-card {
+            background: rgba(15, 23, 42, 0.5);
+            border: 1px solid rgba(56, 189, 248, 0.1);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+        }
+    </style>
+</head>
+
+<body class="antialiased selection:bg-cyber-blue selection:text-white pb-20">
+
+
+    <!-- Map Watermark -->
+    <img src="world_map_watermark.svg" alt="Sovereignty Map Watermark"
+        class="fixed inset-0 w-full h-full object-cover z-0 pointer-events-none opacity-[0.07] mix-blend-multiply dark:mix-blend-overlay dark:opacity-[0.7] dark:invert transition-all duration-300">
+
+    <!-- Navigation -->
+    <nav id="main-nav"
+        class="fixed w-full z-50 top-0 start-0 border-b border-gray-200 dark:border-white/10 glass-card transition-all duration-300 group">
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col sm:flex-row items-center justify-between py-4 gap-4">
+                <a href="index.html" class="flex items-center space-x-0 rtl:space-x-reverse group">
+                    <img src="logo.png" alt="CyberQuant Logo"
+                        class="w-12 h-12 md:w-24 md:h-24 object-contain -me-1 md:-me-4">
+                    <span
+                        class="text-xl md:text-4xl font-display font-bold text-gray-900 dark:text-white uppercase tracking-tight">CYBER<span
+                            class="text-cyber-blue">QUANT</span></span>
+                </a>
+                <div class="flex items-center gap-2 sm:gap-4 flex-wrap justify-center text-sm">
+                    <!-- Language Switcher -->
+                    <div class="relative group">
+                        <button type="button" aria-label="Change language"
+                            class="flex items-center gap-2 bg-gray-100 dark:bg-white/5 border border-transparent hover:border-gray-300 dark:hover:border-white/20 px-3 py-1.5 rounded-full text-gray-900 dark:text-gray-300 hover:text-cyber-blue dark:hover:text-cyber-neon transition-all">
+                            <i class="ph-duotone ph-globe text-base"></i>
+                            <span id="current-lang" class="text-[10px] font-bold tracking-tighter">EN</span>
+                            <i class="ph-bold ph-caret-down text-[8px] opacity-70"></i>
+                        </button>
+                        <!-- Dropdown -->
+                        <div class="absolute right-0 top-full pt-2 w-32 hidden group-hover:block hover:block z-50">
+                            <div
+                                class="bg-white/95 dark:bg-gray-900/95 backdrop-blur-xl rounded-xl shadow-2xl border border-gray-100 dark:border-white/10 py-1 overflow-hidden">
+                                <button onclick="changeLanguage('en')"
+                                    class="block w-full text-left px-3 py-1.5 text-xs text-gray-900 dark:text-gray-300 hover:bg-cyber-blue/10 hover:text-cyber-blue transition-colors flex items-center justify-between">
+                                    <span>English</span>
+                                    <span class="text-[10px] opacity-50">🇺🇸</span>
+                                </button>
+                                <button onclick="changeLanguage('es')"
+                                    class="block w-full text-left px-3 py-1.5 text-xs text-gray-900 dark:text-gray-300 hover:bg-cyber-blue/10 hover:text-cyber-blue transition-colors flex items-center justify-between">
+                                    <span>Español</span>
+                                    <span class="text-[10px] opacity-50">🇪🇸</span>
+                                </button>
+                                <button onclick="changeLanguage('zh')"
+                                    class="block w-full text-left px-3 py-1.5 text-xs text-gray-900 dark:text-gray-300 hover:bg-cyber-blue/10 hover:text-cyber-blue transition-colors flex items-center justify-between">
+                                    <span>中文</span>
+                                    <span class="text-[10px] opacity-50">🇨🇳</span>
+                                </button>
+                                <button onclick="changeLanguage('ar')"
+                                    class="block w-full text-left px-3 py-1.5 text-xs text-gray-900 dark:text-gray-300 hover:bg-cyber-blue/10 hover:text-cyber-blue transition-colors flex items-center justify-between">
+                                    <span>العربية</span>
+                                    <span class="text-[10px] opacity-50">🇸🇦</span>
+                                </button>
+                                <button onclick="changeLanguage('pt')"
+                                    class="block w-full text-left px-3 py-1.5 text-xs text-gray-900 dark:text-gray-300 hover:bg-cyber-blue/10 hover:text-cyber-blue transition-colors flex items-center justify-between">
+                                    <span>Português</span>
+                                    <span class="text-[10px] opacity-50">🇧🇷</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Theme Toggle -->
+                    <button id="theme-toggle" type="button" aria-label="Toggle theme" title="Toggle theme"
+                        class="bg-gray-100 dark:bg-white/5 border border-transparent hover:border-gray-300 dark:hover:border-white/20 p-2 rounded-full text-gray-900 dark:text-gray-400 hover:text-cyber-blue dark:hover:text-cyber-neon transition-all">
+                        <i id="theme-icon" class="ph-duotone ph-sun text-base"></i>
+                    </button>
+
+                    <a href="index.html"
+                        class="text-xs md:text-sm font-semibold text-gray-800 dark:text-gray-400 hover:text-cyber-blue dark:hover:text-cyber-neon transition flex items-center gap-1">
+                        <i class="ph-bold ph-arrow-left"></i> <span data-i18n="nav.back_home">Back to Home</span>
+                    </a>
+                    <a href="market-report.html"
+                        class="text-xs md:text-sm font-semibold text-gray-800 dark:text-gray-400 hover:text-cyber-blue dark:hover:text-cyber-neon transition flex items-center gap-1">
+                        <i class="ph-bold ph-chart-bar"></i> <span data-i18n="nav.marketReport">Market Report</span>
+                    </a>
+                    <a href="contact.html"
+                        class="text-xs md:text-sm font-semibold text-gray-800 dark:text-gray-400 hover:text-cyber-blue dark:hover:text-cyber-neon transition flex items-center gap-1">
+                        <i class="ph-bold ph-envelope"></i> <span data-i18n="nav.contact">Contact Us</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="pt-48 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        <header class="mb-16">
+            <h1 class="text-4xl md:text-5xl font-display font-bold text-gray-900 dark:text-white mb-6"
+                data-i18n="security.title">Security &
+                Compliance</h1>
+            <p class="text-xl text-gray-800 dark:text-gray-400" data-i18n="security.subtitle">
+                Transparency and rigor are the cornerstones of CyberQuant's sovereign architecture.
+            </p>
+        </header>
+
+        <!-- Protocols -->
+        <section id="protocols" class="mb-16 scroll-mt-32">
+            <div class="flex items-center gap-4 mb-6">
+                <div
+                    class="w-12 h-12 rounded-lg bg-cyber-blue/10 flex items-center justify-center text-cyber-blue text-2xl">
+                    <i class="ph-bold ph-shield-check"></i>
+                </div>
+                <h2 class="text-3xl font-display font-bold text-gray-900 dark:text-white"
+                    data-i18n="security.protocols_title">Security Protocols</h2>
+            </div>
+            <div class="prose dark:prose-invert max-w-none text-gray-900 dark:text-gray-300">
+                <p data-i18n="security.protocols_desc">
+                    Sent-Quant employs a multi-layered defense-in-depth strategy designed for the post-quantum era.
+                </p>
+                <ul class="list-disc ps-5 space-y-2 mt-4">
+                    <li><strong>Post-Quantum Cryptography (PQC):</strong> All data in transit and at rest is encrypted
+                        using NIST-standardized algorithms (CRYSTALS-Kyber for key encapsulation and CRYSTALS-Dilithium
+                        for digital signatures).</li>
+                    <li><strong>Zero Trust Architecture:</strong> Strict identity verification for every person and
+                        device trying to access resources on a private network, regardless of whether they are sitting
+                        within or outside of the network perimeter.</li>
+                    <li><strong>Air-Gapped Options:</strong> Physical isolation capabilities for critical national
+                        security infrastructure.</li>
+                </ul>
+            </div>
+        </section>
+
+        <hr class="border-gray-200 dark:border-white/10 mb-16">
+
+        <!-- Compliance -->
+        <section id="compliance" class="mb-16 scroll-mt-32">
+            <div class="flex items-center gap-4 mb-6">
+                <div
+                    class="w-12 h-12 rounded-lg bg-cyber-accent/10 flex items-center justify-center text-cyber-accent text-2xl">
+                    <i class="ph-duotone ph-file-dashed"></i>
+                </div>
+                <h2 class="text-3xl font-display font-bold text-gray-900 dark:text-white">Sovereign Compliance</h2>
+            </div>
+            <div class="prose dark:prose-invert max-w-none text-gray-900 dark:text-gray-300">
+                <p>
+                    We guarantee strict adherence to regional data residency and sovereignty laws.
+                </p>
+                <div class="grid md:grid-cols-2 gap-6 mt-6">
+                    <div class="bg-gray-50 dark:bg-white/5 p-6 rounded-xl border border-gray-100 dark:border-white/10">
+                        <h3 class="font-bold text-lg mb-2 text-gray-900 dark:text-white">GDPR & Schrems II</h3>
+                        <p class="text-sm">Full compliance with EU General Data Protection Regulation. Mechanisms in
+                            place to prevent unlawful data transfers to non-adequate jurisdictions.</p>
+                    </div>
+                    <div class="bg-gray-50 dark:bg-white/5 p-6 rounded-xl border border-gray-100 dark:border-white/10">
+                        <h3 class="font-bold text-lg mb-2 text-gray-900 dark:text-white">US CLOUD Act Immunity</h3>
+                        <p class="text-sm">By structuring our legal entities and infrastructure outside of US
+                            jurisdiction scope for sovereign clients, we mitigate the risk of extraterritorial data
+                            seizure.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <hr class="border-gray-200 dark:border-white/10 mb-16">
+
+        <!-- Vulnerability -->
+        <section id="vulnerability" class="mb-16 scroll-mt-32">
+            <div class="flex items-center gap-4 mb-6">
+                <div
+                    class="w-12 h-12 rounded-lg bg-cyber-purple/10 flex items-center justify-center text-cyber-purple text-2xl">
+                    <i class="ph-duotone ph-bug"></i>
+                </div>
+                <h2 class="text-3xl font-display font-bold text-gray-900 dark:text-white">Vulnerability Disclosure</h2>
+            </div>
+            <div class="prose dark:prose-invert max-w-none text-gray-900 dark:text-gray-300">
+                <p>
+                    CyberQuant welcomes collaboration with the security research community. If you believe you have
+                    found a vulnerability, please report it immediately.
+                </p>
+                <div class="mt-6 bg-cyber-blue/5 border border-cyber-blue/20 rounded-lg p-6">
+                    <p class="font-mono text-sm mb-4">PGP Key ID: 0x4B3A8F2C (Fingerprint on keyservers)</p>
+                    <a href="mailto:security@cyberquant.io"
+                        class="inline-flex items-center text-cyber-blue font-bold hover:underline">
+                        <i class="ph-bold ph-envelope me-2"></i> security@cyberquant.io
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <script>
+        const languageMap = {
+            'en': 'EN',
+            'es': 'ES',
+            'zh': 'ZH',
+            'ar': 'AR',
+            'pt': 'PT'
+        };
+
+        function updateContent ()
+        {
+            document.querySelectorAll( '[data-i18n]' ).forEach( element =>
+            {
+                try
+                {
+                    const key = element.getAttribute( 'data-i18n' );
+                    const options = element.getAttribute( 'data-i18n-options' );
+                    const parsedOptions = options ? JSON.parse( options ) : {};
+
+                    let translation = i18next.t( key, parsedOptions );
+
+                    if ( translation.includes( '<1>' ) )
+                    {
+                        translation = translation.replace( /<1>/g, '<span class="text-cyber-blue font-bold">' ).replace( /<\/1>/g, '</span>' );
+                    }
+
+                    element.innerHTML = translation;
+                } catch ( e )
+                {
+                    console.error( 'Error updating i18n element:', element, e );
+                }
+            } );
+
+            try
+            {
+                const currentLang = i18next.language.split( '-' )[ 0 ];
+                const displayLang = languageMap[ currentLang ] || 'EN';
+                const langDisplay = document.getElementById( 'current-lang' );
+                if ( langDisplay ) langDisplay.textContent = displayLang;
+
+                const html = document.documentElement;
+                if ( currentLang === 'ar' )
+                {
+                    html.setAttribute( 'dir', 'rtl' );
+                    html.setAttribute( 'lang', 'ar' );
+                } else
+                {
+                    html.setAttribute( 'dir', 'ltr' );
+                    html.setAttribute( 'lang', currentLang );
+                }
+            } catch ( e )
+            {
+                console.error( 'Error handling language UI:', e );
+            }
+        }
+
+        document.addEventListener( 'DOMContentLoaded', () =>
+        {
+            const initLang = localStorage.getItem( 'user-language' ) || 'en';
+
+            i18next
+                .use( i18nextHttpBackend )
+                .init( {
+                    lng: initLang,
+                    fallbackLng: 'en',
+                    backend: {
+                        loadPath: 'locales/{{lng}}/translation.json',
+                    }
+                }, ( err ) =>
+                {
+                    if ( err ) return console.error( err );
+                    updateContent();
+                } );
+        } );
+
+        function changeLanguage ( lang )
+        {
+            i18next.changeLanguage( lang, () =>
+            {
+                updateContent();
+                localStorage.setItem( 'user-language', lang );
+            } );
+        }
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CyberQuant | Sovereign Cloud Defense Redesigned</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;700;800;900&family=JetBrains+Mono:wght@400;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Tailwind CSS (CDN for Prototype) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Theme Engine -->
+    <script>
+        // Expanded Theme Registry
+        const themes = {
+            // Original Professional Themes
+            'cyber-sovereign': { name: 'Cyber Sovereign', colors: { bg: '#030712', surface: '#0f172a', primary: '#0ea5e9', secondary: '#00f0ff', accent: '#10b981', text: '#f8fafc' }, type: 'dark' },
+            'executive-navy': { name: 'Executive Navy', colors: { bg: '#0a192f', surface: '#112240', primary: '#64ffda', secondary: '#ccd6f6', accent: '#64ffda', text: '#e6f1ff' }, type: 'dark' },
+            'defense-grade': { name: 'Defense Grade', colors: { bg: '#1c1c1c', surface: '#2f3136', primary: '#d4af37', secondary: '#d4af37', accent: '#43b581', text: '#dcddde' }, type: 'dark' },
+
+            // New "High-Impact" Themes
+            'solar-flare': { name: 'Solar Flare', colors: { bg: '#1a0500', surface: '#2d0a00', primary: '#ff4d00', secondary: '#ff8c00', accent: '#ffcc00', text: '#ffe6cc' }, type: 'dark' },
+            'bio-hazard': { name: 'Bio Hazard', colors: { bg: '#051a00', surface: '#0a2f00', primary: '#39ff14', secondary: '#ccff00', accent: '#ccff00', text: '#eaffcc' }, type: 'dark' },
+            'deep-space': { name: 'Deep Space', colors: { bg: '#000000', surface: '#050510', primary: '#7b61ff', secondary: '#00d4ff', accent: '#ff00d4', text: '#ffffff' }, type: 'dark' },
+            'vapor-wave': { name: 'Vaporwave', colors: { bg: '#1a0b2e', surface: '#2d1b4e', primary: '#ff71ce', secondary: '#01cdfe', accent: '#b967ff', text: '#fff0f5' }, type: 'dark' },
+            'hacker-console': { name: 'Hacker Console', colors: { bg: '#000000', surface: '#001100', primary: '#00ff00', secondary: '#00cc00', accent: '#33ff33', text: '#00ff00' }, type: 'dark' },
+            'arctic-protocol': { name: 'Arctic Protocol', colors: { bg: '#f0f9ff', surface: '#e0f2fe', primary: '#0ea5e9', secondary: '#38bdf8', accent: '#0284c7', text: '#0c4a6e' }, type: 'light' },
+            'obsidian-glass': { name: 'Obsidian Glass', colors: { bg: '#000000', surface: '#111111', primary: '#ffffff', secondary: '#cccccc', accent: '#333333', text: '#ffffff' }, type: 'dark' }
+        };
+
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: [ 'Inter', 'sans-serif' ],
+                        display: [ 'Outfit', 'sans-serif' ],
+                        mono: [ 'JetBrains Mono', 'monospace' ],
+                    },
+                    colors: {
+                        theme: {
+                            bg: 'var(--color-bg)',
+                            surface: 'var(--color-surface)',
+                            primary: 'var(--color-primary)',
+                            secondary: 'var(--color-secondary)',
+                            accent: 'var(--color-accent)',
+                            text: 'var(--color-text)',
+                        }
+                    },
+                    animation: {
+                        'blob': 'blob 7s infinite',
+                        'scan': 'scan 20s linear infinite',
+                    },
+                    keyframes: {
+                        blob: {
+                            '0%': { transform: 'translate(0px, 0px) scale(1)' },
+                            '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
+                            '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
+                            '100%': { transform: 'translate(0px, 0px) scale(1)' },
+                        },
+                        scan: {
+                            '0%': { transform: 'translateY(-100%)' },
+                            '100%': { transform: 'translateY(100%)' }
+                        }
+                    }
+                }
+            }
+        }
+
+        function applyTheme ( key )
+        {
+            const theme = themes[ key ];
+            const root = document.documentElement;
+
+            // Update CSS Variables
+            Object.entries( theme.colors ).forEach( ( [ k, v ] ) =>
+            {
+                root.style.setProperty( `--color-${ k }`, v );
+            } );
+
+            // Update DOM Classes for native Tailwind dark mode
+            if ( theme.type === 'dark' )
+            {
+                root.classList.add( 'dark' );
+            } else
+            {
+                root.classList.remove( 'dark' );
+            }
+
+            // Save preference
+            localStorage.setItem( 'cyberquant-theme', key );
+
+            // Update UI
+            document.querySelectorAll( '.theme-btn' ).forEach( btn =>
+            {
+                btn.classList.remove( 'ring-2', 'ring-theme-primary' );
+                if ( btn.dataset.theme === key ) btn.classList.add( 'ring-2', 'ring-theme-primary' );
+            } );
+        }
+
+        window.addEventListener( 'DOMContentLoaded', () =>
+        {
+            const saved = localStorage.getItem( 'cyberquant-theme' ) || 'cyber-sovereign';
+            applyTheme( saved );
+        } );
+    </script>
+
+    <style>
+        :root {
+            --color-bg: #030712;
+            --color-surface: #0f172a;
+            --color-primary: #0ea5e9;
+            --color-secondary: #00f0ff;
+            --color-accent: #10b981;
+            --color-text: #f8fafc;
+        }
+
+        body {
+            background-color: var(--color-bg);
+            color: var(--color-text);
+            transition: background-color 0.5s ease, color 0.5s ease;
+        }
+
+        /* Glassmorphism Utilities */
+        .glass {
+            background: rgba(var(--color-surface), 0.3);
+            /* Need usage of rgb vars for real transparency, hacking for prototype */
+            background: color-mix(in srgb, var(--color-surface), transparent 30%);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid color-mix(in srgb, var(--color-primary), transparent 80%);
+        }
+
+        .glass-hover:hover {
+            border-color: var(--color-primary);
+            box-shadow: 0 0 20px color-mix(in srgb, var(--color-primary), transparent 80%);
+        }
+
+        /* Grid Pattern */
+        .bg-grid {
+            background-size: 40px 40px;
+            background-image: linear-gradient(to right, color-mix(in srgb, var(--color-text), transparent 95%) 1px, transparent 1px),
+                linear-gradient(to bottom, color-mix(in srgb, var(--color-text), transparent 95%) 1px, transparent 1px);
+        }
+    </style>
+</head>
+
+<body class="antialiased overflow-x-hidden bg-grid selection:bg-theme-primary selection:text-black">
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 transition-all duration-300">
+        <div class="glass mx-4 mt-4 rounded-2xl px-6 py-4 flex items-center justify-between max-w-7xl mx-auto">
+            <div class="flex items-center gap-3">
+                <div
+                    class="w-10 h-10 bg-theme-primary rounded-lg flex items-center justify-center text-black font-bold text-xl">
+                    <i class="fa-solid fa-shield-halved"></i>
+                </div>
+                <span class="text-2xl font-display font-bold tracking-tight">CYBER<span
+                        class="text-theme-primary">QUANT</span></span>
+            </div>
+
+            <div class="hidden md:flex items-center gap-8 font-medium text-sm">
+                <a href="#" class="hover:text-theme-primary transition-colors">Platform</a>
+                <a href="#" class="hover:text-theme-primary transition-colors">Sovereignty</a>
+                <a href="#" class="hover:text-theme-primary transition-colors">Quantum</a>
+                <a href="#" class="hover:text-theme-primary transition-colors">Pricing</a>
+            </div>
+
+            <button
+                class="px-5 py-2.5 bg-theme-primary text-black font-bold rounded-lg hover:brightness-110 transition-all shadow-[0_0_15px_rgba(0,0,0,0.3)]">
+                Get Access
+            </button>
+        </div>
+    </nav>
+
+    <!-- Theme Switcher Panel -->
+    <div class="fixed bottom-8 right-8 z-50 group">
+        <button
+            class="w-14 h-14 rounded-full glass flex items-center justify-center text-xl hover:scale-110 transition-transform shadow-2xl">
+            <i class="fa-solid fa-palette text-theme-primary"></i>
+        </button>
+        <div
+            class="absolute bottom-16 right-0 w-64 glass rounded-xl p-4 opacity-0 group-hover:opacity-100 pointer-events-none group-hover:pointer-events-auto transition-all translate-y-4 group-hover:translate-y-0">
+            <h3 class="text-xs font-bold uppercase tracking-widest mb-3 opacity-70">Theme Engine</h3>
+            <div class="grid grid-cols-4 gap-2">
+                <script>
+                    Object.keys( themes ).forEach( key =>
+                    {
+                        const t = themes[ key ];
+                        document.write( `
+                            <button onclick="applyTheme('${ key }')" data-theme="${ key }"
+                                class="theme-btn w-10 h-10 rounded-lg transition-all hover:scale-110 relative"
+                                title="${ t.name }"
+                                style="background: ${ t.colors.bg }; border: 1px solid ${ t.colors.primary }">
+                                <div class="absolute inset-2 rounded-sm" style="background: ${ t.colors.primary }"></div>
+                            </button>
+                        `);
+                    } );
+                </script>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="min-h-screen flex items-center justify-center relative pt-20">
+        <!-- Ambient Background Effects -->
+        <div class="absolute inset-0 overflow-hidden pointer-events-none">
+            <div
+                class="absolute top-1/4 left-1/4 w-96 h-96 bg-theme-primary opacity-20 blur-[128px] rounded-full mix-blend-screen animate-blob">
+            </div>
+            <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-theme-secondary opacity-20 blur-[128px] rounded-full mix-blend-screen animate-blob"
+                style="animation-delay: 2s"></div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-6 text-center relative z-10">
+            <div
+                class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-theme-primary/30 bg-theme-primary/10 text-theme-primary text-xs font-bold uppercase tracking-widest mb-8">
+                <span class="w-2 h-2 rounded-full bg-theme-primary animate-pulse"></span>
+                Sovereignty Is The New Security
+            </div>
+
+            <h1 class="text-6xl md:text-8xl font-display font-black tracking-tighter mb-8 leading-[0.9]">
+                DEFEND YOUR <br>
+                <span
+                    class="text-transparent bg-clip-text bg-gradient-to-r from-theme-primary to-theme-secondary">DIGITAL
+                    BORDERS</span>
+            </h1>
+
+            <p class="text-xl md:text-2xl opacity-70 max-w-3xl mx-auto mb-12 font-light leading-relaxed">
+                The only AI-driven cloud defense platform immune to the <span class="text-theme-accent font-semibold">US
+                    CLOUD Act</span>.
+                NIST-approved post-quantum cryptography for sovereign nations and industries.
+            </p>
+
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <button
+                    class="px-8 py-4 bg-theme-primary text-black font-bold text-lg rounded-xl hover:scale-105 transition-transform shadow-[0_0_30px_rgba(var(--color-primary),0.4)]">
+                    Deploy Sent-Quant <i class="fa-solid fa-rocket ml-2"></i>
+                </button>
+                <button
+                    class="px-8 py-4 glass text-theme-primary font-bold text-lg rounded-xl hover:bg-theme-primary/10 transition-colors border border-theme-primary/30">
+                    View Interactive Map
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bento Grid Features -->
+    <section class="py-32 px-6">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-4xl md:text-5xl font-display font-bold mb-16 text-center">The <span
+                    class="text-theme-primary">Sovereign Stack</span></h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 md:grid-rows-2 gap-6 h-auto md:h-[800px]">
+
+                <!-- Main Feature: Sovereignty -->
+                <div
+                    class="md:col-span-2 md:row-span-2 glass rounded-3xl p-10 relative overflow-hidden group glass-hover transition-all">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-br from-theme-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
+                    </div>
+                    <div class="relative z-10 h-full flex flex-col">
+                        <div class="mb-auto">
+                            <div
+                                class="w-16 h-16 rounded-2xl bg-theme-primary/20 flex items-center justify-center text-theme-primary text-3xl mb-6">
+                                <i class="fa-solid fa-earth-americas"></i>
+                            </div>
+                            <h3 class="text-4xl font-display font-bold mb-4">True Jurisdictional Immunity</h3>
+                            <p class="text-lg opacity-70 leading-relaxed max-w-lg">
+                                Automated geofencing ensures your data never physically leaves your legal borders.
+                                Unlike AWS or Azure, CyberQuant is architected to legally and technically void
+                                extraterritorial subpoenas.
+                            </p>
+                        </div>
+                        <div
+                            class="bg-black/50 rounded-xl p-6 mt-8 border border-white/5 font-mono text-sm text-theme-primary">
+                            <div class="flex justify-between mb-2 opacity-50 text-xs">
+                                <span>STATUS</span><span>ENCRYPTED</span>
+                            </div>
+                            <div class="typing-effect">
+                                > DETECTING SUBPOENA REQUEST... BLOCKED<br>
+                                > ORIGIN: US_CLOUD_ACT_PROBE<br>
+                                > ACTION: NULL_ROUTE_PACKET<br>
+                                > SOVEREIGNTY_INTEGRITY: 100%
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Feature: Quantum -->
+                <div class="glass rounded-3xl p-8 relative overflow-hidden group glass-hover transition-all">
+                    <div
+                        class="absolute -right-10 -top-10 text-9xl text-theme-secondary opacity-5 rotate-12 group-hover:rotate-45 transition-transform duration-700">
+                        <i class="fa-solid fa-atom"></i>
+                    </div>
+                    <div
+                        class="w-12 h-12 rounded-xl bg-theme-secondary/20 flex items-center justify-center text-theme-secondary text-2xl mb-4">
+                        <i class="fa-solid fa-microchip"></i>
+                    </div>
+                    <h3 class="text-2xl font-display font-bold mb-2">Post-Quantum</h3>
+                    <p class="opacity-70 text-sm">NIST Kyber/Dilithium standardized encryption. Future-proof against
+                        Q-Day.</p>
+                </div>
+
+                <!-- Feature: AI Risk -->
+                <div class="glass rounded-3xl p-8 relative overflow-hidden group glass-hover transition-all">
+                    <div
+                        class="w-12 h-12 rounded-xl bg-theme-accent/20 flex items-center justify-center text-theme-accent text-2xl mb-4">
+                        <i class="fa-solid fa-brain"></i>
+                    </div>
+                    <h3 class="text-2xl font-display font-bold mb-2">Quantitative Risk</h3>
+                    <p class="opacity-70 text-sm">Real-time probabilistic risk scoring for every node in your network.
+                    </p>
+                    <div class="mt-4 h-1 bg-white/10 rounded-full overflow-hidden">
+                        <div class="h-full bg-theme-accent w-3/4 animate-pulse"></div>
+                    </div>
+                    <div class="flex justify-between text-xs mt-2 font-mono text-theme-accent">
+                        <span>SYS_HEALTH</span>
+                        <span>98.4%</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Comparison Section -->
+    <section class="py-20 px-6 relative">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-5xl font-display font-bold mb-6">Sovereignty <span
+                        class="bg-clip-text text-transparent bg-gradient-to-r from-theme-primary to-theme-secondary">vs.
+                        The World</span></h2>
+                <p class="opacity-70 max-w-2xl mx-auto">See how CyberQuant stacks up against the US Hyperscalers.</p>
+            </div>
+
+            <div class="glass rounded-3xl overflow-hidden border border-white/5">
+                <div
+                    class="grid grid-cols-4 bg-black/40 text-sm font-bold uppercase tracking-wider p-6 border-b border-white/5">
+                    <div class="col-span-1 opacity-50">Feature</div>
+                    <div class="col-span-1 text-theme-primary text-center">CyberQuant</div>
+                    <div class="col-span-1 text-center opacity-50">AWS / Azure</div>
+                    <div class="col-span-1 text-center opacity-50">Private Cloud</div>
+                </div>
+
+                <!-- Row 1 -->
+                <div
+                    class="grid grid-cols-4 p-6 border-b border-white/5 hover:bg-white/5 transition-colors items-center">
+                    <div class="col-span-1 font-bold">Data Sovereignty</div>
+                    <div class="col-span-1 text-center text-theme-primary flex justify-center items-center gap-2">
+                        <i class="fa-solid fa-check-circle"></i> Immunized
+                    </div>
+                    <div class="col-span-1 text-center opacity-50 text-red-500">
+                        <i class="fa-solid fa-xmark"></i> US CLOUD Act
+                    </div>
+                    <div class="col-span-1 text-center opacity-50 text-yellow-500">
+                        <i class="fa-solid fa-triangle-exclamation"></i> Limited
+                    </div>
+                </div>
+
+                <!-- Row 2 -->
+                <div
+                    class="grid grid-cols-4 p-6 border-b border-white/5 hover:bg-white/5 transition-colors items-center">
+                    <div class="col-span-1 font-bold">Encryption</div>
+                    <div class="col-span-1 text-center text-theme-secondary flex justify-center items-center gap-2">
+                        <i class="fa-solid fa-shield-cat"></i> NIST PQC
+                    </div>
+                    <div class="col-span-1 text-center opacity-50">Legacy RSA</div>
+                    <div class="col-span-1 text-center opacity-50">Standard AES</div>
+                </div>
+
+                <!-- Row 3 -->
+                <div
+                    class="grid grid-cols-4 p-6 border-b border-white/5 hover:bg-white/5 transition-colors items-center">
+                    <div class="col-span-1 font-bold">AI Risk Scoring</div>
+                    <div class="col-span-1 text-center text-theme-accent flex justify-center items-center gap-2">
+                        <i class="fa-solid fa-brain"></i> Real-Time
+                    </div>
+                    <div class="col-span-1 text-center opacity-50">Manual</div>
+                    <div class="col-span-1 text-center opacity-50">None</div>
+                </div>
+
+                <!-- Row 4 -->
+                <div class="grid grid-cols-4 p-6 hover:bg-white/5 transition-colors items-center">
+                    <div class="col-span-1 font-bold">Deployment</div>
+                    <div class="col-span-1 text-center text-white flex justify-center items-center gap-2">
+                        <i class="fa-solid fa-rocket"></i>
+                        < 1 Hour </div>
+                            <div class="col-span-1 text-center opacity-50">Weeks</div>
+                            <div class="col-span-1 text-center opacity-50">Months</div>
+                    </div>
+                </div>
+            </div>
+    </section>
+
+    </div>
+    </div>
+    </section>
+
+    <!-- Marketing / Competitor Strip -->
+    <section class="py-20 bg-theme-surface/50 border-y border-white/5">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <h2 class="text-sm font-bold uppercase tracking-[0.3em] opacity-50 mb-12">Superior to Legacy Providers</h2>
+            <div
+                class="flex flex-wrap justify-center gap-12 md:gap-24 opacity-60 grayscale hover:grayscale-0 transition-all duration-500">
+                <!-- Mock Logos (Text for now) -->
+                <div class="text-2xl font-black flex items-center gap-2"><i class="fa-brands fa-aws"></i> AWS</div>
+                <div class="text-2xl font-black flex items-center gap-2"><i class="fa-brands fa-microsoft"></i> AZURE
+                </div>
+                <div class="text-2xl font-black flex items-center gap-2"><i class="fa-solid fa-shield-cat"></i> PALANTIR
+                </div>
+                <div class="text-2xl font-black flex items-center gap-2"><i class="fa-solid fa-ghost"></i> DARKTRACE
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Latest Intelligence (Media & News) -->
+    <section class="py-24 px-6 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
+                <div>
+                    <div
+                        class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-theme-primary/30 bg-theme-primary/5 text-theme-primary text-xs font-bold uppercase tracking-widest mb-4">
+                        <span class="w-2 h-2 rounded-full bg-theme-primary animate-pulse"></span>
+                        Press & Intelligence
+                    </div>
+                    <h2 class="text-4xl md:text-5xl font-display font-bold">Frontend <span
+                            class="text-theme-primary">Dispatches</span></h2>
+                </div>
+                <a href="#"
+                    class="group flex items-center gap-2 text-theme-primary font-bold hover:text-white transition-colors">
+                    View All News <i
+                        class="fa-solid fa-arrow-right transform group-hover:translate-x-1 transition-transform"></i>
+                </a>
+            </div>
+
+            <!-- Press Release Banner -->
+            <div
+                class="glass glass-hover rounded-2xl p-8 md:p-12 mb-12 border border-white/10 relative overflow-hidden group">
+                <div
+                    class="absolute top-0 right-0 w-64 h-64 bg-theme-accent/10 rounded-full blur-[80px] group-hover:bg-theme-accent/20 transition-colors">
+                </div>
+                <div class="relative z-10 flex flex-col md:flex-row gap-8 items-center">
+                    <div class="flex-1">
+                        <span class="text-theme-accent font-mono text-xs mb-2 block">> LATEST_PRESS_RELEASE</span>
+                        <h3 class="text-3xl font-display font-bold mb-4">CyberQuant Launches "Sent-Quant" v2.0 with
+                            Automated Sovereignty Enforcement</h3>
+                        <p class="opacity-70 text-lg mb-6 max-w-2xl">
+                            The new release introduces the world's first AI-driven geofencing engine that null-routes
+                            traffic from non-sovereign jurisdictions in real-time.
+                        </p>
+                        <div class="flex items-center gap-4 text-sm opacity-50">
+                            <span><i class="fa-regular fa-calendar mr-2"></i> Jan 28, 2026</span>
+                            <span><i class="fa-solid fa-tag mr-2"></i> Product Launch</span>
+                        </div>
+                    </div>
+                    <div>
+                        <button
+                            class="px-6 py-3 bg-theme-accent text-black font-bold rounded-lg hover:brightness-110 transition-all shadow-[0_0_20px_rgba(var(--color-accent),0.3)] whitespace-nowrap">
+                            Read Release
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Articles Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Article 1 -->
+                <article
+                    class="glass glass-hover rounded-xl p-6 flex flex-col h-full group border border-white/5 transition-all hover:-translate-y-1">
+                    <div class="h-40 bg-theme-surface/50 rounded-lg mb-6 relative overflow-hidden">
+                        <div
+                            class="absolute inset-0 bg-theme-primary/10 flex items-center justify-center text-4xl text-theme-primary opacity-30 group-hover:scale-110 transition-transform duration-700">
+                            <i class="fa-solid fa-server"></i>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-2 text-xs font-mono text-theme-primary mb-3">
+                        <span class="px-2 py-0.5 rounded bg-theme-primary/10">ANALYSIS</span>
+                        <span class="opacity-50">2 MIN READ</span>
+                    </div>
+                    <h4 class="text-xl font-bold mb-3 group-hover:text-theme-primary transition-colors">The Death of the
+                        US CLOUD Act in EU Courts</h4>
+                    <p class="opacity-60 text-sm mb-6 flex-grow">How recent rulings have invalidated data transfer
+                        agreements and what it means for enterprise cloud security.</p>
+                    <a href="#"
+                        class="inline-flex items-center text-sm font-bold text-theme-primary group-hover:translate-x-1 transition-transform">
+                        Read Analysis <i class="fa-solid fa-arrow-right ml-2 text-xs"></i>
+                    </a>
+                </article>
+
+                <!-- Article 2 -->
+                <article
+                    class="glass glass-hover rounded-xl p-6 flex flex-col h-full group border border-white/5 transition-all hover:-translate-y-1">
+                    <div class="h-40 bg-theme-surface/50 rounded-lg mb-6 relative overflow-hidden">
+                        <div
+                            class="absolute inset-0 bg-theme-secondary/10 flex items-center justify-center text-4xl text-theme-secondary opacity-30 group-hover:scale-110 transition-transform duration-700">
+                            <i class="fa-solid fa-microchip"></i>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-2 text-xs font-mono text-theme-secondary mb-3">
+                        <span class="px-2 py-0.5 rounded bg-theme-secondary/10">TECHNOLOGY</span>
+                        <span class="opacity-50">5 MIN READ</span>
+                    </div>
+                    <h4 class="text-xl font-bold mb-3 group-hover:text-theme-secondary transition-colors">Preparing for
+                        Q-Day: NIST PQC Implementation Guide</h4>
+                    <p class="opacity-60 text-sm mb-6 flex-grow">A technical deep dive into migrating your RSA-2048 keys
+                        to Kyber/Dilithium before quantum supremacy.</p>
+                    <a href="#"
+                        class="inline-flex items-center text-sm font-bold text-theme-secondary group-hover:translate-x-1 transition-transform">
+                        Read Guide <i class="fa-solid fa-arrow-right ml-2 text-xs"></i>
+                    </a>
+                </article>
+
+                <!-- Article 3 -->
+                <article
+                    class="glass glass-hover rounded-xl p-6 flex flex-col h-full group border border-white/5 transition-all hover:-translate-y-1">
+                    <div class="h-40 bg-theme-surface/50 rounded-lg mb-6 relative overflow-hidden">
+                        <div
+                            class="absolute inset-0 bg-theme-accent/10 flex items-center justify-center text-4xl text-theme-accent opacity-30 group-hover:scale-110 transition-transform duration-700">
+                            <i class="fa-solid fa-handshake"></i>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-2 text-xs font-mono text-theme-accent mb-3">
+                        <span class="px-2 py-0.5 rounded bg-theme-accent/10">PARTNERSHIP</span>
+                        <span class="opacity-50">1 MIN READ</span>
+                    </div>
+                    <h4 class="text-xl font-bold mb-3 group-hover:text-theme-accent transition-colors">CyberQuant
+                        Partners with Defense Alliance</h4>
+                    <p class="opacity-60 text-sm mb-6 flex-grow">New strategic partnership to deploy sovereign cloud
+                        nodes across 12 nations in the APAC region.</p>
+                    <a href="#"
+                        class="inline-flex items-center text-sm font-bold text-theme-accent group-hover:translate-x-1 transition-transform">
+                        View Announcement <i class="fa-solid fa-arrow-right ml-2 text-xs"></i>
+                    </a>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-20 px-6 border-t border-white/5 bg-black">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+            <div class="text-center md:text-left">
+                <h3 class="text-2xl font-display font-bold mb-2">CYBER<span class="text-theme-primary">QUANT</span></h3>
+                <p class="opacity-50 text-sm">© 2026 CyberQuant Systems. Sovereign Defense.</p>
+            </div>
+            <div class="flex gap-6">
+                <a href="#"
+                    class="w-10 h-10 rounded-full glass flex items-center justify-center hover:bg-theme-primary hover:text-black transition-colors"><i
+                        class="fa-brands fa-twitter"></i></a>
+                <a href="#"
+                    class="w-10 h-10 rounded-full glass flex items-center justify-center hover:bg-theme-primary hover:text-black transition-colors"><i
+                        class="fa-brands fa-linkedin"></i></a>
+                <a href="#"
+                    class="w-10 h-10 rounded-full glass flex items-center justify-center hover:bg-theme-primary hover:text-black transition-colors"><i
+                        class="fa-brands fa-github"></i></a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>

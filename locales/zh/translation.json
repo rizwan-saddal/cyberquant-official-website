@@ -1,0 +1,235 @@
+{
+    "nav": {
+        "solutions": "解决方案",
+        "useCases": "应用案例",
+        "platform": "平台 (MVP)",
+        "contact": "联系我们"
+    },
+    "hero": {
+        "mvp_banner": "MVP 平台上线：独家其通过",
+        "title_prefix": "捍卫您的",
+        "title_highlight": "数字主权",
+        "subtitle": "实现对数字领土的绝对控制。第一个保护主权网络的人工智能驱动平台，采用 NIST 批准的后量子密码学。",
+        "cta_request": "申请访问",
+        "cta_explore": "探索案例",
+        "stats": {
+            "foreign_access": "境外访问",
+            "pqc_standard": "NIST 标准",
+            "compliance": "GDPR / Schrems II",
+            "ai_risk": "风险量化"
+        }
+    },
+    "solutions": {
+        "title": "主权云的悖论",
+        "description": "数据驻留不等于主权。如果您的提供商受外国司法管辖，您的数据就没有国界。我们确保真正的数字自主。",
+        "card1": {
+            "title": "司法豁免权",
+            "text": "自动地理围栏确保关键数据从未离开您的法律边界。从设计上提供对域外数据请求（传票）的豁免权。"
+        },
+        "card2": {
+            "title": "量子就绪",
+            "text": "RSA-2048 将被攻破。Sent-Quant 实施 NIST批准的后量子密码学 (Kyber/Dilithium) 以击败“现在存储，以后解密”的威胁。"
+        },
+        "card3": {
+            "title": "量化防御",
+            "text": "超越“红/绿”状态。我们的 AI 为您混合环境中的每个节点计算特定的风险概率百分比。"
+        }
+    },
+    "use_cases": {
+        "title": "战略应用案例",
+        "case1": {
+            "title": "国防",
+            "desc": "保护物理隔离的通信和情报共享。",
+            "feat1": "军用级加密",
+            "feat2": "硬件无关部署"
+        },
+        "case2": {
+            "title": "中央银行与数字货币 (CBDC)",
+            "desc": "保护数字货币账本免受量子解密攻击。",
+            "feat1": "量子安全区块链",
+            "feat2": "不可篡改的审计日志"
+        },
+        "case3": {
+            "title": "基因组主权",
+            "desc": "确保国家基因组数据库保留在境内。",
+            "feat1": "符合 HIPAA 和 GDPR",
+            "feat2": "长期数据完整性"
+        }
+    },
+    "platform": {
+        "badge": "MVP Beta 上线",
+        "title": "<1>Sent-Quant</1> 平台",
+        "desc": "体验可视化即数字主权的仪表板。Sent-Quant 提供基础设施中数据流、合规状态和量子威胁级别的统一视图。",
+        "feat1": {
+            "title": "实时数据映射：",
+            "text": "精确可视化数据物理驻留位置。"
+        },
+        "feat2": {
+            "title": "合规自动化：",
+            "text": "一键生成 GDPR、HIPAA 和本地主权法律审计报告。"
+        },
+        "feat3": {
+            "title": "威胁热图：",
+            "text": "AI 生成的每个网络节点的量化风险评分。"
+        },
+        "cta_demo": "预约现场演示"
+    },
+    "comparison": {
+        "title": "主权优势",
+        "desc": "公共超大规模服务商充当“数字地主”，保留对您基础设施的最终控制权。Sent-Quant 授权您成为数字领土的<1>主权拥有者</1>，并以军用级量子防御作为后盾。",
+        "headers": {
+            "feature": "功能",
+            "us": "Sent-Quant (主权)",
+            "hyperscalers": "美国超大规模服务商",
+            "legacy": "传统安全"
+        },
+        "row1": {
+            "feature": "法律管辖权",
+            "us": "完全豁免 (地理围栏)",
+            "others": "受美国云法案管辖",
+            "legacy": "合规性碎片化"
+        },
+        "row2": {
+            "feature": "加密标准",
+            "us": "NIST PQC (Kyber/Dilithium)",
+            "others": "标准 RSA-2048 (易受攻击)",
+            "legacy": "标准 AES"
+        },
+        "row3": {
+            "feature": "数据访问",
+            "us": "仅所有者 (无后门)",
+            "others": "法院可传唤",
+            "legacy": "依赖供应商"
+        },
+        "row4": {
+            "feature": "威胁检测",
+            "us": "AI 实时量化",
+            "others": "被动日志记录",
+            "legacy": "人工 SIEM 审查"
+        }
+    },
+    "contact": {
+        "title": "准备部署？",
+        "subtitle": "加入受邀制的主权云防御试点计划。凭证将在人工审核后发放。",
+        "placeholder_name": "全名",
+        "placeholder_email": "输入政府或企业邮箱",
+        "submit": "申请凭证"
+    },
+    "footer": {
+        "security": "安全协议",
+        "compliance": "主权合规",
+        "vuln": "漏洞披露",
+        "rights": "© 2026 CYBERQUANT SYSTEMS. 版权所有。"
+    },
+    "security": {
+        "title": "安全与合规",
+        "subtitle": "透明度和严谨性是 CyberQuant 主权架构的基石。",
+        "protocols_title": "安全协议"
+    },
+    "market_report": {
+        "title": "2026年市场格局报告",
+        "subtitle": "Sent-Quant 与全球网络安全的战略重构",
+        "intro": "2026年初的全球网络安全格局被定义为“数字超碎片化”状态，智能体 AI 与后量子威胁的碰撞需要全新的主权架构。",
+        "deep_dive_desc": "我们的深度报告包括针对 Microsoft Sentinel、Splunk 和 CrowdStrike 的详细竞争基准测试，以及使用 Gordon-Loeb 模型的财务框架分析。",
+        "cta_header": "获取完整的战略情报",
+        "section1_title": "数字超碎片化",
+        "section1_desc": "全球网络的碎片化诞生了“司法堡垒”——如瑞士和新加坡等提供境外数据访问豁免权的地区。",
+        "section2_title": "原生 MCP 监控",
+        "section2_desc": "Sent-Quant 是首个为模型上下文协议 (MCP) 提供原生监控的平台，保护 AI 智能体工具调用免受提示词注入和权限提升的威胁。",
+        "section3_title": "后量子就绪",
+        "section3_desc": "随着量子解密时间表的加速，Sent-Quant 实施了 FIPS 203, 204 和 205 (ML-KEM, ML-DSA) 以防止“现在收割，以后解密”策略。",
+        "section4_title": "固定 TCO 模型",
+        "section4_desc": "颠覆了行业基于消耗的定价，Sent-Quant 提供固定的总拥有成本 (TCO) 模型，与传统超大规模提供商相比，可节省高达 90% 的成本。",
+        "impact_title": "经济影响分析",
+        "impact_subtitle": "运营成本对比（月度美元）",
+        "impact_desc": "企业安全正在从沉没成本转变为运营可预测性的驱动力。CyberQuant 的固定 TCO 模型消除了“云税”和扩展惩罚。",
+        "radar_title": "安全成熟度雷达",
+        "radar_subtitle": "架构对齐分析",
+        "radar_desc": "Sent-Quant 在主权维度上优于传统架构：后量子弹性、原生 AI 监控和司法隔离。",
+        "beehive_title": "主权蜂巢",
+        "beehive_subtitle": "分布式司法架构",
+        "beehive_desc": "由隔离的司法堡垒（新加坡、瑞士、冰岛）组成的网格，确保完全免疫境外数据查封。",
+        "cta": "查看完整报告 (交互式预览)",
+        "report_modal": {
+            "full": {
+                "section1_title": "1. 战略地缘政治重构：“主权韧性”",
+                "section1_p": "全球安全范式已转入以<strong>主权韧性</strong>为核心的新纪元。企业与国家行为体正从根本上重构其基础设施，以优先确保绝对的司法豁免权。能够成功整合身份认证、主权云及后量子终端（平台化）的机构，其估值倍数目前已超过 12 倍。",
+                "section1_quote": "战略安全正从一项沉没的运营成本转变为财务可预测性的核心驱动力，可降低高达 92% 的总拥有成本 (TCO)。",
+                "section2_title": "2. 财政效率对比与 TCO 审计",
+                "section2_p": "2026 年，国家与企业的安全预算日益受到“可变数据摄入惩罚”的影响。Sent-Quant 通过固定的月度财政模型打破了这种波动性，使运营安全成本与数据量的激增脱钩。",
+                "section2_table_data_volume": "每日数据摄入量",
+                "section2_table_sq": "Sent-Quant (固定)",
+                "section2_table_ms": "MS Sentinel (预估)",
+                "section2_table_splunk": "Splunk Cloud (预估)",
+                "section2_risks_title": "系统性 TCO 风险（传统基础设施）",
+                "section2_risks_item1": "无上限的 Logic App 执行费用（超大规模云服务商）",
+                "section2_risks_item2": "搜索操作期间的 SVC 单元耗尽（传统 SIEM）",
+                "section2_risks_item3": "15-20% 的司法出口“隐藏税”",
+                "section2_efficiency_title": "Sent-Quant 主权财政效率",
+                "section2_efficiency_item1": "零摄入超额惩罚",
+                "section2_efficiency_item2": "原生 MCP 监控（零第三方授权费用）",
+                "section2_efficiency_item3": "主权边缘处理（零出口费用）",
+                "section3_title": "3. 战略基准与经济框架",
+                "section3_p": "本分析建立在以下 2026 年全球市场基准及正式经济框架之上：",
+                "section3_ef_title": "经济框架",
+                "section3_ef_p": "<strong>Gordon-Loeb 模型（37% 原则）：</strong> 一种根据脆弱性和潜在影响指标优化安全投资以保护信息集的数学框架。",
+                "section3_mb_title": "全球市场基准",
+                "section3_mb_p": "<strong>10.5 万亿美元威胁：</strong> 到 2026 年全球网络犯罪的预计年度成本，这要求转向主权架构防御（来源：2026 市场审计）。",
+                "section3_sg_title": "行业扩张",
+                "section3_sg_p": "<strong>主权云激增：</strong> 全球范围内对“司法优先”数据驻留要求的 1953.5 亿美元增长。",
+                "section4_title": "4. 量子时代技术优越性审计",
+                "section4_p": "Sent-Quant 架构被定义为“PQC 原生”，通过主动的密码学灵活性减轻系统性的“现在存储，以后解密”(SNDL) 风险。",
+                "section4_qri": "量子韧性指数",
+                "section4_sync": "全球黑名单同步",
+                "section4_leakage": "数据出口泄露",
+                "section4_item1": "<strong>自主响应协同：</strong> 利用 Gemini 原生神经关联技术识别绕过传统基于规则逻辑的非确定性威胁。",
+                "section4_item2": "<strong>对等情报：</strong> 主权集群仅交换加密的元数据签名，保持 100% 的区域数据驻留。",
+                "section5_title": "5. 特定行业战略价值深度分析",
+                "section5_defense_title": "国防与国家情报",
+                "section5_defense_p": "通过“物理隔离同步”和零信任枢纽支持多域作战，构建从传感器到射手的安全数据管道。",
+                "section5_banking_title": "中央银行与金融主权",
+                "section5_banking_p": "降低跨境结算的 SNDL 风险。实施专有的“SWIFT PQC”和不可篡改的审计日志链，确保高价值交易的完整性。",
+                "section6_title": "6. 数字超碎片化结构指标",
+                "section6_spending": "预计全球 IT 支出 (2026P)",
+                "section6_savings": "最大预估运营 TCO 降幅",
+                "footer_rights": "© 2026 CYBERQUANT SYSTEMS. 版权所有。",
+                "footer_confidential": "绝密",
+                "footer_investors": "仅供合格投资者",
+                "header_subtitle": "机密战略分析",
+                "header_title": "网络安全市场格局 <1>2026</1>"
+            },
+            "nodes": {
+                "title": "司法节点情报：{{type}}",
+                "desc": "该节点代表一个高完整性的、隔离的司法堡垒。它在架构上与域外法律管辖（如美国云法案豁免权）脱钩。",
+                "sectors_label": "战略目标行业",
+                "residency_label": "驻留护盾",
+                "standard_label": "运营标准",
+                "residence_item": "本地数据驻留：主要在 {{type}} 的 4 级主权数据中心托管。",
+                "connectivity_item": "连接性：提供私有卫星回传，满足极端的物理隔离要求。",
+                "mesh_item": "对等网络：节点间情报共享，无需数据出口。",
+                "data": {
+                    "SINGAPORE": {
+                        "sectors": "金融、战略科技、海运物流",
+                        "laws": "PDPA、2024 年网络安全法案",
+                        "metric": "4 级金牌标准托管"
+                    },
+                    "SWITZERLAND": {
+                        "sectors": "银行、制药、私人财富",
+                        "laws": "瑞士 FADP (2024 修订版)",
+                        "metric": "军用级阿尔卑斯地堡准入"
+                    },
+                    "ICELAND": {
+                        "sectors": "能源、高性能计算、数据归档",
+                        "laws": "欧盟 GDPR + 本地主权补充条款",
+                        "metric": "100% 地热碳中和运营"
+                    },
+                    "default": {
+                        "sectors": "政府、关键基础设施能量",
+                        "laws": "本地主权协议",
+                        "metric": "标准主权隔离"
+                    }
+                }
+            }
+        }
+    }
+}
