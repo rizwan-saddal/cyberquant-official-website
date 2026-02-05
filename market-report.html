@@ -300,12 +300,14 @@
         }
 
         .dark .report-paper {
-            background: #f8fafc;
-            /* Keep paper light even in dark mode for realism, or slightly off-white */
+            background: #ffffff;
+            /* FORCE WHITE PAPER IN DARK MODE */
+            color: #1e293b;
+            /* FORCE DARK TEXT */
         }
 
         .report-header {
-            border-bottom: 2px solid #000;
+            border-bottom: 2px solid #0f172a;
             margin-bottom: 3rem;
             padding-bottom: 1rem;
         }
@@ -319,7 +321,8 @@
             font-size: 1.5rem;
             font-weight: 700;
             margin-bottom: 1rem;
-            color: var(--color-blue);
+            color: #0f172a;
+            /* Slate 900 */
         }
 
         .pricing-table {
@@ -369,7 +372,7 @@
 
     <!-- Map Watermark -->
     <img src="world_map_watermark.svg" alt="Sovereignty Map Watermark"
-        class="fixed inset-0 w-full h-full object-cover z-0 pointer-events-none opacity-[0.07] mix-blend-multiply dark:mix-blend-overlay dark:opacity-[0.7] dark:invert transition-all duration-300">
+        class="fixed inset-0 w-full h-full object-cover z-0 pointer-events-none opacity-[0.07] mix-blend-multiply dark:mix-blend-overlay dark:invert transition-all duration-300">
 
     <!-- Navigation -->
     <nav id="main-nav"
@@ -461,6 +464,14 @@
                 The global cybersecurity landscape in early 2026 is defined by a state of 'digital hyper-fragmentation,'
                 where the collision of agentic AI and post-quantum threats demands a new sovereign architecture.
             </p>
+
+            <button onclick="openGeminiChat()"
+                class="inline-flex items-center gap-2 px-6 py-3 mt-8 bg-gradient-to-r from-blue-500 to-purple-600 text-white font-medium rounded-full hover:shadow-lg hover:scale-105 transition-all group animate-in fade-in slide-in-from-bottom-4 duration-1000">
+                <i class="ph-bold ph-sparkle text-yellow-300"></i>
+                <span class="font-display tracking-wide">Start Marketing Analysis (AI)</span>
+                <i
+                    class="ph-bold ph-chat-centered-text text-xs opacity-70 group-hover:scale-110 transition-transform"></i>
+            </button>
         </header>
 
         <div class="grid md:grid-cols-2 gap-8 mb-16">
@@ -662,8 +673,7 @@
                     <div class="hidden sm:block">
                         <p class="text-[10px] font-mono text-gray-400">REF: CQ-2026-X-ALPHA</p>
                     </div>
-                    <img src="logo.png" alt="CyberQuant"
-                        class="w-12 h-12 md:w-20 md:h-20 object-contain grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all">
+                    <img src="logo.png" alt="CyberQuant" class="w-16 h-16 ml-auto mb-2 opacity-100 mix-blend-multiply">
                 </div>
             </div>
 
@@ -682,6 +692,67 @@
                 </div>
             </footer>
         </article>
+    </div>
+
+    <!-- Gemini Chat Modal -->
+    <div id="gemini-modal" class="fixed inset-0 z-[100] hidden">
+        <!-- Backdrop -->
+        <div class="absolute inset-0 bg-black/80 backdrop-blur-sm transition-opacity" onclick="closeGeminiChat()"></div>
+
+        <!-- Chat Interface -->
+        <div class="absolute inset-y-0 right-0 w-full max-w-lg bg-[#131314] shadow-2xl transform transition-transform translate-x-full duration-300 flex flex-col"
+            id="gemini-panel">
+
+            <!-- Header -->
+            <div class="flex items-center justify-between p-4 border-b border-white/10 bg-[#1E1F20]">
+                <div class="flex items-center gap-3">
+                    <div
+                        class="w-8 h-8 rounded-full bg-gradient-to-tr from-blue-500 to-purple-500 flex items-center justify-center">
+                        <i class="ph-bold ph-sparkle text-white"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-display font-bold text-white text-sm">Gemini Market Analyst</h3>
+                        <p class="text-[10px] text-gray-400">Powered by Gemini 1.5 Pro</p>
+                    </div>
+                </div>
+                <button onclick="closeGeminiChat()"
+                    class="p-2 text-gray-400 hover:text-white rounded-full hover:bg-white/10 transition-colors">
+                    <i class="ph-bold ph-x text-lg"></i>
+                </button>
+            </div>
+
+            <!-- Messages Area -->
+            <div id="gemini-messages" class="flex-1 overflow-y-auto p-4 space-y-6">
+                <!-- Welcome Message -->
+                <div class="flex items-start gap-3">
+                    <div class="w-6 h-6 rounded-full overflow-hidden shrink-0 mt-1">
+                        <img src="https://www.gstatic.com/lamda/images/gemini_sparkle_v002_d4735304ff6292a690345.svg"
+                            class="w-full h-full object-cover">
+                    </div>
+                    <div
+                        class="text-gray-200 text-sm leading-relaxed p-3 rounded-2xl rounded-tl-none bg-[#1E1F20] border border-white/5">
+                        <p>Hello! I'm your Market Report Analyst. I have full context of the 2026 Cybersecurity
+                            Landscape Report.</p>
+                        <p class="mt-2 text-gray-400">Ask me about TCO savings, Sovereign Bunkers, or Post-Quantum
+                            threats.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Input Area -->
+            <div class="p-4 bg-[#1E1F20] border-t border-white/10">
+                <div class="relative">
+                    <input type="text" id="gemini-input" placeholder="Ask about the report..."
+                        class="w-full bg-[#131314] text-white text-sm rounded-full pl-5 pr-12 py-3 border border-white/10 focus:border-blue-500 focus:outline-none transition-colors"
+                        autocomplete="off">
+                    <button onclick="sendGeminiMessage()"
+                        class="absolute right-2 top-1/2 -translate-y-1/2 p-2 text-blue-400 hover:text-white hover:bg-blue-500 rounded-full transition-all">
+                        <i class="ph-bold ph-paper-plane-right"></i>
+                    </button>
+                </div>
+                <p class="text-[10px] text-gray-600 text-center mt-2">AI can make mistakes. Verify important info.</p>
+            </div>
+        </div>
     </div>
 
     <script>
@@ -740,338 +811,527 @@
             }
         }
 
-        document.addEventListener( 'DOMContentLoaded', () =>
-        {
-            const initLang = localStorage.getItem( 'user-language' ) || 'en';
+        // --- GEMINI CHAT LOGIC (SECURE BACKEND) ---
+        let chatHistory = [];
 
-            i18next
-                .use( i18nextHttpBackend )
-                .init( {
-                    lng: initLang,
-                    fallbackLng: 'en',
-                    backend: {
-                        loadPath: '/locales/{{lng}}/translation.json', // Use absolute path for robustness
-                    }
-                }, ( err ) =>
-                {
-                    if ( err )
-                    {
-                        // If path fails, try relative as fallback
-                        i18next.init( {
-                            lng: initLang,
-                            fallbackLng: 'en',
-                            backend: { loadPath: 'locales/{{lng}}/translation.json' }
-                        }, () =>
-                        {
-                            updateContent();
-                            initCharts();
-                        } );
-                        return;
-                    }
-                    updateContent();
-                    initCharts();
+        function openGeminiChat ()
+        {
+            const modal = document.getElementById( 'gemini-modal' );
+            const panel = document.getElementById( 'gemini-panel' );
+            modal.classList.remove( 'hidden' );
+
+            // Initialization Logic (Optional: Clear history or Keep it)
+            if ( chatHistory.length === 0 )
+            {
+                // Initialize context
+                const reportContext = document.body.innerText.substring( 0, 20000 );
+                chatHistory.push( {
+                    role: "user",
+                    parts: [ {
+                        text: `You are an expert Cybersecurity Analyst for "CyberQuant". 
+                            You are analyzing the "2026 Market Landscape Report". 
+                            Answer questions strictly based on the following report content. 
+                            Keep answers concise (under 100 words) and professional.
+                            
+                            REPORT CONTENT:
+                            ${ reportContext }`
+                    } ]
                 } );
+                chatHistory.push( {
+                    role: "model",
+                    parts: [ { text: "Understood. I am ready to analyze the CyberQuant 2026 Market Report provided." } ]
+                } );
+            }
+
+            // Slide in animation
+            setTimeout( () =>
+            {
+                panel.classList.remove( 'translate-x-full' );
+            }, 10 );
+        }
+
+        function closeGeminiChat ()
+        {
+            const modal = document.getElementById( 'gemini-modal' );
+            const panel = document.getElementById( 'gemini-panel' );
+            panel.classList.add( 'translate-x-full' );
+            setTimeout( () =>
+            {
+                modal.classList.add( 'hidden' );
+            }, 300 );
+        }
+
+        const geminiInput = document.getElementById( 'gemini-input' );
+        geminiInput.addEventListener( 'keypress', ( e ) =>
+        {
+            if ( e.key === 'Enter' ) sendGeminiMessage();
         } );
 
-        // --- CHARTS INITIALIZATION ---
-        function initCharts ()
+        async function sendGeminiMessage ()
         {
-            const isDark = document.documentElement.classList.contains( 'dark' );
-            const textColor = isDark ? '#94a3b8' : '#475569';
-            const gridColor = isDark ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.05)';
-            const accentColor = '#318e78'; // Cyber Blue/Accent
+            const text = geminiInput.value.trim();
+            if ( !text ) return;
 
-            // 1. Cost Comparison Chart
-            const costCtx = document.getElementById( 'costChart' );
-            if ( costCtx )
-            {
-                new Chart( costCtx, {
-                    type: 'bar',
-                    data: {
-                        labels: [ 'Mid-Market (1PB)', 'Enterprise (10PB)', 'Global (100PB)' ],
-                        datasets: [
-                            {
-                                label: 'Legacy Cloud SIEM',
-                                data: [ 45000, 380000, 2900000 ],
-                                backgroundColor: 'rgba(255, 99, 132, 0.5)',
-                                borderColor: 'rgb(255, 99, 132)',
-                                borderWidth: 1
-                            },
-                            {
-                                label: 'Sent-Quant (Fixed TCO)',
-                                data: [ 12000, 85000, 450000 ],
-                                backgroundColor: 'rgba(49, 142, 120, 0.6)',
-                                borderColor: '#318e78',
-                                borderWidth: 1
-                            }
-                        ]
-                    },
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        scales: {
-                            y: {
-                                beginAtZero: true,
-                                grid: { color: gridColor },
-                                ticks: { color: textColor, callback: ( v ) => '$' + v.toLocaleString() }
-                            },
-                            x: {
-                                grid: { display: false },
-                                ticks: { color: textColor }
-                            }
-                        },
-                        plugins: {
-                            legend: { labels: { color: textColor, font: { family: 'Outfit', weight: 'bold' } } }
-                        }
-                    }
-                } );
-            }
+            // User UI
+            addUserMessage( text );
+            geminiInput.value = '';
 
-            // 2. Maturity Radar
-            const radarCtx = document.getElementById( 'radarChart' );
-            if ( radarCtx )
+            // Bot UI (Loading)
+            const loadingId = addBotLoading();
+
+            try
             {
-                new Chart( radarCtx, {
-                    type: 'radar',
-                    data: {
-                        labels: [ 'PQC Readiness', 'Jurisdictional Isolation', 'AI Surveillance', 'Zero Trust', 'Edge Sovereignty' ],
-                        datasets: [
-                            {
-                                label: 'Legacy SIEM',
-                                data: [ 20, 10, 35, 60, 25 ],
-                                fill: true,
-                                backgroundColor: 'rgba(148, 163, 184, 0.2)',
-                                borderColor: '#94a3b8',
-                                pointBackgroundColor: '#94a3b8'
-                            },
-                            {
-                                label: 'Sent-Quant',
-                                data: [ 95, 100, 90, 85, 98 ],
-                                fill: true,
-                                backgroundColor: 'rgba(49, 142, 120, 0.2)',
-                                borderColor: '#318e78',
-                                pointBackgroundColor: '#318e78'
-                            }
-                        ]
-                    },
-                    options: {
-                        responsive: true,
-                        plugins: {
-                            legend: { labels: { color: textColor, font: { family: 'Outfit' } } }
-                        },
-                        scales: {
-                            r: {
-                                angleLines: { color: gridColor },
-                                grid: { color: gridColor },
-                                pointLabels: { color: textColor, font: { family: 'Outfit', size: 10 } },
-                                ticks: { display: false, stepSize: 20 }
-                            }
-                        }
-                    }
+                // Secure API Call to Backend
+                const response = await fetch( '/api/analyze', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify( {
+                        prompt: text,
+                        history: chatHistory
+                    } )
                 } );
+
+                if ( !response.ok ) throw new Error( 'Network response was not ok' );
+
+                const data = await response.json();
+
+                // Update History
+                chatHistory.push( { role: "user", parts: [ { text: text } ] } );
+                chatHistory.push( { role: "model", parts: [ { text: data.text } ] } );
+
+                // Replace loading with response
+                removeMessage( loadingId );
+                addBotMessage( data.text );
+            } catch ( e )
+            {
+                console.error( e );
+                removeMessage( loadingId );
+                addBotMessage( "Error: Could not reach the Analyst. Please check your connection." );
             }
         }
 
-        // --- REPORT MODAL LOGIC ---
-        function openReport ( type )
+        function addUserMessage ( text )
         {
-            const modal = document.getElementById( 'report-modal' );
-            const content = document.getElementById( 'report-dynamic-content' );
-            modal.style.display = 'block';
-            document.body.style.overflow = 'hidden';
-
-            if ( type === 'full' )
-            {
-                content.innerHTML = `
-                    <div class="report-section">
-                        <h3>${ i18next.t( 'market_report.report_modal.full.section1_title' ) }</h3>
-                        <p>${ i18next.t( 'market_report.report_modal.full.section1_p' ) }</p>
-                        <div class="bg-blue-50 p-4 border-l-4 border-cyber-blue my-6 italic text-sm">
-                            "${ i18next.t( 'market_report.report_modal.full.section1_quote' ) }"
-                        </div>
-                    </div>
-
-                    <div class="report-section">
-                        <h3>${ i18next.t( 'market_report.report_modal.full.section2_title' ) }</h3>
-                        <p>${ i18next.t( 'market_report.report_modal.full.section2_p' ) }</p>
-                        
-                        <div class="overflow-x-auto">
-                            <table class="pricing-table">
-                                <thead>
-                                    <tr>
-                                        <th>${ i18next.t( 'market_report.report_modal.full.section2_table_data_volume' ) }</th>
-                                        <th>${ i18next.t( 'market_report.report_modal.full.section2_table_sq' ) }</th>
-                                        <th>${ i18next.t( 'market_report.report_modal.full.section2_table_ms' ) }</th>
-                                        <th>${ i18next.t( 'market_report.report_modal.full.section2_table_splunk' ) }</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>10 GB / Day</td>
-                                        <td><strong>$100</strong></td>
-                                        <td>$1,290</td>
-                                        <td>~$1,500</td>
-                                    </tr>
-                                    <tr>
-                                        <td>50 GB / Day</td>
-                                        <td><strong>$450</strong></td>
-                                        <td>$6,450</td>
-                                        <td>~$7,000</td>
-                                    </tr>
-                                    <tr>
-                                        <td>100 GB / Day</td>
-                                        <td><strong>$800</strong></td>
-                                        <td>$8,880</td>
-                                        <td>~$11,000</td>
-                                    </tr>
-                                    <tr>
-                                        <td>500 GB / Day</td>
-                                        <td><strong>$3,500</strong></td>
-                                        <td>$37,950</td>
-                                        <td>~$48,000</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-
-                        <div class="grid md:grid-cols-2 gap-6 mt-6">
-                            <div class="p-4 bg-red-50 border-l-4 border-red-200">
-                                <h4 class="text-xs font-bold uppercase text-red-800 mb-2">${ i18next.t( 'market_report.report_modal.full.section2_risks_title' ) }</h4>
-                                <ul class="text-[10px] space-y-1 text-red-900/70">
-                                    <li>• ${ i18next.t( 'market_report.report_modal.full.section2_risks_item1' ) }</li>
-                                    <li>• ${ i18next.t( 'market_report.report_modal.full.section2_risks_item2' ) }</li>
-                                    <li>• ${ i18next.t( 'market_report.report_modal.full.section2_risks_item3' ) }</li>
-                                </ul>
-                            </div>
-                            <div class="p-4 bg-green-50 border-l-4 border-green-200">
-                                <h4 class="text-xs font-bold uppercase text-green-800 mb-2">${ i18next.t( 'market_report.report_modal.full.section2_efficiency_title' ) }</h4>
-                                <ul class="text-[10px] space-y-1 text-green-900/70">
-                                    <li>• ${ i18next.t( 'market_report.report_modal.full.section2_efficiency_item1' ) }</li>
-                                    <li>• ${ i18next.t( 'market_report.report_modal.full.section2_efficiency_item2' ) }</li>
-                                    <li>• ${ i18next.t( 'market_report.report_modal.full.section2_efficiency_item3' ) }</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="report-section">
-                        <h3>${ i18next.t( 'market_report.report_modal.full.section3_title' ) }</h3>
-                        <p>${ i18next.t( 'market_report.report_modal.full.section3_p' ) }</p>
-                        <ul class="space-y-4 mt-4">
-                            <li class="border-b pb-2">
-                                <span class="block text-xs font-bold text-gray-500 uppercase">${ i18next.t( 'market_report.report_modal.full.section3_ef_title' ) }</span>
-                                <p class="text-sm">${ i18next.t( 'market_report.report_modal.full.section3_ef_p' ) }</p>
-                            </li>
-                            <li class="border-b pb-2">
-                                <span class="block text-xs font-bold text-gray-500 uppercase">${ i18next.t( 'market_report.report_modal.full.section3_mb_title' ) }</span>
-                                <p class="text-sm">${ i18next.t( 'market_report.report_modal.full.section3_mb_p' ) }</p>
-                            </li>
-                            <li class="border-b pb-2">
-                                <span class="block text-xs font-bold text-gray-500 uppercase">${ i18next.t( 'market_report.report_modal.full.section3_sg_title' ) }</span>
-                                <p class="text-sm">${ i18next.t( 'market_report.report_modal.full.section3_sg_p' ) }</p>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <div class="report-section">
-                        <h3>${ i18next.t( 'market_report.report_modal.full.section4_title' ) }</h3>
-                        <p>${ i18next.t( 'market_report.report_modal.full.section4_p' ) }</p>
-                        <div class="grid md:grid-cols-3 gap-4 my-6">
-                            <div class="p-4 bg-slate-50 border border-slate-200 rounded text-center">
-                                <p class="text-2xl font-black text-cyber-blue">QRI 9.8</p>
-                                <p class="text-[10px] uppercase font-bold text-gray-400">${ i18next.t( 'market_report.report_modal.full.section4_qri' ) }</p>
-                            </div>
-                            <div class="p-4 bg-slate-50 border border-slate-200 rounded text-center">
-                                <p class="text-2xl font-black text-cyber-blue">&lt; 200ms</p>
-                                <p class="text-[10px] uppercase font-bold text-gray-400">${ i18next.t( 'market_report.report_modal.full.section4_sync' ) }</p>
-                            </div>
-                            <div class="p-4 bg-slate-50 border border-slate-200 rounded text-center">
-                                <p class="text-2xl font-black text-cyber-blue">0.0%</p>
-                                <p class="text-[10px] uppercase font-bold text-gray-400">${ i18next.t( 'market_report.report_modal.full.section4_leakage' ) }</p>
-                            </div>
-                        </div>
-                        <ul class="list-disc ps-5 space-y-2 text-sm text-gray-700">
-                            <li>${ i18next.t( 'market_report.report_modal.full.section4_item1' ) }</li>
-                            <li>${ i18next.t( 'market_report.report_modal.full.section4_item2' ) }</li>
-                        </ul>
-                    </div>
-
-                    <div class="report-section">
-                        <h3>${ i18next.t( 'market_report.report_modal.full.section5_title' ) }</h3>
-                        <div class="grid md:grid-cols-2 gap-4">
-                            <div class="p-4 border border-gray-100 rounded-lg">
-                                <h4 class="text-xs font-bold uppercase text-cyber-blue mb-1">${ i18next.t( 'market_report.report_modal.full.section5_defense_title' ) }</h4>
-                                <p class="text-xs text-gray-600">${ i18next.t( 'market_report.report_modal.full.section5_defense_p' ) }</p>
-                            </div>
-                            <div class="p-4 border border-gray-100 rounded-lg">
-                                <h4 class="text-xs font-bold uppercase text-cyber-blue mb-1">${ i18next.t( 'market_report.report_modal.full.section5_banking_title' ) }</h4>
-                                <p class="text-xs text-gray-600">${ i18next.t( 'market_report.report_modal.full.section5_banking_p' ) }</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="report-section">
-                        <h3>${ i18next.t( 'market_report.report_modal.full.section6_title' ) }</h3>
-                        <div class="grid grid-cols-2 gap-8 my-8">
-                            <div class="border-t pt-4">
-                                <p class="text-3xl font-bold font-display text-cyber-blue">$6.08T</p>
-                                <p class="text-[10px] uppercase font-bold text-gray-500">${ i18next.t( 'market_report.report_modal.full.section6_spending' ) }</p>
-                            </div>
-                            <div class="border-t pt-4">
-                                <p class="text-3xl font-bold font-display text-cyber-blue">92%</p>
-                                <p class="text-[10px] uppercase font-bold text-gray-400">${ i18next.t( 'market_report.report_modal.full.section6_savings' ) }</p>
-                            </div>
-                        </div>
-                    </div>
-                `;
-            } else 
-            {
-                // Specialized Jurisdiction Reports
-                const sectors = i18next.t( `market_report.report_modal.nodes.data.${ type }.sectors`, { defaultValue: i18next.t( 'market_report.report_modal.nodes.data.default.sectors' ) } );
-                const laws = i18next.t( `market_report.report_modal.nodes.data.${ type }.laws`, { defaultValue: i18next.t( 'market_report.report_modal.nodes.data.default.laws' ) } );
-                const metric = i18next.t( `market_report.report_modal.nodes.data.${ type }.metric`, { defaultValue: i18next.t( 'market_report.report_modal.nodes.data.default.metric' ) } );
-
-                content.innerHTML = `
-                <div class="report-section">
-                    <h3>${ i18next.t( 'market_report.report_modal.nodes.title', { type } ) }</h3>
-                    <p class="mb-6">${ i18next.t( 'market_report.report_modal.nodes.desc' ) }</p>
-                    
-                    <div class="grid grid-cols-2 gap-4 mb-8">
-                        <div class="p-4 bg-blue-50/50 rounded-lg">
-                            <p class="text-[10px] font-bold text-cyber-blue uppercase mb-1">${ i18next.t( 'market_report.report_modal.nodes.sectors_label' ) }</p>
-                            <p class="text-xs font-semibold">${ sectors }</p>
-                        </div>
-                        <div class="p-4 bg-blue-50/50 rounded-lg">
-                            <p class="text-[10px] font-bold text-cyber-blue uppercase mb-1">${ i18next.t( 'market_report.report_modal.nodes.residency_label' ) }</p>
-                            <p class="text-xs font-semibold">${ laws }</p>
-                        </div>
-                    </div>
-
-                    <ul class="list-disc ps-5 space-y-3 mt-4 text-sm text-gray-700">
-                        <li><strong>${ i18next.t( 'market_report.report_modal.nodes.standard_label' ) }:</strong> ${ metric }</li>
-                        <li>${ i18next.t( 'market_report.report_modal.nodes.residence_item', { type } ) }</li>
-                        <li>${ i18next.t( 'market_report.report_modal.nodes.connectivity_item' ) }</li>
-                        <li>${ i18next.t( 'market_report.report_modal.nodes.mesh_item' ) }</li>
-                    </ul>
+            const div = document.createElement( 'div' );
+            div.className = "flex items-start gap-3 flex-row-reverse animate-in fade-in slide-in-from-bottom-2";
+            div.innerHTML = `
+                <div class="w-6 h-6 rounded-full bg-gray-700 flex items-center justify-center shrink-0">
+                    <i class="ph-bold ph-user text-white text-xs"></i>
                 </div>
-                `;
-            }
+                <div class="text-white text-sm leading-relaxed p-3 rounded-2xl rounded-tr-none bg-blue-600">
+                    ${ text }
+                </div>
+            `;
+            document.getElementById( 'gemini-messages' ).appendChild( div );
+            scrollToBottom();
         }
 
-        function closeReport ()
+        function addBotMessage ( text )
         {
-            document.getElementById( 'report-modal' ).style.display = 'none';
-            document.body.style.overflow = 'auto';
+            const div = document.createElement( 'div' );
+            div.className = "flex items-start gap-3 animate-in fade-in slide-in-from-bottom-2";
+
+            // Simple cleaner
+            const cleanText = text.replace( /\*\*(.*?)\*\*/g, '<strong>$1</strong>' ).replace( /\n/g, '<br>' );
+
+            div.innerHTML = `
+                <div class="w-6 h-6 rounded-full overflow-hidden shrink-0 mt-1">
+                    <img src="https://www.gstatic.com/lamda/images/gemini_sparkle_v002_d4735304ff6292a690345.svg" class="w-full h-full object-cover">
+                </div>
+                <div class="text-gray-200 text-sm leading-relaxed p-3 rounded-2xl rounded-tl-none bg-[#1E1F20] border border-white/5 bot-response">
+                    ${ cleanText }
+                </div>
+            `;
+            document.getElementById( 'gemini-messages' ).appendChild( div );
+            scrollToBottom();
         }
 
-        function changeLanguage ( lang )
+        function addBotLoading ()
         {
-            i18next.changeLanguage( lang, () =>
-            {
-                updateContent();
-                localStorage.setItem( 'user-language', lang );
-            } );
+            const id = 'loading-' + Date.now();
+            const div = document.createElement( 'div' );
+            div.id = id;
+            div.className = "flex items-start gap-3 animate-pulse";
+            div.innerHTML = `
+                <div class="w-6 h-6 rounded-full overflow-hidden shrink-0 mt-1">
+                     <img src="https://www.gstatic.com/lamda/images/gemini_sparkle_v002_d4735304ff6292a690345.svg" class="w-full h-full object-cover opacity-50">
+                </div>
+                <div class="bg-[#1E1F20] p-3 rounded-2xl rounded-tl-none border border-white/5">
+                    <div class="flex gap-1">
+                        <div class="w-1.5 h-1.5 bg-gray-500 rounded-full animate-bounce"></div>
+                        <div class="w-1.5 h-1.5 bg-gray-500 rounded-full animate-bounce delay-100"></div>
+                        <div class="w-1.5 h-1.5 bg-gray-500 rounded-full animate-bounce delay-200"></div>
+                    </div>
+                </div>
+            `;
+            document.getElementById( 'gemini-messages' ).appendChild( div );
+            scrollToBottom();
+            return id;
         }
+
+        function removeMessage ( id )
+        {
+            const el = document.getElementById( id );
+            if ( el ) el.remove();
+        }
+
+        function scrollToBottom ()
+        {
+            const container = document.getElementById( 'gemini-messages' );
+            container.scrollTop = container.scrollHeight;
+        }
+
+    </script>
+    document.addEventListener( 'DOMContentLoaded', () =>
+    {
+    const initLang = localStorage.getItem( 'user-language' ) || 'en';
+
+    .use( i18nextHttpBackend )
+    .init( {
+    lng: initLang,
+    fallbackLng: 'en',
+    backend: {
+    loadPath: '/locales/{{lng}}/translation.json', // Use absolute path for robustness
+    }
+    }, ( err ) =>
+    {
+    if ( err )
+    {
+    // If path fails, try relative as fallback
+    i18next.init( {
+    lng: initLang,
+    fallbackLng: 'en',
+    backend: { loadPath: 'locales/{{lng}}/translation.json' }
+    }, () =>
+    {
+    updateContent();
+    initCharts();
+    } );
+    return;
+    }
+    updateContent();
+    initCharts();
+    } );
+    } );
+
+    // --- CHARTS INITIALIZATION ---
+    function initCharts ()
+    {
+    const isDark = document.documentElement.classList.contains( 'dark' );
+    const textColor = isDark ? '#94a3b8' : '#475569';
+    const gridColor = isDark ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.05)';
+    const accentColor = '#318e78'; // Cyber Blue/Accent
+
+    // 1. Cost Comparison Chart
+    const costCtx = document.getElementById( 'costChart' );
+    if ( costCtx )
+    {
+    new Chart( costCtx, {
+    type: 'bar',
+    data: {
+    labels: [ 'Mid-Market (1PB)', 'Enterprise (10PB)', 'Global (100PB)' ],
+    datasets: [
+    {
+    label: 'Legacy Cloud SIEM',
+    data: [ 45000, 380000, 2900000 ],
+    backgroundColor: 'rgba(255, 99, 132, 0.5)',
+    borderColor: 'rgb(255, 99, 132)',
+    borderWidth: 1
+    },
+    {
+    label: 'Sent-Quant (Fixed TCO)',
+    data: [ 12000, 85000, 450000 ],
+    backgroundColor: 'rgba(49, 142, 120, 0.6)',
+    borderColor: '#318e78',
+    borderWidth: 1
+    }
+    ]
+    },
+    options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    scales: {
+    y: {
+    beginAtZero: true,
+    grid: { color: gridColor },
+    ticks: { color: textColor, callback: ( v ) => '$' + v.toLocaleString() }
+    },
+    x: {
+    grid: { display: false },
+    ticks: { color: textColor }
+    }
+    },
+    plugins: {
+    legend: { labels: { color: textColor, font: { family: 'Outfit', weight: 'bold' } } }
+    }
+    }
+    } );
+    }
+
+    // 2. Maturity Radar
+    const radarCtx = document.getElementById( 'radarChart' );
+    if ( radarCtx )
+    {
+    new Chart( radarCtx, {
+    type: 'radar',
+    data: {
+    labels: [ 'PQC Readiness', 'Jurisdictional Isolation', 'AI Surveillance', 'Zero Trust', 'Edge Sovereignty' ],
+    datasets: [
+    {
+    label: 'Legacy SIEM',
+    data: [ 20, 10, 35, 60, 25 ],
+    fill: true,
+    backgroundColor: 'rgba(148, 163, 184, 0.2)',
+    borderColor: '#94a3b8',
+    pointBackgroundColor: '#94a3b8'
+    },
+    {
+    label: 'Sent-Quant',
+    data: [ 95, 100, 90, 85, 98 ],
+    fill: true,
+    backgroundColor: 'rgba(49, 142, 120, 0.2)',
+    borderColor: '#318e78',
+    pointBackgroundColor: '#318e78'
+    }
+    ]
+    },
+    options: {
+    responsive: true,
+    plugins: {
+    legend: { labels: { color: textColor, font: { family: 'Outfit' } } }
+    },
+    scales: {
+    r: {
+    angleLines: { color: gridColor },
+    grid: { color: gridColor },
+    pointLabels: { color: textColor, font: { family: 'Outfit', size: 10 } },
+    ticks: { display: false, stepSize: 20 }
+    }
+    }
+    }
+    } );
+    }
+    }
+
+    // --- REPORT MODAL LOGIC ---
+    function openReport ( type )
+    {
+    const modal = document.getElementById( 'report-modal' );
+    const content = document.getElementById( 'report-dynamic-content' );
+    modal.style.display = 'block';
+    document.body.style.overflow = 'hidden';
+
+    if ( type === 'full' )
+    {
+    content.innerHTML = `
+    <div class="report-section">
+        <h3>${ i18next.t( 'market_report.report_modal.full.section1_title' ) }</h3>
+        <p>${ i18next.t( 'market_report.report_modal.full.section1_p' ) }</p>
+        <div class="bg-slate-50 p-6 border-l-4 border-slate-900 my-6 italic text-sm text-slate-700">
+            "${ i18next.t( 'market_report.report_modal.full.section1_quote' ) }"
+        </div>
+    </div>
+
+    <div class="report-section">
+        <h3>${ i18next.t( 'market_report.report_modal.full.section2_title' ) }</h3>
+        <p>${ i18next.t( 'market_report.report_modal.full.section2_p' ) }</p>
+
+        <div class="overflow-x-auto">
+            <table class="pricing-table">
+                <thead>
+                    <tr>
+                        <th>${ i18next.t( 'market_report.report_modal.full.section2_table_data_volume' ) }</th>
+                        <th>${ i18next.t( 'market_report.report_modal.full.section2_table_sq' ) }</th>
+                        <th>${ i18next.t( 'market_report.report_modal.full.section2_table_ms' ) }</th>
+                        <th>${ i18next.t( 'market_report.report_modal.full.section2_table_splunk' ) }</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>10 GB / Day</td>
+                        <td><strong>$100</strong></td>
+                        <td>$1,290</td>
+                        <td>~$1,500</td>
+                    </tr>
+                    <tr>
+                        <td>50 GB / Day</td>
+                        <td><strong>$450</strong></td>
+                        <td>$6,450</td>
+                        <td>~$7,000</td>
+                    </tr>
+                    <tr>
+                        <td>100 GB / Day</td>
+                        <td><strong>$800</strong></td>
+                        <td>$8,880</td>
+                        <td>~$11,000</td>
+                    </tr>
+                    <tr>
+                        <td>500 GB / Day</td>
+                        <td><strong>$3,500</strong></td>
+                        <td>$37,950</td>
+                        <td>~$48,000</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-6 mt-6">
+            <div class="p-4 bg-red-50 border-l-4 border-red-700">
+                <h4 class="text-xs font-bold uppercase text-red-900 mb-2">${ i18next.t(
+                    'market_report.report_modal.full.section2_risks_title' ) }</h4>
+                <ul class="text-[10px] space-y-1 text-red-950">
+                    <li>• ${ i18next.t( 'market_report.report_modal.full.section2_risks_item1' ) }</li>
+                    <li>• ${ i18next.t( 'market_report.report_modal.full.section2_risks_item2' ) }</li>
+                    <li>• ${ i18next.t( 'market_report.report_modal.full.section2_risks_item3' ) }</li>
+                </ul>
+            </div>
+            <div class="p-4 bg-emerald-50 border-l-4 border-emerald-700">
+                <h4 class="text-xs font-bold uppercase text-emerald-900 mb-2">${ i18next.t(
+                    'market_report.report_modal.full.section2_efficiency_title' ) }</h4>
+                <ul class="text-[10px] space-y-1 text-emerald-950">
+                    <li>• ${ i18next.t( 'market_report.report_modal.full.section2_efficiency_item1' ) }</li>
+                    <li>• ${ i18next.t( 'market_report.report_modal.full.section2_efficiency_item2' ) }</li>
+                    <li>• ${ i18next.t( 'market_report.report_modal.full.section2_efficiency_item3' ) }</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="report-section">
+        <h3>${ i18next.t( 'market_report.report_modal.full.section3_title' ) }</h3>
+        <p>${ i18next.t( 'market_report.report_modal.full.section3_p' ) }</p>
+        <ul class="space-y-4 mt-4">
+            <li class="border-b pb-2">
+                <span class="block text-xs font-bold text-gray-500 uppercase">${ i18next.t(
+                    'market_report.report_modal.full.section3_ef_title' ) }</span>
+                <p class="text-sm">${ i18next.t( 'market_report.report_modal.full.section3_ef_p' ) }</p>
+            </li>
+            <li class="border-b pb-2">
+                <span class="block text-xs font-bold text-gray-500 uppercase">${ i18next.t(
+                    'market_report.report_modal.full.section3_mb_title' ) }</span>
+                <p class="text-sm">${ i18next.t( 'market_report.report_modal.full.section3_mb_p' ) }</p>
+            </li>
+            <li class="border-b pb-2">
+                <span class="block text-xs font-bold text-gray-500 uppercase">${ i18next.t(
+                    'market_report.report_modal.full.section3_sg_title' ) }</span>
+                <p class="text-sm">${ i18next.t( 'market_report.report_modal.full.section3_sg_p' ) }</p>
+            </li>
+        </ul>
+    </div>
+
+    <div class="report-section">
+        <h3>${ i18next.t( 'market_report.report_modal.full.section4_title' ) }</h3>
+        <p>${ i18next.t( 'market_report.report_modal.full.section4_p' ) }</p>
+        <div class="grid md:grid-cols-3 gap-4 my-6">
+            <div class="p-4 bg-gray-50 border border-gray-200 rounded text-center">
+                <p class="text-2xl font-black text-slate-800">QRI 9.8</p>
+                <p class="text-[10px] uppercase font-bold text-gray-500">${ i18next.t(
+                    'market_report.report_modal.full.section4_qri' ) }</p>
+            </div>
+            <div class="p-4 bg-gray-50 border border-gray-200 rounded text-center">
+                <p class="text-2xl font-black text-slate-800">&lt; 200ms</p>
+                <p class="text-[10px] uppercase font-bold text-gray-500">${ i18next.t(
+                    'market_report.report_modal.full.section4_sync' ) }</p>
+            </div>
+            <div class="p-4 bg-gray-50 border border-gray-200 rounded text-center">
+                <p class="text-2xl font-black text-slate-800">0.0%</p>
+                <p class="text-[10px] uppercase font-bold text-gray-500">${ i18next.t(
+                    'market_report.report_modal.full.section4_leakage' ) }</p>
+            </div>
+        </div>
+        <ul class="list-disc ps-5 space-y-2 text-sm text-gray-700">
+            <li>${ i18next.t( 'market_report.report_modal.full.section4_item1' ) }</li>
+            <li>${ i18next.t( 'market_report.report_modal.full.section4_item2' ) }</li>
+        </ul>
+    </div>
+
+    <div class="report-section">
+        <h3>${ i18next.t( 'market_report.report_modal.full.section5_title' ) }</h3>
+        <div class="grid md:grid-cols-2 gap-4">
+            <div class="p-4 border border-gray-200 rounded-lg">
+                <h4 class="text-xs font-bold uppercase text-slate-800 mb-1">${ i18next.t(
+                    'market_report.report_modal.full.section5_defense_title' ) }</h4>
+                <p class="text-xs text-gray-700">${ i18next.t( 'market_report.report_modal.full.section5_defense_p' ) }
+                </p>
+            </div>
+            <div class="p-4 border border-gray-200 rounded-lg">
+                <h4 class="text-xs font-bold uppercase text-slate-800 mb-1">${ i18next.t(
+                    'market_report.report_modal.full.section5_banking_title' ) }</h4>
+                <p class="text-xs text-gray-700">${ i18next.t( 'market_report.report_modal.full.section5_banking_p' ) }
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="report-section">
+        <h3>${ i18next.t( 'market_report.report_modal.full.section6_title' ) }</h3>
+        <div class="grid grid-cols-2 gap-8 my-8">
+            <div class="border-t border-gray-300 pt-4">
+                <p class="text-3xl font-bold font-display text-slate-900">$6.08T</p>
+                <p class="text-[10px] uppercase font-bold text-gray-500">${ i18next.t(
+                    'market_report.report_modal.full.section6_spending' ) }</p>
+            </div>
+            <div class="border-t border-gray-300 pt-4">
+                <p class="text-3xl font-bold font-display text-emerald-700">92%</p>
+                <p class="text-[10px] uppercase font-bold text-gray-500">${ i18next.t(
+                    'market_report.report_modal.full.section6_savings' ) }</p>
+            </div>
+        </div>
+    </div>
+    `;
+    } else
+    {
+    // Specialized Jurisdiction Reports
+    const sectors = i18next.t( `market_report.report_modal.nodes.data.${ type }.sectors`, { defaultValue: i18next.t(
+    'market_report.report_modal.nodes.data.default.sectors' ) } );
+    const laws = i18next.t( `market_report.report_modal.nodes.data.${ type }.laws`, { defaultValue: i18next.t(
+    'market_report.report_modal.nodes.data.default.laws' ) } );
+    const metric = i18next.t( `market_report.report_modal.nodes.data.${ type }.metric`, { defaultValue: i18next.t(
+    'market_report.report_modal.nodes.data.default.metric' ) } );
+
+    content.innerHTML = `
+    <div class="report-section">
+        <h3>${ i18next.t( 'market_report.report_modal.nodes.title', { type } ) }</h3>
+        <p class="mb-6">${ i18next.t( 'market_report.report_modal.nodes.desc' ) }</p>
+
+        <div class="grid grid-cols-2 gap-4 mb-8">
+            <div class="p-4 bg-slate-50 rounded-lg border border-slate-100">
+                <p class="text-[10px] font-bold text-slate-500 uppercase mb-1">${ i18next.t(
+                    'market_report.report_modal.nodes.sectors_label' ) }</p>
+                <p class="text-xs font-semibold text-slate-900">${ sectors }</p>
+            </div>
+            <div class="p-4 bg-slate-50 rounded-lg border border-slate-100">
+                <p class="text-[10px] font-bold text-slate-500 uppercase mb-1">${ i18next.t(
+                    'market_report.report_modal.nodes.residency_label' ) }</p>
+                <p class="text-xs font-semibold text-slate-900">${ laws }</p>
+            </div>
+        </div>
+
+        <ul class="list-disc ps-5 space-y-3 mt-4 text-sm text-gray-700">
+            <li><strong>${ i18next.t( 'market_report.report_modal.nodes.standard_label' ) }:</strong> ${ metric }</li>
+            <li>${ i18next.t( 'market_report.report_modal.nodes.residence_item', { type } ) }</li>
+            <li>${ i18next.t( 'market_report.report_modal.nodes.connectivity_item' ) }</li>
+            <li>${ i18next.t( 'market_report.report_modal.nodes.mesh_item' ) }</li>
+        </ul>
+    </div>
+    `;
+    }
+    }
+
+    function closeReport ()
+    {
+    document.getElementById( 'report-modal' ).style.display = 'none';
+    document.body.style.overflow = 'auto';
+    }
+
+    function changeLanguage ( lang )
+    {
+    i18next.changeLanguage( lang, () =>
+    {
+    updateContent();
+    localStorage.setItem( 'user-language', lang );
+    } );
+    }
     </script>
 </body>
 

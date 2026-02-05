@@ -1,6 +1,15 @@
 runtime: python311
+entrypoint: gunicorn -b :$PORT main:app
+
+env_variables:
+  # REPLACE WITH YOUR ACTUAL API KEY BEFORE DEPLOYING
+  GEMINI_API_KEY: 'INSERT_YOUR_API_KEY_HERE'
 
 handlers:
+# Handle API requests via Flask
+- url: /api/.*
+  script: auto
+
 # Serve the main HTML file
 - url: /
   static_files: index.html
@@ -26,7 +35,3 @@ handlers:
   static_files: \1
   upload: .*
   secure: always
-
-# Enable HTTPS redirect
-env_variables:
-  HTTPS_REDIRECT: 'true'

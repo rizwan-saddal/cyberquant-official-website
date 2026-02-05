@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gemini - Market Analysis</title>
+    <link rel="icon" type="image/webp" href="logo.png">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        gemini: {
+                            bg: '#131314',
+                            sidebar: '#1E1F20',
+                            surface: '#1E1F20',
+                            input: '#282A2C',
+                            text: '#E3E3E3',
+                            blue: '#8AB4F8',
+                            user: '#191A1A' // Slightly lighter/diff for user msg
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Outfit', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #131314; /* Gemini Dark BG */
+            color: #E3E3E3;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #444746;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #5E5E5E;
+        }
+
+        .typing-indicator span {
+            display: inline-block;
+            width: 6px;
+            height: 6px;
+            background-color: #E3E3E3;
+            border-radius: 50%;
+            animation: typing 1.4s infinite ease-in-out both;
+            margin: 0 1px;
+        }
+        .typing-indicator span:nth-child(1) { animation-delay: -0.32s; }
+        .typing-indicator span:nth-child(2) { animation-delay: -0.16s; }
+        
+        @keyframes typing {
+            0%, 80%, 100% { transform: scale(0); }
+            40% { transform: scale(1); }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.3s ease-in-out forwards;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Gradient Text for "Hello, User" */
+        .gradient-text {
+            background: linear-gradient(90deg, #4285F4, #9B72CB, #D96570);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+
+<body class="flex selection:bg-blue-500/30">
+
+    <!-- Sidebar -->
+    <aside class="hidden md:flex flex-col w-[260px] bg-[#1E1F20] h-full p-4 shrink-0 transition-transform duration-300 transform -translate-x-full md:translate-x-0" id="sidebar">
+        <!-- New Chat Button -->
+        <button onclick="window.location.reload()" class="flex items-center gap-3 px-4 py-3 bg-[#282A2C] hover:bg-[#333537] rounded-full text-sm font-medium text-[#E3E3E3] transition-colors mb-6 shadow-sm">
+            <i class="ph-bold ph-plus text-lg"></i>
+            <span>New chat</span>
+        </button>
+
+        <!-- Recent -->
+        <div class="flex-1 overflow-y-auto">
+            <p class="text-xs font-medium text-gray-400 mb-3 px-2">Recent</p>
+            <div class="space-y-1">
+                <button class="w-full text-left flex items-center gap-2 px-3 py-2 rounded-full hover:bg-[#282A2C] group transition-colors text-sm text-gray-300 truncate">
+                    <i class="ph-regular ph-chat-circle text-gray-400 group-hover:text-white"></i>
+                    <span class="truncate">Market Landscape 2026</span>
+                </button>
+                <button class="w-full text-left flex items-center gap-2 px-3 py-2 rounded-full hover:bg-[#282A2C] group transition-colors text-sm text-gray-300 truncate">
+                    <i class="ph-regular ph-chat-circle text-gray-400 group-hover:text-white"></i>
+                    <span class="truncate">TCO Analysis vs Splunk</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Dynamic Footer (Location/Settings) -->
+        <div class="mt-auto pt-4 border-t border-gray-700/50">
+            <button class="flex items-center gap-2 px-2 py-2 text-xs text-gray-400 hover:text-white w-full">
+                <i class="ph-bold ph-gear"></i> Settings
+            </button>
+            <div class="flex items-center gap-2 px-2 py-2 text-[10px] text-gray-500 mt-1">
+                <span class="w-2 h-2 rounded-full bg-green-500"></span>
+                CyberQuant Official
+            </div>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="flex-1 flex flex-col h-full relative w-full bg-[#131314]">
+        
+        <!-- Mobile Header -->
+        <div class="md:hidden flex items-center justify-between p-4 bg-[#1E1F20]">
+            <button class="text-gray-300 hover:text-white"><i class="ph-bold ph-list text-xl"></i></button>
+            <span class="font-display font-bold text-gray-200">Gemini</span>
+            <button onclick="window.location.reload()" class="text-gray-300 hover:text-white"><i class="ph-bold ph-plus text-xl"></i></button>
+        </div>
+
+        <!-- Chat Header -->
+        <div class="hidden md:flex items-center justify-between px-6 py-4">
+             <div class="flex items-center gap-2 text-white font-medium">
+                <span>Gemini</span>
+                <i class="ph-bold ph-caret-down text-xs text-gray-400"></i>
+             </div>
+             <div class="flex items-center gap-4">
+                 <img src="logo.png" alt="User" class="w-8 h-8 rounded-full border border-gray-700 p-1 object-contain bg-black">
+             </div>
+        </div>
+
+        <!-- Chat Area -->
+        <div id="chat-container" class="flex-1 overflow-y-auto px-4 md:px-0 pb-32">
+            <div class="max-w-3xl mx-auto pt-12 md:pt-20">
+                
+                <!-- Welcome Message (Initial State) -->
+                <div id="welcome-message" class="mb-12 animate-in fade-in zoom-in duration-500">
+                    <h1 class="text-4xl md:text-5xl font-medium tracking-tight mb-2">
+                        <span class="gradient-text">Hello, Chief.</span>
+                    </h1>
+                    <h2 class="text-4xl md:text-5xl font-medium text-[#444746] tracking-tight mb-8">
+                        Ready to analyze the market?
+                    </h2>
+                    
+                    <!-- Suggestion Cards -->
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                        <button onclick="sendSuggestion('Analyze TCO savings')" class="bg-[#1E1F20] hover:bg-[#282A2C] p-4 rounded-xl text-left transition-colors h-40 flex flex-col justify-between group">
+                            <span class="text-sm text-gray-300 group-hover:text-white">Analyze fixed TCO savings vs Hyperscalers</span>
+                            <div class="w-8 h-8 rounded-full bg-black/20 flex items-center justify-center self-end group-hover:bg-white/10">
+                                <i class="ph-bold ph-chart-bar text-white"></i>
+                            </div>
+                        </button>
+                        <button onclick="sendSuggestion('Summarize PQC threats')" class="bg-[#1E1F20] hover:bg-[#282A2C] p-4 rounded-xl text-left transition-colors h-40 flex flex-col justify-between group">
+                            <span class="text-sm text-gray-300 group-hover:text-white">Summarize Post-Quantum threats in 2026</span>
+                            <div class="w-8 h-8 rounded-full bg-black/20 flex items-center justify-center self-end group-hover:bg-white/10">
+                                <i class="ph-bold ph-shield-warning text-white"></i>
+                            </div>
+                        </button>
+                        <button onclick="sendSuggestion('Explain MCP surveillance')" class="bg-[#1E1F20] hover:bg-[#282A2C] p-4 rounded-xl text-left transition-colors h-40 flex flex-col justify-between group">
+                            <span class="text-sm text-gray-300 group-hover:text-white">Explain Native MCP Surveillance benefits</span>
+                            <div class="w-8 h-8 rounded-full bg-black/20 flex items-center justify-center self-end group-hover:bg-white/10">
+                                <i class="ph-bold ph-robot text-white"></i>
+                            </div>
+                        </button>
+                        <button onclick="sendSuggestion('List Sovereign Bunkers')" class="bg-[#1E1F20] hover:bg-[#282A2C] p-4 rounded-xl text-left transition-colors h-40 flex flex-col justify-between group">
+                            <span class="text-sm text-gray-300 group-hover:text-white">List top jurisdictional data bunkers</span>
+                            <div class="w-8 h-8 rounded-full bg-black/20 flex items-center justify-center self-end group-hover:bg-white/10">
+                                <i class="ph-bold ph-globe text-white"></i>
+                            </div>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Chat Messages appended here -->
+                <div id="messages" class="space-y-6 pb-4"></div>
+                
+                <!-- Loading Indicator -->
+                <div id="loading" class="hidden flex items-start gap-4">
+                    <div class="w-8 h-8 rounded-full overflow-hidden shrink-0 animate-pulse">
+                         <img src="https://www.gstatic.com/lamda/images/gemini_sparkle_v002_d4735304ff6292a690345.svg" alt="Gemini" class="w-full h-full object-cover">
+                    </div>
+                    <div class="typing-indicator mt-3">
+                        <span></span><span></span><span></span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Input Area -->
+        <div class="absolute bottom-0 w-full bg-[#131314] pt-4 pb-6">
+            <div class="max-w-3xl mx-auto px-4 md:px-0">
+                <div class="bg-[#1E1F20] rounded-full flex items-center p-2 pl-6 pr-2 shadow-lg border border-gray-700/30 focus-within:border-gray-500 transition-colors">
+                    <div class="shrink-0 mr-4 cursor-pointer text-gray-400 hover:text-white">
+                        <i class="ph-bold ph-plus-circle text-xl"></i>
+                    </div>
+                    <input type="text" id="user-input" placeholder="Enter a prompt here" 
+                        class="flex-1 bg-transparent text-white placeholder-gray-400 outline-none h-10 text-base"
+                        autocomplete="off">
+                    <div class="flex items-center gap-2">
+                         <button class="p-2 text-gray-400 hover:text-white rounded-full hover:bg-[#333537] transition-colors"><i class="ph-bold ph-microphone"></i></button>
+                         <button onclick="sendMessage()" id="send-btn" class="p-2 text-gray-400 hover:text-white rounded-full hover:bg-[#333537] transition-colors"><i class="ph-bold ph-paper-plane-right"></i></button>
+                    </div>
+                </div>
+                <p class="text-[10px] text-center text-gray-500 mt-2">
+                    Gemini may display inaccurate info, including about people, so double-check its responses. <a href="#" class="underline">Your privacy and Gemini Apps</a>
+                </p>
+            </div>
+        </div>
+
+    </main>
+
+    <script>
+        const chatContainer = document.getElementById('chat-container');
+        const messagesDiv = document.getElementById('messages');
+        const userInput = document.getElementById('user-input');
+        const welcomeMessage = document.getElementById('welcome-message');
+        const loadingIndicator = document.getElementById('loading');
+
+        userInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') sendMessage();
+        });
+
+        function sendSuggestion(text) {
+            userInput.value = text;
+            sendMessage();
+        }
+
+        async function sendMessage() {
+            const text = userInput.value.trim();
+            if (!text) return;
+
+            // 1. Hide welcome message on first interaction
+            if (welcomeMessage.style.display !== 'none') {
+                welcomeMessage.style.display = 'none';
+            }
+
+            // 2. Add User Message
+            addMessage(text, 'user');
+            userInput.value = '';
+
+            // 3. Show Loading
+            loadingIndicator.classList.remove('hidden');
+            chatContainer.scrollTop = chatContainer.scrollHeight;
+
+            // 4. Simulate API Delay & Streaming
+            setTimeout(async () => {
+                loadingIndicator.classList.add('hidden');
+                
+                // Get simulated response
+                const response = getSimulatedResponse(text);
+                
+                // Stream the response
+                await streamMessage(response, 'bot');
+                
+            }, 1000 + Math.random() * 1000);
+        }
+
+        function addMessage(text, role) {
+            const div = document.createElement('div');
+            div.className = `flex items-start gap-4 fade-in ${role === 'user' ? 'flex-row-reverse' : ''}`;
+            
+            if (role === 'user') {
+                div.innerHTML = `
+                    <div class="w-8 h-8 rounded-full bg-gray-700 flex items-center justify-center shrink-0">
+                         <i class="ph-bold ph-user text-white"></i>
+                    </div>
+                    <div class="bg-[#282A2C] text-white px-5 py-3 rounded-3xl rounded-tr-sm max-w-[80%] leading-relaxed">
+                        ${text}
+                    </div>
+                `;
+            } else { // Bot
+                // Placeholder for streaming content
+                div.innerHTML = `
+                    <div class="w-8 h-8 rounded-full overflow-hidden shrink-0 mt-1">
+                         <img src="https://www.gstatic.com/lamda/images/gemini_sparkle_v002_d4735304ff6292a690345.svg" alt="Gemini" class="w-full h-full object-cover">
+                    </div>
+                    <div class="text-[#E3E3E3] pt-1 max-w-[90%] leading-relaxed space-y-2 bot-content">
+                        <!-- Content injected here -->
+                    </div>
+                `;
+            }
+            messagesDiv.appendChild(div);
+            // Auto scroll
+            requestAnimationFrame(() => {
+                chatContainer.scrollTop = chatContainer.scrollHeight;
+            });
+            return div;
+        }
+
+        // Simulating Typing Effect
+        async function streamMessage(fullText, role) {
+             const div = document.createElement('div');
+            div.className = `flex items-start gap-4 fade-in`;
+            
+            const contentId = 'content-' + Date.now();
+            
+            div.innerHTML = `
+                <div class="w-8 h-8 rounded-full overflow-hidden shrink-0 mt-1">
+                     <img src="https://www.gstatic.com/lamda/images/gemini_sparkle_v002_d4735304ff6292a690345.svg" alt="Gemini" class="w-full h-full object-cover spin-slow">
+                </div>
+                <div class="text-[#E3E3E3] pt-1 max-w-[90%] leading-relaxed space-y-2 text-md" id="${contentId}"></div>
+            `;
+            
+            messagesDiv.appendChild(div);
+            const contentDiv = document.getElementById(contentId);
+            
+            // Chunking logic for realism
+            const chunks = fullText.split(' ');
+            let currentText = "";
+            
+            for (let i = 0; i < chunks.length; i++) {
+                currentText += (i === 0 ? '' : ' ') + chunks[i];
+                contentDiv.innerHTML = formatMarkdown(currentText); // Simple markdown parser
+                chatContainer.scrollTop = chatContainer.scrollHeight;
+                await new Promise(r => setTimeout(r, 20 + Math.random() * 30)); // Typing speed
+            }
+        }
+
+        function formatMarkdown(text) {
+             // Basic Mock Markdown
+             return text
+                .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+                .replace(/\n/g, '<br>')
+                .replace(/- /g, '• ');
+        }
+
+        function getSimulatedResponse(query) {
+            query = query.toLowerCase();
+            if (query.includes('tco') || query.includes('cost') || query.includes('savings')) {
+                return "Based on the **CyberQuant 2026 Market Report**, the Fixed TCO Model offers significant advantages over legacy hyperscalers:\n\n" + 
+                       "- **Cost Reduction:** Up to **92% savings** for enterprise-grade data volumes (10PB+).\n" +
+                       "- **Predictability:** Eliminates variable ingestion fees and 'cloud tax'.\n" +
+                       "- **Example:** For 100GB/day, Sent-Quant costs **$800/mo** vs ~$11,000/mo for Splunk Cloud.\n\n" + 
+                       "Would you like a detailed breakdown for your specific data volume?";
+            }
+            if (query.includes('quantum') || query.includes('pqc') || query.includes('threat')) {
+                return "In the 2026 landscape, **Post-Quantum Cryptography (PQC)** is no longer optional. The report highlights:\n\n" +
+                       "- **SNDL Risk:** 'Store Now, Decrypt Later' attacks are the #1 strategic threat.\n" +
+                       "- **Standards:** CyberQuant implements **NIST FIPS 203 & 204** (Kyber/Dilithium) natively.\n" +
+                       "- **QRI Score:** We achieved a **Quantum Resilience Index of 9.8**, surpassing legacy providers.";
+            }
+            if (query.includes('sovereign') || query.includes('bunker') || query.includes('jurisdiction')) {
+                return "The **Sovereign Beehive** architecture relies on jurisdictions with absolute legal immunity from extraterritorial data access. Key bunkers include:\n\n" +
+                       "- **Switzerland:** Military-grade alpine bunkers, FADP protection.\n" +
+                       "- **Singapore:** Tier-4 Gold Standard hosting, PDPA compliance.\n" +
+                       "- **Iceland:** 100% Geothermal powered, GDPR+ Sovereign addendum.\n\n" +
+                       "These nodes ensure your data remains legally and physically isolated.";
+            }
+            if (query.includes('mcp') || query.includes('surveillance')) {
+                return "**Native MCP Surveillance** is a first-of-its-kind feature in CyberQuant:\n\n" + 
+                       "- **Purpose:** Secures AI Agent tool-calling (Model Context Protocol).\n" +
+                       "- **Protection:** Prevents prompt injection and credential escalation attacks.\n" +
+                       "- **Impact:** Eliminates the need for 3rd party licensing for AI security.";
+            }
+             return "I've analyzed the report. That topic is interesting! The **2026 Market Landscape** suggests a major shift towards Sovereign Resilience and Fixed TCO models. Key areas include:\n\n" + 
+                    "1. **Digital Hyper-Fragmentation**\n" + 
+                    "2. **Post-Quantum Readiness**\n" + 
+                    "3. **AI-Native Surveillance (MCP)**\n\n" +
+                    "Can you be more specific about which aspect (Cost, Tech, or Strategy) you're interested in?";
+        }
+    </script>
+</body>
+</html>
