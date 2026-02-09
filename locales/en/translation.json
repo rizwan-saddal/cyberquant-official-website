@@ -30,7 +30,7 @@
         },
         "card2": {
             "title": "Quantum-Ready",
-            "text": "RSA-2048 will be broken. Sent-Quant implements NIST-approved post-quantum cryptography (Kyber/Dilithium) to defeat \"Store Now, Decrypt Later\" threats."
+            "text": "RSA-2048 will be broken. Sentinext-Q implements NIST-approved post-quantum cryptography (Kyber/Dilithium) to defeat \"Store Now, Decrypt Later\" threats."
         },
         "card3": {
             "title": "Quantitative Defense",
@@ -60,8 +60,8 @@
     },
     "platform": {
         "badge": "Live MVP Beta",
-        "title": "The <1>Sent-Quant</1> Platform",
-        "desc": "Experience the dashboard that visualizes your digital sovereignty. Sent-Quant provides a unified view of data flows, compliance status, and quantum-threat levels across your entire infrastructure.",
+        "title": "The <1>Sentinext-Q</1> Platform",
+        "desc": "Experience the dashboard that visualizes your digital sovereignty. Sentinext-Q provides a unified view of data flows, compliance status, and quantum-threat levels across your entire infrastructure.",
         "feat1": {
             "title": "Real-Time Data Mapping:",
             "text": "Visualize exactly where your data resides physically."
@@ -78,10 +78,10 @@
     },
     "comparison": {
         "title": "THE SOVEREIGN ADVANTAGE",
-        "desc": "Public hyperscalers act as \"digital landlords,\" retaining ultimate control over your infrastructure. Sent-Quant empowers you to be the <1>sovereign owner</1> of your digital territory, backing it with military-grade quantum defense.",
+        "desc": "Public hyperscalers act as \"digital landlords,\" retaining ultimate control over your infrastructure. Sentinext-Q empowers you to be the <1>sovereign owner</1> of your digital territory, backing it with military-grade quantum defense.",
         "headers": {
             "feature": "Feature",
-            "us": "Sent-Quant (Sovereign)",
+            "us": "Sentinext-Q (Sovereign)",
             "hyperscalers": "US Hyperscalers (AWS/Azure)",
             "legacy": "Legacy Security"
         },
@@ -131,28 +131,28 @@
         "title": "Security & Compliance",
         "subtitle": "Transparency and rigor are the cornerstones of CyberQuant's sovereign architecture.",
         "protocols_title": "Security Protocols",
-        "protocols_desc": "Sent-Quant employs a multi-layered defense-in-depth strategy designed for the post-quantum era."
+        "protocols_desc": "Sentinext-Q employs a multi-layered defense-in-depth strategy designed for the post-quantum era."
     },
     "market_report": {
         "title": "2026 Market Landscape Report",
-        "subtitle": "Sent-Quant and the Strategic Re-Architecting of Global Cybersecurity",
+        "subtitle": "Sentinext-Q and the Strategic Re-Architecting of Global Cybersecurity",
         "intro": "The global cybersecurity landscape in early 2026 is defined by a state of 'digital hyper-fragmentation,' where the collision of agentic AI and post-quantum threats demands a new sovereign architecture.",
         "deep_dive_desc": "Our deep-dive report includes detailed competitive benchmarks against Microsoft Sentinel, Splunk, and CrowdStrike, along with financial framework analysis using the Gordon-Loeb model.",
         "cta_header": "Access the Full Strategic Intelligence",
         "section1_title": "Digital Hyper-Fragmentation",
         "section1_desc": "The fragmenting of global networks has birthed 'Jurisdictional Bunkers'—regions like Switzerland and Singapore that offer immunity from extraterritorial data access.",
         "section2_title": "Native MCP Surveillance",
-        "section2_desc": "Sent-Quant is the first platform to offer native surveillance for the Model Context Protocol (MCP), securing AI agent tool-calling against prompt injection and credential escalation.",
+        "section2_desc": "Sentinext-Q is the first platform to offer native surveillance for the Model Context Protocol (MCP), securing AI agent tool-calling against prompt injection and credential escalation.",
         "section3_title": "Post-Quantum Readiness",
-        "section3_desc": "With the acceleration of quantum decryption timelines, Sent-Quant implements FIPS 203, 204, and 205 (ML-KEM, ML-DSA) to protect against 'Harvest Now, Decrypt Later' strategies.",
+        "section3_desc": "With the acceleration of quantum decryption timelines, Sentinext-Q implements FIPS 203, 204, and 205 (ML-KEM, ML-DSA) to protect against 'Harvest Now, Decrypt Later' strategies.",
         "section4_title": "Fixed TCO Model",
-        "section4_desc": "Disrupting the industry's consumption-based pricing, Sent-Quant offers a fixed Total Cost of Ownership model, resulting in up to 90% savings compared to legacy hyperscalers.",
+        "section4_desc": "Disrupting the industry's consumption-based pricing, Sentinext-Q offers a fixed Total Cost of Ownership model, resulting in up to 90% savings compared to legacy hyperscalers.",
         "impact_title": "Economic Impact Analysis",
         "impact_subtitle": "Operational Cost Comparison (Monthly USD)",
         "impact_desc": "Enterprise security is shifting from a sunk cost to an operational predictability driver. CyberQuant's fixed TCO model eliminates 'cloud tax' and scaling penalties.",
         "radar_title": "Security Maturity Radar",
         "radar_subtitle": "Architectural Alignment Analysis",
-        "radar_desc": " Sent-Quant outperforms legacy architectures in sovereign dimensions: Post-Quantum Resilience, AI-Native Surveillance, and Jurisdictional Isolation.",
+        "radar_desc": " Sentinext-Q outperforms legacy architectures in sovereign dimensions: Post-Quantum Resilience, AI-Native Surveillance, and Jurisdictional Isolation.",
         "beehive_title": "The Sovereign Beehive",
         "beehive_subtitle": "Distributed Jurisdictional Architecture",
         "beehive_desc": "A mesh of isolated jurisdictional bunkers (Singapore, Switzerland, Iceland) ensuring total immunity from extraterritorial data seizure.",
@@ -163,16 +163,16 @@
                 "section1_p": "The global security paradigm has transitioned into an era defined by <strong>Sovereign Resilience</strong>. Enterprises and state actors are fundamentally re-architecting infrastructure to prioritize absolute jurisdictional immunity. Organizations that successfully unify identity, sovereign cloud, and post-quantum endpoints (Platformization) currently command valuation multiples exceeding 12x.",
                 "section1_quote": "Strategic security is transitioning from a sunk operational cost to a primary driver of fiscal predictability, reducing TCO by up to 92%.",
                 "section2_title": "2. Comparative Fiscal Efficiency & TCO Audit",
-                "section2_p": "State and enterprise security budgets in 2026 are increasingly compromised by \"Variable Ingestion Penalties.\" Sent-Quant disrupts this volatility with a fixed-monthly fiscal model that decouples operational security costs from data volume surges.",
+                "section2_p": "State and enterprise security budgets in 2026 are increasingly compromised by \"Variable Ingestion Penalties.\" Sentinext-Q disrupts this volatility with a fixed-monthly fiscal model that decouples operational security costs from data volume surges.",
                 "section2_table_data_volume": "Daily Data Ingestion Volume",
-                "section2_table_sq": "Sent-Quant (Fixed)",
+                "section2_table_sq": "Sentinext-Q (Fixed)",
                 "section2_table_ms": "MS Sentinel (Estimated)",
                 "section2_table_splunk": "Splunk Cloud (Estimated)",
                 "section2_risks_title": "Systemic TCO Risks (Legacy Infrastructure)",
                 "section2_risks_item1": "Uncapped Logic App execution fees (Hyperscaler)",
                 "section2_risks_item2": "SVC unit depletion during search operations (Legacy SIEM)",
                 "section2_risks_item3": "15-20% Jurisdictional Egress \"Hidden Tax\"",
-                "section2_efficiency_title": "Sent-Quant Sovereign Fiscal Efficiency",
+                "section2_efficiency_title": "Sentinext-Q Sovereign Fiscal Efficiency",
                 "section2_efficiency_item1": "Zero Ingestion Overage Penalties",
                 "section2_efficiency_item2": "Native MCP Surveillance (Zero Third-Party Licensing)",
                 "section2_efficiency_item3": "Sovereign Edge Processing (Zero Incurred Egress Fees)",
@@ -185,7 +185,7 @@
                 "section3_sg_title": "Sector Expansion",
                 "section3_sg_p": "<strong>Sovereign Cloud Proliferation:</strong> The $195.35 Billion surge in jurisdictional-first data residency requirements globally.",
                 "section4_title": "4. Quantum-Era Technical Superiority Audit",
-                "section4_p": "The Sent-Quant architecture is defined as \"PQC Native,\" mitigating the systemic \"Store Now, Decrypt Later\" (SNDL) risks through proactive cryptographic agility.",
+                "section4_p": "The Sentinext-Q architecture is defined as \"PQC Native,\" mitigating the systemic \"Store Now, Decrypt Later\" (SNDL) risks through proactive cryptographic agility.",
                 "section4_qri": "Quantum Resilience Index",
                 "section4_sync": "Global Blocklist Sync",
                 "section4_leakage": "Data Egress Leakage",

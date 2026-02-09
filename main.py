@@ -1,17 +1,11 @@
 import os
-import google.generativeai as genai
+import requests
 from flask import Flask, request, jsonify, send_from_directory
 
 app = Flask(__name__, static_folder='.')
 
 # --- Configuration ---
-# Get API Key from Environment Variable (Best Practice)
 GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY")
-
-if GEMINI_API_KEY:
-    genai.configure(api_key=GEMINI_API_KEY)
-else:
-    print("WARNING: GEMINI_API_KEY not set in environment variables.")
 
 # --- API Routes ---
 
@@ -28,15 +22,34 @@ def analyze():
         if not prompt:
              return jsonify({"error": "Prompt is required"}), 400
 
-        # Initialize Model
-        model = genai.GenerativeModel('gemini-1.5-flash')
+        # Construct the payload for the REST API
+        # The history from frontend is [{"role": "user", "parts": [...]}, ...]
+        # We need to append the new prompt
         
-        # Convert history to Gemini format (optional, simplified here)
-        # We start a new chat for simplicity or reconstruction
-        chat = model.startChat(history=history)
+        contents = history + [{"role": "user", "parts": [{"text": prompt}]}]
         
-        response = chat.send_message(prompt)
-        return jsonify({"text": response.text})
+        url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key={GEMINI_API_KEY}"
+        headers = {'Content-Type': 'application/json'}
+        payload = {"contents": contents}
+        
+        response = requests.post(url, json=payload, headers=headers)
+        
+        if response.status_code != 200:
+            error_msg = f"Gemini API Error: {response.text}"
+            print(error_msg)
+            return jsonify({"error": error_msg}), response.status_code
+            
+        response_json = response.json()
+        
+        # Extract text from response
+        # Structure: candidates[0].content.parts[0].text
+        try:
+            text = response_json['candidates'][0]['content']['parts'][0]['text']
+            return jsonify({"text": text})
+        except (KeyError, IndexError) as e:
+            # Handle empty response (e.g., safety block)
+            print(f"Error parsing Gemini response: {response_json}")
+            return jsonify({"text": "I unable to generate a response for that prompt due to safety filters."})
 
     except Exception as e:
         print(f"Error calling Gemini: {e}")

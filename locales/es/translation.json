@@ -29,7 +29,7 @@
         },
         "card2": {
             "title": "Listo para Cuántica",
-            "text": "RSA-2048 será roto. Sent-Quant implementa criptografía post-cuántica aprobada por NIST (Kyber/Dilithium) para vencer amenazas de \"Almacenar Ahora, Descifrar Después\"."
+            "text": "RSA-2048 será roto. Sentinext-Q implementa criptografía post-cuántica aprobada por NIST (Kyber/Dilithium) para vencer amenazas de \"Almacenar Ahora, Descifrar Después\"."
         },
         "card3": {
             "title": "Defensa Cuantitativa",
@@ -59,8 +59,8 @@
     },
     "platform": {
         "badge": "Beta MVP en Vivo",
-        "title": "La Plataforma <1>Sent-Quant</1>",
-        "desc": "Experimente el panel que visualiza su soberania digital. Sent-Quant proporciona una vista unificada de flujos de datos, estado de cumplimiento y niveles de amenaza cuántica en toda su infraestructura.",
+        "title": "La Plataforma <1>Sentinext-Q</1>",
+        "desc": "Experimente el panel que visualiza su soberania digital. Sentinext-Q proporciona una vista unificada de flujos de datos, estado de cumplimiento y niveles de amenaza cuántica en toda su infraestructura.",
         "feat1": {
             "title": "Mapeo de Datos en Tiempo Real:",
             "text": "Visualice exactamente dónde residen sus datos físicamente."
@@ -77,10 +77,10 @@
     },
     "comparison": {
         "title": "LA VENTAJA SOBERANA",
-        "desc": "Los hiperescaladores públicos actúan como \"terratenientes digitales\", reteniendo el control final sobre su infraestructura. Sent-Quant le empodera para ser el <1>propietario soberano</1> de su territorio digital, respaldándolo con defensa cuántica de grado militar.",
+        "desc": "Los hiperescaladores públicos actúan como \"terratenientes digitales\", reteniendo el control final sobre su infraestructura. Sentinext-Q le empodera para ser el <1>propietario soberano</1> de su territorio digital, respaldándolo con defensa cuántica de grado militar.",
         "headers": {
             "feature": "Característica",
-            "us": "Sent-Quant (Soberano)",
+            "us": "Sentinext-Q (Soberano)",
             "hyperscalers": "Hiperescaladores de EE.UU.",
             "legacy": "Seguridad Legada"
         },
@@ -127,28 +127,28 @@
         "title": "Seguridad y Cumplimiento",
         "subtitle": "La transparencia y el rigor son las piedras angulares de la arquitectura soberana de CyberQuant.",
         "protocols_title": "Protocolos de Seguridad",
-        "protocols_desc": "Sent-Quant emplea una estrategia de defensa en profundidad multicapa diseñada para la era post-cuántica."
+        "protocols_desc": "Sentinext-Q emplea una estrategia de defensa en profundidad multicapa diseñada para la era post-cuántica."
     },
     "market_report": {
         "title": "Informe del Panorama del Mercado 2026",
-        "subtitle": "Sent-Quant y la Re-Arquitectura Estratégica de la Ciberseguridad Global",
+        "subtitle": "Sentinext-Q y la Re-Arquitectura Estratégica de la Ciberseguridad Global",
         "intro": "El panorama de la ciberseguridad global a principios de 2026 se define por un estado de 'hiperfragmentación digital', donde la colisión de la IA agente y las amenazas post-cuánticas exige una nueva arquitectura soberana.",
         "deep_dive_desc": "Nuestro informe detallado incluye benchmarks competitivos contra Microsoft Sentinel, Splunk y CrowdStrike, junto con un análisis del marco financiero utilizando el modelo Gordon-Loeb.",
         "cta_header": "Acceda a la Inteligencia Estratégica Completa",
         "section1_title": "Hiperfragmentación Digital",
         "section1_desc": "La fragmentación de las redes globales ha dado lugar a 'Búnkeres Jurisdiccionales': regiones como Suiza y Singapur que ofrecen inmunidad frente al acceso a datos extraterritoriales.",
         "section2_title": "Vigilancia Nativa de MCP",
-        "section2_desc": "Sent-Quant es la primera plataforma que ofrece vigilancia nativa para el Protocolo de Contexto de Modelo (MCP), asegurando las llamadas a herramientas de agentes de IA contra la inyección de prompts y la escalada de credenciales.",
+        "section2_desc": "Sentinext-Q es la primera plataforma que ofrece vigilancia nativa para el Protocolo de Contexto de Modelo (MCP), asegurando las llamadas a herramientas de agentes de IA contra la inyección de prompts y la escalada de credenciales.",
         "section3_title": "Preparación Post-Cuántica",
-        "section3_desc": "Con la aceleración de los plazos de descifrado cuántico, Sent-Quant implementa FIPS 203, 204 y 205 (ML-KEM, ML-DSA) para proteger contra estrategias de 'Cosechar Ahora, Descifrar Después'.",
+        "section3_desc": "Con la aceleración de los plazos de descifrado cuántico, Sentinext-Q implementa FIPS 203, 204 y 205 (ML-KEM, ML-DSA) para proteger contra estrategias de 'Cosechar Ahora, Descifrar Después'.",
         "section4_title": "Modelo de TCO Fijo",
-        "section4_desc": "Interrumpiendo los precios basados en el consumo de la industria, Sent-Quant ofrece un modelo de Costo Total de Propiedad (TCO) fijo, lo que resulta en ahorros de hasta un 90% en comparación con los hiperescaladores heredados.",
+        "section4_desc": "Interrumpiendo los precios basados en el consumo de la industria, Sentinext-Q ofrece un modelo de Costo Total de Propiedad (TCO) fijo, lo que resulta en ahorros de hasta un 90% en comparación con los hiperescaladores heredados.",
         "impact_title": "Análisis de Impacto Económico",
         "impact_subtitle": "Comparación de Costos Operativos (Mensual USD)",
         "impact_desc": "La seguridad empresarial está pasando de ser un costo hundido a un motor de previsibilidad operativa. El modelo de TCO fijo de CyberQuant elimina el 'impuesto a la nube' y las penalizaciones por escalado.",
         "radar_title": "Radar de Madurez de Seguridad",
         "radar_subtitle": "Análisis de Alineación Arquitectónica",
-        "radar_desc": "Sent-Quant supera a las arquitecturas heredadas en dimensiones soberanas: Resiliencia Post-Cuántica, Vigilancia Nativa de IA e Aislamiento Jurisdiccional.",
+        "radar_desc": "Sentinext-Q supera a las arquitecturas heredadas en dimensiones soberanas: Resiliencia Post-Cuántica, Vigilancia Nativa de IA e Aislamiento Jurisdiccional.",
         "beehive_title": "La Colmena Soberana",
         "beehive_subtitle": "Arquitectura Jurisdiccional Distribuida",
         "beehive_desc": "Una red de búnkeres jurisdiccionales aislados (Singapur, Suiza, Islandia) que garantiza la inmunidad total frente a la incautación de datos extraterritoriales.",
@@ -159,16 +159,16 @@
                 "section1_p": "El paradigma de seguridad global ha transitado hacia una era definida por la <strong>Resiliencia Soberana</strong>. Las empresas y los actores estatales están re-arquitecturando fundamentalmente su infraestructura para priorizar la inmunidad jurisdiccional absoluta. Las organizaciones que unifican con éxito la identidad, la nube soberana y los puntos finales post-cuánticos (Plataformización) exigen actualmente múltiplos de valoración superiores a 12x.",
                 "section1_quote": "La seguridad estratégica está pasando de ser un costo operativo hundido a un motor principal de previsibilidad fiscal, reduciendo el TCO hasta en un 92%.",
                 "section2_title": "2. Eficiencia Fiscal Comparativa y Auditoría de TCO",
-                "section2_p": "Los presupuestos de seguridad estatal y empresarial en 2026 se ven cada vez más comprometidos por las \"Penalizaciones por Ingestión Variable\". Sent-Quant interrumpe esta volatilidad con un modelo fiscal mensual fijo que desacopla los costos de seguridad operativa de los aumentos repentinos de volumen de datos.",
+                "section2_p": "Los presupuestos de seguridad estatal y empresarial en 2026 se ven cada vez más comprometidos por las \"Penalizaciones por Ingestión Variable\". Sentinext-Q interrumpe esta volatilidad con un modelo fiscal mensual fijo que desacopla los costos de seguridad operativa de los aumentos repentinos de volumen de datos.",
                 "section2_table_data_volume": "Volumen Diario de Ingestión de Datos",
-                "section2_table_sq": "Sent-Quant (Fijo)",
+                "section2_table_sq": "Sentinext-Q (Fijo)",
                 "section2_table_ms": "MS Sentinel (Estimado)",
                 "section2_table_splunk": "Splunk Cloud (Estimado)",
                 "section2_risks_title": "Riesgos Sistémicos de TCO (Infraestructura Heredada)",
                 "section2_risks_item1": "Tarifas de ejecución de Logic App sin límite (Hiperescalador)",
                 "section2_risks_item2": "Agotamiento de unidades SVC durante operaciones de búsqueda (SIEM Heredado)",
                 "section2_risks_item3": "15-20% de \"Impuesto Oculto\" por Egreso Jurisdiccional",
-                "section2_efficiency_title": "Eficiencia Fiscal Soberana de Sent-Quant",
+                "section2_efficiency_title": "Eficiencia Fiscal Soberana de Sentinext-Q",
                 "section2_efficiency_item1": "Cero Penalizaciones por Exceso de Ingestión",
                 "section2_efficiency_item2": "Vigilancia Nativa de MCP (Cero Licencias de Terceros)",
                 "section2_efficiency_item3": "Procesamiento en el Borde Soberano (Cero Tarifas de Egreso Incurridas)",
@@ -181,7 +181,7 @@
                 "section3_sg_title": "Expansión del Sector",
                 "section3_sg_p": "<strong>Proliferación de la Nube Soberana:</strong> El aumento de $195.35 mil millones en los requisitos de residencia de datos primero por jurisdicción a nivel mundial.",
                 "section4_title": "4. Auditoría de Superioridad Técnica en la Era Cuántica",
-                "section4_p": "La arquitectura Sent-Quant se define como \"PQC Nativa\", mitigando los riesgos sistémicos de \"Almacenar Ahora, Descifrar Después\" (SNDL) mediante una agilidad criptográfica proactiva.",
+                "section4_p": "La arquitectura Sentinext-Q se define como \"PQC Nativa\", mitigando los riesgos sistémicos de \"Almacenar Ahora, Descifrar Después\" (SNDL) mediante una agilidad criptográfica proactiva.",
                 "section4_qri": "Índice de Resiliencia Cuántica",
                 "section4_sync": "Sincronización Global de Listas de Bloqueo",
                 "section4_leakage": "Fuga de Egreso de Datos",
