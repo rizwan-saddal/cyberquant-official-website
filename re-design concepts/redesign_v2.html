@@ -75,19 +75,19 @@
             }
         }
 
-        function applyTheme ( key )
+        function applyTheme( key, modeOverride = null )
         {
             const theme = themes[ key ];
+            if ( !theme ) return;
             const root = document.documentElement;
 
-            // Update CSS Variables
-            Object.entries( theme.colors ).forEach( ( [ k, v ] ) =>
-            {
-                root.style.setProperty( `--color-${ k }`, v );
-            } );
+            // Determine Target Mode
+            // 1. If modeOverride is passed (from Toggle), use it.
+            // 2. Otherwise (from Palette click), default to the theme's native type.
+            const targetMode = modeOverride || theme.type;
 
-            // Update DOM Classes for native Tailwind dark mode
-            if ( theme.type === 'dark' )
+            // Update DOM Classes
+            if ( targetMode === 'dark' )
             {
                 root.classList.add( 'dark' );
             } else
@@ -95,8 +95,38 @@
                 root.classList.remove( 'dark' );
             }
 
-            // Save preference
+            // Determine Colors to Apply
+            let colors = { ...theme.colors };
+
+            // Dynamic Mode Adaptation
+            // If the target mode doesn't match the theme's native definition, 
+            // construct a synthesized palette (Generic Backgrounds + Theme Brand Colors)
+            if ( targetMode !== theme.type )
+            {
+                if ( targetMode === 'light' )
+                {
+                    // Synthesize Light Mode
+                    colors.bg = '#f8fafc';       // Slate-50
+                    colors.surface = '#e2e8f0';  // Slate-200
+                    colors.text = '#0f172a';     // Slate-900
+                } else
+                {
+                    // Synthesize Dark Mode
+                    colors.bg = '#030712';       // Gray-950
+                    colors.surface = '#111827';  // Gray-900
+                    colors.text = '#f8fafc';     // Slate-50
+                }
+            }
+
+            // Apply Variables
+            Object.entries( colors ).forEach( ( [ k, v ] ) =>
+            {
+                root.style.setProperty( `--color-${ k }`, v );
+            } );
+
+            // Save preferences
             localStorage.setItem( 'cyberquant-theme', key );
+            if (modeOverride) localStorage.setItem( 'cyberquant-mode', modeOverride ); 
 
             // Update UI
             document.querySelectorAll( '.theme-btn' ).forEach( btn =>
@@ -106,10 +136,28 @@
             } );
         }
 
+        function toggleMode() {
+            const currentKey = localStorage.getItem('cyberquant-theme') || 'cyber-sovereign';
+            const isDark = document.documentElement.classList.contains('dark');
+            const newMode = isDark ? 'light' : 'dark';
+            applyTheme(currentKey, newMode);
+        }
+
         window.addEventListener( 'DOMContentLoaded', () =>
         {
-            const saved = localStorage.getItem( 'cyberquant-theme' ) || 'cyber-sovereign';
-            applyTheme( saved );
+            const savedTheme = localStorage.getItem( 'cyberquant-theme' ) || 'cyber-sovereign';
+            
+            // Note: We don't auto-restore 'mode' here to stay true to the user's
+            // requirement "Dark mode gets enabled when user picks a color".
+            // However, to persist state on reload, we SHOULD restore it.
+            // Let's check if the specific user Flow wants reset or persistence.
+            // Standard UX is persistence. The "Reset on Color Pick" is handled by the palette buttons calling applyTheme(key) without override.
+            
+            const savedMode = localStorage.getItem('cyberquant-mode');
+            // If we have a saved mode prefernece that matches the saved theme's logic (or override), use it.
+            // But for safety/simplicity, let's just use the savedTheme logic + savedMode if exists.
+            
+            applyTheme( savedTheme, savedMode ); 
         } );
     </script>
 
@@ -160,7 +208,7 @@
         <div class="glass mx-4 mt-4 rounded-2xl px-6 py-4 flex items-center justify-between max-w-7xl mx-auto">
             <div class="flex items-center gap-3">
                 <div
-                    class="w-10 h-10 bg-theme-primary rounded-lg flex items-center justify-center text-black font-bold text-xl">
+                    class="w-12 h-12 bg-theme-primary rounded-lg flex items-center justify-center text-black font-bold text-xl">
                     <i class="fa-solid fa-shield-halved"></i>
                 </div>
                 <span class="text-2xl font-display font-bold tracking-tight">CYBER<span
@@ -174,10 +222,17 @@
                 <a href="#" class="hover:text-theme-primary transition-colors">Pricing</a>
             </div>
 
-            <button
-                class="px-5 py-2.5 bg-theme-primary text-black font-bold rounded-lg hover:brightness-110 transition-all shadow-[0_0_15px_rgba(0,0,0,0.3)]">
-                Get Access
-            </button>
+            <div class="flex items-center gap-4">
+                <button onclick="toggleMode()" class="w-10 h-10 rounded-full glass flex items-center justify-center hover:bg-theme-primary/10 hover:text-theme-primary transition-colors" title="Toggle Theme">
+                    <i class="fa-solid fa-sun hidden dark:block"></i>
+                    <i class="fa-solid fa-moon block dark:hidden"></i>
+                </button>
+
+                <button
+                    class="px-5 py-2.5 bg-theme-primary text-black font-bold rounded-lg hover:brightness-110 transition-all shadow-[0_0_15px_rgba(0,0,0,0.3)]">
+                    Get Access
+                </button>
+            </div>
         </div>
     </nav>
 
@@ -218,6 +273,11 @@
             </div>
             <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-theme-secondary opacity-20 blur-[128px] rounded-full mix-blend-screen animate-blob"
                 style="animation-delay: 2s"></div>
+        </div>
+
+        <!-- World Map Watermark -->
+        <div class="absolute inset-0 flex items-center justify-center overflow-hidden pointer-events-none z-0">
+             <img src="../world_map_watermark.svg" alt="" class="w-[150%] max-w-none opacity-10 select-none">
         </div>
 
         <div class="max-w-7xl mx-auto px-6 text-center relative z-10">
