@@ -122,54 +122,54 @@
 
     <!-- Navigation -->
     <nav id="main-nav"
-        class="fixed w-full z-50 top-0 start-0 border-b border-gray-200 dark:border-white/10 glass-card transition-all duration-300 group">
-
+        class="fixed w-full z-40 top-0 start-0 border-b border-gray-200 dark:border-white/10 glass-card transition-all duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col sm:flex-row items-center justify-between py-4 gap-4">
-                <a href="index.html" class="flex items-center space-x-0 rtl:space-x-reverse group">
-                    <img src="logo.png" alt="CyberQuant Logo"
-                        class="w-12 h-12 md:w-24 md:h-24 object-contain -me-1 md:-me-4">
-                    <span
-                        class="text-xl md:text-4xl font-display font-bold text-gray-900 dark:text-white uppercase tracking-tight">CYBER<span
-                            class="text-cyber-blue">QUANT</span></span>
+            <div class="flex flex-wrap items-center justify-between mx-auto p-3">
+                <a href="index.html" class="flex items-center gap-3 rtl:space-x-reverse group">
+                    <div class="relative w-12 h-12 md:w-16 md:h-16 flex items-center justify-center transition-transform group-hover:scale-105 duration-300">
+                        <img src="logo.png" alt="CyberQuant Shield"
+                            class="w-full h-full object-contain drop-shadow-[0_0_10px_rgba(14,165,233,0.5)]" />
+                        <div class="absolute -inset-2 bg-cyber-neon/20 blur-lg rounded-full opacity-0 group-hover:opacity-40 transition-opacity duration-300"></div>
+                    </div>
+                    <span class="self-center text-xl md:text-2xl font-display font-bold whitespace-nowrap text-gray-900 dark:text-white tracking-wider">CYBER<span class="text-cyber-blue">QUANT</span></span>
                 </a>
-                <div class="flex items-center gap-2 sm:gap-4 flex-wrap justify-center text-sm">
+
+                <div class="flex items-center gap-2 md:order-2">
                     <!-- Language Switcher -->
                     <div class="relative group">
-                        <button type="button" aria-label="Change language"
-                            class="flex items-center gap-2 bg-gray-100 dark:bg-white/5 border border-transparent hover:border-gray-300 dark:hover:border-white/20 px-3 py-1.5 rounded-full text-gray-900 dark:text-gray-300 hover:text-cyber-blue dark:hover:text-cyber-neon transition-all">
-                            <i class="ph-duotone ph-globe text-base"></i>
-                            <span id="current-lang" class="text-[10px] font-bold tracking-tighter">EN</span>
-                            <i class="ph-bold ph-caret-down text-[8px] opacity-70"></i>
+                        <button type="button"
+                            class="flex items-center gap-2 bg-gray-100 dark:bg-white/5 border border-transparent hover:border-gray-300 dark:hover:border-white/20 px-3 py-2 rounded-full text-gray-900 dark:text-gray-300 hover:text-cyber-blue dark:hover:text-cyber-neon transition-all">
+                            <i class="ph-duotone ph-globe text-lg"></i>
+                            <span id="current-lang" class="text-xs font-bold tracking-tighter">EN</span>
+                            <i class="ph-bold ph-caret-down text-[10px] opacity-70"></i>
                         </button>
                         <!-- Dropdown -->
-                        <div class="absolute right-0 top-full pt-2 w-32 hidden group-hover:block hover:block z-50">
-                            <div
-                                class="bg-white/95 dark:bg-gray-900/95 backdrop-blur-xl rounded-xl shadow-2xl border border-gray-100 dark:border-white/10 py-1 overflow-hidden">
+                        <div class="absolute right-0 top-full pt-2 w-40 hidden group-hover:block hover:block z-50">
+                            <div class="bg-white/95 dark:bg-gray-900/95 backdrop-blur-xl rounded-2xl shadow-2xl border border-gray-100 dark:border-white/10 py-2 overflow-hidden">
                                 <button onclick="changeLanguage('en')"
-                                    class="block w-full text-left px-3 py-1.5 text-xs text-gray-900 dark:text-gray-300 hover:bg-cyber-blue/10 hover:text-cyber-blue transition-colors flex items-center justify-between">
+                                    class="block w-full text-left px-4 py-2 text-sm text-gray-900 dark:text-gray-300 hover:bg-cyber-blue/10 hover:text-cyber-blue transition-colors flex items-center justify-between">
                                     <span>English</span>
-                                    <span class="text-[10px] opacity-50">🇺🇸</span>
+                                    <span class="text-xs opacity-50">🇺🇸</span>
                                 </button>
                                 <button onclick="changeLanguage('es')"
-                                    class="block w-full text-left px-3 py-1.5 text-xs text-gray-900 dark:text-gray-300 hover:bg-cyber-blue/10 hover:text-cyber-blue transition-colors flex items-center justify-between">
+                                    class="block w-full text-left px-4 py-2 text-sm text-gray-900 dark:text-gray-300 hover:bg-cyber-blue/10 hover:text-cyber-blue transition-colors flex items-center justify-between">
                                     <span>Español</span>
-                                    <span class="text-[10px] opacity-50">🇪🇸</span>
+                                    <span class="text-xs opacity-50">🇪🇸</span>
                                 </button>
                                 <button onclick="changeLanguage('zh')"
-                                    class="block w-full text-left px-3 py-1.5 text-xs text-gray-900 dark:text-gray-300 hover:bg-cyber-blue/10 hover:text-cyber-blue transition-colors flex items-center justify-between">
+                                    class="block w-full text-left px-4 py-2 text-sm text-gray-900 dark:text-gray-300 hover:bg-cyber-blue/10 hover:text-cyber-blue transition-colors flex items-center justify-between">
                                     <span>中文</span>
-                                    <span class="text-[10px] opacity-50">🇨🇳</span>
+                                    <span class="text-xs opacity-50">🇨🇳</span>
                                 </button>
                                 <button onclick="changeLanguage('ar')"
-                                    class="block w-full text-left px-3 py-1.5 text-xs text-gray-900 dark:text-gray-300 hover:bg-cyber-blue/10 hover:text-cyber-blue transition-colors flex items-center justify-between">
+                                    class="block w-full text-left px-4 py-2 text-sm text-gray-900 dark:text-gray-300 hover:bg-cyber-blue/10 hover:text-cyber-blue transition-colors flex items-center justify-between">
                                     <span>العربية</span>
-                                    <span class="text-[10px] opacity-50">🇸🇦</span>
+                                    <span class="text-xs opacity-50">🇸🇦</span>
                                 </button>
                                 <button onclick="changeLanguage('pt')"
-                                    class="block w-full text-left px-3 py-1.5 text-xs text-gray-900 dark:text-gray-300 hover:bg-cyber-blue/10 hover:text-cyber-blue transition-colors flex items-center justify-between">
+                                    class="block w-full text-left px-4 py-2 text-sm text-gray-900 dark:text-gray-300 hover:bg-cyber-blue/10 hover:text-cyber-blue transition-colors flex items-center justify-between">
                                     <span>Português</span>
-                                    <span class="text-[10px] opacity-50">🇧🇷</span>
+                                    <span class="text-xs opacity-50">🇧🇷</span>
                                 </button>
                             </div>
                         </div>
@@ -178,22 +178,68 @@
                     <!-- Theme Toggle -->
                     <button id="theme-toggle" type="button" aria-label="Toggle theme" title="Toggle theme"
                         class="bg-gray-100 dark:bg-white/5 border border-transparent hover:border-gray-300 dark:hover:border-white/20 p-2 rounded-full text-gray-900 dark:text-gray-400 hover:text-cyber-blue dark:hover:text-cyber-neon transition-all">
-                        <i id="theme-icon" class="ph-duotone ph-sun text-base"></i>
+                        <i id="theme-icon" class="ph-duotone ph-sun text-lg"></i>
                     </button>
 
-                    <a href="index.html"
-                        class="text-xs md:text-sm font-semibold text-gray-800 dark:text-gray-400 hover:text-cyber-blue dark:hover:text-cyber-neon transition flex items-center gap-1">
-                        <i class="ph-bold ph-arrow-left"></i> <span data-i18n="nav.back_home">Back to Home</span>
-                    </a>
-                    <a href="market-report.html"
-                        class="text-xs md:text-sm font-semibold text-gray-800 dark:text-gray-400 hover:text-cyber-blue dark:hover:text-cyber-neon transition flex items-center gap-1">
-                        <i class="ph-bold ph-chart-bar"></i> <span data-i18n="nav.marketReport">Market Report</span>
-                    </a>
-                    <a href="contact.html"
-                        class="text-xs md:text-sm font-semibold text-gray-800 dark:text-gray-400 hover:text-cyber-blue dark:hover:text-cyber-neon transition flex items-center gap-1">
-                        <i class="ph-bold ph-envelope"></i> <span data-i18n="nav.contact">Contact Us</span>
-                    </a>
+                    <!-- Mobile Menu Button -->
+                    <button data-collapse-toggle="navbar-default" type="button"
+                        class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-700 rounded-lg md:hidden hover:bg-gray-100 dark:hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:focus:ring-gray-600"
+                        aria-controls="navbar-default" aria-expanded="false"
+                        onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
+                        <span class="sr-only">Open main menu</span>
+                        <i class="ph-bold ph-list text-2xl"></i>
+                    </button>
                 </div>
+
+                <div class="hidden w-full md:block md:w-auto md:order-1" id="navbar-default">
+                    <ul class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 dark:border-gray-700">
+                        <li>
+                            <a href="index.html#solutions" data-i18n="nav.solutions"
+                                class="block py-2 px-3 text-gray-900 dark:text-gray-300 hover:text-cyber-blue dark:hover:text-cyber-neon md:hover:bg-transparent md:border-0 md:p-0 transition-colors">Solutions</a>
+                        </li>
+                        <li>
+                            <a href="index.html#use-cases" data-i18n="nav.useCases"
+                                class="block py-2 px-3 text-gray-900 dark:text-gray-300 hover:text-cyber-blue dark:hover:text-cyber-neon md:hover:bg-transparent md:border-0 md:p-0 transition-colors">Use Cases</a>
+                        </li>
+                        <li>
+                            <a href="index.html#platform" data-i18n="nav.platform"
+                                class="block py-2 px-3 text-gray-900 dark:text-gray-300 hover:text-cyber-blue dark:hover:text-cyber-neon md:hover:bg-transparent md:border-0 md:p-0 transition-colors">Platform (MVP)</a>
+                        </li>
+                        <li>
+                            <a href="market-report.html" data-i18n="nav.marketReport"
+                                class="block py-2 px-3 text-gray-900 dark:text-gray-300 hover:text-cyber-blue dark:hover:text-cyber-neon md:hover:bg-transparent md:border-0 md:p-0 transition-colors font-bold text-cyber-blue">Market Report</a>
+                        </li>
+                        <li>
+                            <a href="contact.html" data-i18n="nav.contact"
+                                class="block py-2 px-3 text-cyber-blue border border-cyber-blue/30 rounded hover:bg-cyber-blue/10 md:px-4 md:py-1 transition-all">Contact</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="hidden md:hidden pb-4">
+                <ul class="flex flex-col space-y-4 text-center">
+                    <li>
+                        <a href="index.html#solutions" data-i18n="nav.solutions"
+                            class="text-gray-900 dark:text-gray-300 hover:text-cyber-blue">Solutions</a>
+                    </li>
+                    <li>
+                        <a href="index.html#use-cases" data-i18n="nav.useCases"
+                            class="text-gray-900 dark:text-gray-300 hover:text-cyber-blue">Use Cases</a>
+                    </li>
+                    <li>
+                        <a href="index.html#platform" data-i18n="nav.platform"
+                            class="text-gray-900 dark:text-gray-300 hover:text-cyber-blue">Platform (MVP)</a>
+                    </li>
+                    <li>
+                        <a href="market-report.html" data-i18n="nav.marketReport"
+                            class="text-gray-900 dark:text-gray-300 hover:text-cyber-blue font-bold text-cyber-blue">Market Report</a>
+                    </li>
+                    <li>
+                        <a href="contact.html" data-i18n="nav.contact"
+                            class="text-cyber-blue font-bold">Contact</a>
+                    </li>
+                </ul>
             </div>
         </div>
     </nav>
@@ -293,6 +339,28 @@
             </div>
         </section>
 
+        <!-- Footer -->
+        <footer class="mt-20 pt-8 border-t border-gray-200 dark:border-white/5">
+            <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-8 pb-8">
+                <div class="text-center md:text-left">
+                    <h3 class="text-2xl font-display font-bold mb-2 text-gray-900 dark:text-white">CYBER<span class="text-cyber-blue">QUANT</span></h3>
+                    <p class="opacity-50 text-sm text-gray-600 dark:text-gray-400" data-i18n="footer.rights">© 2026 CyberQuant Systems. Sovereign Defense.</p>
+                </div>
+                <div class="flex items-center gap-6">
+                    <a href="contact.html" class="text-sm text-gray-500 dark:text-gray-400 hover:text-cyber-blue transition-colors">Contact</a>
+                    <a href="#" class="w-10 h-10 rounded-full border border-gray-200 dark:border-white/10 flex items-center justify-center hover:bg-cyber-blue hover:text-black transition-colors text-gray-600 dark:text-gray-400" aria-label="Twitter">
+                        <i class="ph-bold ph-twitter-logo text-lg"></i>
+                    </a>
+                    <a href="#" class="w-10 h-10 rounded-full border border-gray-200 dark:border-white/10 flex items-center justify-center hover:bg-cyber-blue hover:text-black transition-colors text-gray-600 dark:text-gray-400" aria-label="LinkedIn">
+                        <i class="ph-bold ph-linkedin-logo text-lg"></i>
+                    </a>
+                    <a href="#" class="w-10 h-10 rounded-full border border-gray-200 dark:border-white/10 flex items-center justify-center hover:bg-cyber-blue hover:text-black transition-colors text-gray-600 dark:text-gray-400" aria-label="GitHub">
+                        <i class="ph-bold ph-github-logo text-lg"></i>
+                    </a>
+                </div>
+            </div>
+        </footer>
+
     </main>
 
     <script>
@@ -325,6 +393,19 @@
                 } catch ( e )
                 {
                     console.error( 'Error updating i18n element:', element, e );
+                }
+            } );
+
+            // Update placeholders
+            document.querySelectorAll( '[data-i18n-placeholder]' ).forEach( element =>
+            {
+                try
+                {
+                    const key = element.getAttribute( 'data-i18n-placeholder' );
+                    element.placeholder = i18next.t( key );
+                } catch ( e )
+                {
+                    console.error( 'Error updating placeholder:', element, e );
                 }
             } );
 
