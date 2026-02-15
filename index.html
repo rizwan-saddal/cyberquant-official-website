@@ -1273,17 +1273,10 @@
           Credentials are issued pending manual verification.
         </p>
 
-        <form
-          class="max-w-md mx-auto flex flex-col space-y-4 mb-12"
-          onsubmit="
-            event.preventDefault();
-            alert(
-              'Request logged. Our secure terminal will contact you shortly.',
-            );
-          "
-        >
+        <form id="deploy-form" class="max-w-md mx-auto flex flex-col space-y-4 mb-12">
           <div class="relative group">
             <input
+              id="deploy-name"
               type="text"
               placeholder="FULL NAME"
               required
@@ -1293,6 +1286,7 @@
           </div>
           <div class="relative group">
             <input
+              id="deploy-email"
               type="email"
               placeholder="ENTER GOVERNMENT OR CORPORATE EMAIL"
               required
@@ -1304,12 +1298,14 @@
             ></div>
           </div>
           <button
+            id="deploy-submit"
             type="submit"
             class="bg-cyber-blue text-black dark:text-white font-black p-4 rounded hover:bg-blue-600 transition duration-300 uppercase tracking-widest shadow-lg shadow-cyber-blue/20"
             data-i18n="contact.submit"
           >
             Request Credentials
           </button>
+          <p id="deploy-status" class="text-center text-sm hidden"></p>
         </form>
 
         <div
@@ -1496,6 +1492,48 @@
             updateContent();
           },
         );
+
+        // --- Deploy Form Submission ---
+        const deployForm = document.getElementById("deploy-form");
+        if (deployForm) {
+          deployForm.addEventListener("submit", async (e) => {
+            e.preventDefault();
+            const btn = document.getElementById("deploy-submit");
+            const status = document.getElementById("deploy-status");
+            const name = document.getElementById("deploy-name").value.trim();
+            const email = document.getElementById("deploy-email").value.trim();
+
+            btn.disabled = true;
+            btn.textContent = "SENDING...";
+            status.classList.add("hidden");
+
+            try {
+              const res = await fetch("/api/contact", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ name, email, source: "ready-to-deploy" }),
+              });
+              const data = await res.json();
+
+              status.classList.remove("hidden");
+              if (res.ok) {
+                status.textContent = data.message || "Request submitted successfully.";
+                status.className = "text-center text-sm text-green-500";
+                deployForm.reset();
+              } else {
+                status.textContent = data.error || "Something went wrong. Please try again.";
+                status.className = "text-center text-sm text-red-500";
+              }
+            } catch (err) {
+              status.classList.remove("hidden");
+              status.textContent = "Network error. Please check your connection and try again.";
+              status.className = "text-center text-sm text-red-500";
+            } finally {
+              btn.disabled = false;
+              btn.textContent = i18next.t("contact.submit", { defaultValue: "Request Credentials" });
+            }
+          });
+        }
       });
     </script>
   </body>

@@ -212,26 +212,26 @@
         <section class="mb-20">
             <div class="glass-card rounded-2xl p-6 md:p-12 shadow-xl backdrop-blur-md">
 
-                <form class="max-w-md mx-auto flex flex-col space-y-4 mb-12"
-                    onsubmit="event.preventDefault(); alert('Request logged. Our secure terminal will contact you shortly.');">
+                <form id="contact-form" class="max-w-md mx-auto flex flex-col space-y-4 mb-12">
                     <div class="relative group">
-                        <input type="text" placeholder="FULL NAME" required
+                        <input id="contact-name" type="text" placeholder="FULL NAME" required
                             data-i18n-placeholder="contact.placeholder_name"
                             class="w-full bg-gray-50 dark:bg-white/5 border border-gray-300 dark:border-white/20 p-4 rounded text-center outline-none focus:border-cyber-blue focus:bg-white dark:focus:bg-white/10 transition text-gray-900 dark:text-gray-100 placeholder-gray-500">
                     </div>
                     <div class="relative group">
-                        <input type="email" placeholder="ENTER GOVERNMENT OR CORPORATE EMAIL" required
+                        <input id="contact-email" type="email" placeholder="ENTER GOVERNMENT OR CORPORATE EMAIL" required
                             data-i18n-placeholder="contact.placeholder_email"
                             class="w-full bg-gray-50 dark:bg-white/5 border border-gray-300 dark:border-white/20 p-4 rounded text-center outline-none focus:border-cyber-blue focus:bg-white dark:focus:bg-white/10 transition text-gray-900 dark:text-gray-100 placeholder-gray-500">
                         <div
                             class="absolute inset-0 border border-cyber-blue/0 group-hover:border-cyber-blue/30 rounded pointer-events-none transition duration-500">
                         </div>
                     </div>
-                    <button type="submit"
+                    <button id="contact-submit" type="submit"
                         class="bg-cyber-blue text-black dark:text-white font-black p-4 rounded hover:bg-blue-600 transition duration-300 uppercase tracking-widest shadow-lg shadow-cyber-blue/20"
                         data-i18n="contact.submit">
                         Request Credentials
                     </button>
+                    <p id="contact-status" class="text-center text-sm hidden"></p>
                 </form>
 
                 <div class="flex flex-col items-center justify-center space-y-2">
@@ -344,6 +344,57 @@
                 localStorage.setItem( 'user-language', lang );
             } );
         }
+
+        // --- Contact Form Submission ---
+        document.addEventListener( 'DOMContentLoaded', () =>
+        {
+            const form = document.getElementById( 'contact-form' );
+            if ( !form ) return;
+
+            form.addEventListener( 'submit', async ( e ) =>
+            {
+                e.preventDefault();
+                const btn = document.getElementById( 'contact-submit' );
+                const status = document.getElementById( 'contact-status' );
+                const name = document.getElementById( 'contact-name' ).value.trim();
+                const email = document.getElementById( 'contact-email' ).value.trim();
+
+                btn.disabled = true;
+                btn.textContent = 'SENDING...';
+                status.classList.add( 'hidden' );
+
+                try
+                {
+                    const res = await fetch( '/api/contact', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify( { name, email, source: 'contact-page' } )
+                    } );
+                    const data = await res.json();
+
+                    status.classList.remove( 'hidden' );
+                    if ( res.ok )
+                    {
+                        status.textContent = data.message || 'Request submitted successfully.';
+                        status.className = 'text-center text-sm text-green-500';
+                        form.reset();
+                    } else
+                    {
+                        status.textContent = data.error || 'Something went wrong. Please try again.';
+                        status.className = 'text-center text-sm text-red-500';
+                    }
+                } catch ( err )
+                {
+                    status.classList.remove( 'hidden' );
+                    status.textContent = 'Network error. Please check your connection and try again.';
+                    status.className = 'text-center text-sm text-red-500';
+                } finally
+                {
+                    btn.disabled = false;
+                    btn.textContent = i18next.t( 'contact.submit', { defaultValue: 'Request Credentials' } );
+                }
+            } );
+        } );
 
 
     </script>
