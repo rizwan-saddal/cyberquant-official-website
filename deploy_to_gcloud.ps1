@@ -5,6 +5,15 @@ $ProjectID = "tribal-terra-446412-n4"
 
 Write-Host "🚀 Starting deployment for Project: $ProjectID" -ForegroundColor Cyan
 
+# Build Tailwind CSS for production
+Write-Host "Building Tailwind CSS..."
+npm run build:css
+if ($LASTEXITCODE -ne 0) {
+    Write-Host "❌ Tailwind CSS build failed!" -ForegroundColor Red
+    exit 1
+}
+Write-Host "✅ Tailwind CSS built successfully." -ForegroundColor Green
+
 # Ensure the correct project is selected
 Write-Host "Setting Google Cloud Project..."
 gcloud config set project $ProjectID

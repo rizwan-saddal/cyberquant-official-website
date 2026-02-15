@@ -4,10 +4,12 @@
         "useCases": "Casos de Uso",
         "platform": "Plataforma (MVP)",
         "marketReport": "Informe de Mercado",
-        "contact": "Contacto"
+        "userGuide": "Guía de Usuario",
+        "contact": "Contacto",
+        "back_home": "Volver al Inicio"
     },
     "hero": {
-        "mvp_banner": "Plataforma MVP en Vivo: Acceso Exclusivo",
+        "mvp_banner": "Disponible ahora \u2014 Solicite acceso anticipado",
         "title_prefix": "Asegure Su",
         "title_highlight": "Soberanía Digital",
         "subtitle": "Alcanza el control absoluto sobre tu territorio digital. La primera plataforma impulsada por IA que protege redes soberanas con criptografía post-cuántica aprobada por NIST.",

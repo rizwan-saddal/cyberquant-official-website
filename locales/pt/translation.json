@@ -3,10 +3,13 @@
         "solutions": "Soluções",
         "useCases": "Casos de Uso",
         "platform": "Plataforma (MVP)",
-        "contact": "Contato"
+        "marketReport": "Relatório de Mercado",
+        "userGuide": "Guia do Usuário",
+        "contact": "Contato",
+        "back_home": "Voltar ao Início"
     },
     "hero": {
-        "mvp_banner": "Plataforma MVP Ativa: Acesso Exclusivo",
+        "mvp_banner": "Dispon\u00edvel agora \u2014 Solicite acesso antecipado",
         "title_prefix": "Garanta Sua",
         "title_highlight": "Soberania Digital",
         "subtitle": "Alcance o controlo absoluto sobre o seu território digital. A primeira plataforma impulsionada por IA que protege as redes soberanas com criptografia pós-quântica aprovada pelo NIST.",

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Sentinext-Q User Guide</title>
+</head>
+<body style="font-family: Arial, sans-serif; line-height: 1.5; color: #111827;">
+  <h1>Sentinext-Q User Guide</h1>
+  <p><strong>Version:</strong> 1.0<br/><strong>Date:</strong> 2026-02-15</p>
+
+  <h2>1. Platform Overview</h2>
+  <p>
+    Sentinext-Q is CyberQuant's sovereign security platform for real-time threat visibility,
+    post-quantum readiness, and jurisdiction-aware operations.
+  </p>
+
+  <h2>2. Initial Setup</h2>
+  <ul>
+    <li>Provision a secure tenant and assign administrative roles.</li>
+    <li>Connect telemetry sources and define policy zones.</li>
+    <li>Verify cryptographic posture and baseline risk scoring.</li>
+  </ul>
+
+  <h2>3. Daily Operations</h2>
+  <ul>
+    <li>Review threat heatmaps and anomaly scoring.</li>
+    <li>Validate compliance status and exception queue.</li>
+    <li>Execute response playbooks for high-severity alerts.</li>
+  </ul>
+
+  <h2>4. Compliance Workflow</h2>
+  <p>
+    Use one-click reporting to export GDPR, HIPAA, and sovereignty-aligned controls
+    with auditable timestamp trails.
+  </p>
+
+  <h2>5. Troubleshooting</h2>
+  <ul>
+    <li>Check ingestion pipeline health and connector status.</li>
+    <li>Confirm role mappings for operator visibility constraints.</li>
+    <li>Re-run baseline profiling after major topology changes.</li>
+  </ul>
+
+  <p><em>CyberQuant Systems — Internal/Partner Enablement Material</em></p>
+</body>
+</html>

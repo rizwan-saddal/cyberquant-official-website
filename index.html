@@ -106,42 +106,14 @@
     <!-- Phosphor Icons -->
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
 
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Tailwind CSS (Production Build) -->
+    <link rel="stylesheet" href="dist/output.css" />
 
     <!-- i18next & Dependencies -->
     <script src="https://unpkg.com/i18next@23.2.3/dist/umd/i18next.min.js"></script>
     <script src="https://unpkg.com/i18next-http-backend@2.2.1/i18nextHttpBackend.min.js"></script>
     <script src="https://unpkg.com/i18next-browser-languagedetector@7.1.0/i18nextBrowserLanguageDetector.min.js"></script>
 
-    <script>
-      tailwind.config = {
-        darkMode: "class", // Manual toggling
-        theme: {
-          extend: {
-            colors: {
-              cyber: {
-                dark: "var(--color-dark)",
-                slate: "var(--color-slate)",
-                blue: "var(--color-blue)",
-                neon: "var(--color-neon)",
-                purple: "var(--color-purple)",
-                accent: "var(--color-accent)",
-                danger: "var(--color-danger)",
-              },
-            },
-            fontFamily: {
-              sans: ["Inter", "sans-serif"],
-              display: ["Outfit", "sans-serif"],
-            },
-            backgroundImage: {
-              "radial-glow":
-                "radial-gradient(circle at center, var(--color-blue-glow) 0%, transparent 70%)",
-            },
-          },
-        },
-      };
-    </script>
     <script src="scripts/theme.js"></script>
 
     <style>
@@ -260,6 +232,25 @@
         }
       }
 
+      .banner-shimmer {
+        position: relative;
+        overflow: hidden;
+      }
+      .banner-shimmer::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.06), transparent);
+        animation: shimmer 3s ease-in-out infinite;
+      }
+      @keyframes shimmer {
+        0% { left: -100%; }
+        100% { left: 100%; }
+      }
+
       .btn-cyber {
         position: relative;
         overflow: hidden;
@@ -339,7 +330,7 @@
         <div class="flex flex-wrap items-center justify-between mx-auto p-3">
           <a href="#" class="flex items-center gap-3 rtl:space-x-reverse group">
             <div
-              class="relative w-12 h-12 md:w-16 md:h-16 flex items-center justify-center transition-transform group-hover:scale-105 duration-300"
+              class="relative w-14 h-14 md:w-20 md:h-20 flex items-center justify-center transition-transform group-hover:scale-105 duration-300"
             >
               <img
                 src="logo.png"
@@ -351,7 +342,7 @@
               ></div>
             </div>
             <span
-              class="self-center text-xl md:text-2xl font-display font-bold whitespace-nowrap text-gray-900 dark:text-white tracking-wider"
+              class="self-center text-xl md:text-3xl font-display font-bold whitespace-nowrap text-gray-900 dark:text-white tracking-wider"
               >CYBER<span class="text-cyber-blue">QUANT</span></span
             >
           </a>
@@ -487,6 +478,14 @@
               </li>
               <li>
                 <a
+                  href="user-guide.html"
+                  data-i18n="nav.userGuide"
+                  class="block py-2 px-3 text-gray-900 dark:text-gray-300 hover:text-cyber-blue dark:hover:text-cyber-neon md:hover:bg-transparent md:border-0 md:p-0 transition-colors"
+                  >User Guide</a
+                >
+              </li>
+              <li>
+                <a
                   href="contact.html"
                   data-i18n="nav.contact"
                   class="block py-2 px-3 text-cyber-blue border border-cyber-blue/30 rounded hover:bg-cyber-blue/10 md:px-4 md:py-1 transition-all"
@@ -533,6 +532,14 @@
             </li>
             <li>
               <a
+                href="user-guide.html"
+                data-i18n="nav.userGuide"
+                class="text-gray-900 dark:text-gray-300 hover:text-cyber-blue"
+                >User Guide</a
+              >
+            </li>
+            <li>
+              <a
                 href="contact.html"
                 data-i18n="nav.contact"
                 class="text-cyber-blue font-bold"
@@ -567,13 +574,16 @@
       >
         <a
           href="#contact"
-          class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-cyber-blue/10 border border-cyber-blue/20 text-cyber-blue text-sm font-semibold mb-8 animate-float hover:bg-cyber-blue/20 transition-all cursor-pointer"
-          style="animation-duration: 4s"
+          class="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-cyber-blue/5 border border-cyber-blue/15 text-cyber-blue text-sm font-medium mb-8 hover:bg-cyber-blue/10 hover:border-cyber-blue/30 transition-all cursor-pointer backdrop-blur-sm banner-shimmer"
         >
-          <span class="w-2 h-2 rounded-full bg-cyber-neon animate-pulse"></span>
+          <span class="relative flex h-2 w-2">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyber-blue opacity-75"></span>
+            <span class="relative inline-flex rounded-full h-2 w-2 bg-cyber-blue"></span>
+          </span>
           <span data-i18n="hero.mvp_banner"
-            >MVP Platform Live: Exclusive Access</span
+            >Now Available — Request Early Access</span
           >
+          <i class="ph-bold ph-arrow-right text-xs opacity-60"></i>
         </a>
 
         <h1
@@ -1041,7 +1051,7 @@
             <div class="absolute inset-0 flex items-center justify-center z-20">
               <a
                 href="#contact"
-                class="btn-cyber px-8 py-4 bg-cyber-blue/90 hover:bg-cyber-blue text-black dark:text-white font-bold rounded-full backdrop-blur-md border border-white/20 shadow-[0_0_30px_rgba(14,165,233,0.5)] transition-all transform hover:scale-105 flex items-center gap-3"
+                class="btn-cyber px-8 py-4 bg-cyber-blue text-black dark:text-white font-bold rounded-lg hover:bg-blue-600 shadow-[0_0_20px_rgba(14,165,233,0.3)] transition-all flex items-center justify-center gap-2"
               >
                 <span data-i18n="platform.cta_demo"
                   >Schedule a Live Platform Demo</span

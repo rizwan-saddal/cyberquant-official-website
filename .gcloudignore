@@ -16,6 +16,12 @@
 # Node.js dependencies:
 node_modules/
 
+# Tailwind source (build artifacts in dist/ ARE deployed)
+src/
+tailwind.config.js
+package.json
+package-lock.json
+
 # Python pycache:
 __pycache__/
 *.pyc

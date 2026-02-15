@@ -25,8 +25,8 @@
     <!-- Chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Tailwind CSS (Production Build) -->
+    <link rel="stylesheet" href="dist/output.css" />
 
     <!-- i18next & Dependencies -->
     <script src="https://unpkg.com/i18next@23.2.3/dist/umd/i18next.min.js"></script>
@@ -34,30 +34,6 @@
     <script
         src="https://unpkg.com/i18next-browser-languagedetector@7.1.0/i18nextBrowserLanguageDetector.min.js"></script>
 
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    colors: {
-                        cyber: {
-                            dark: 'var(--color-dark)',
-                            slate: 'var(--color-slate)',
-                            blue: 'var(--color-blue)',
-                            neon: 'var(--color-neon)',
-                            purple: 'var(--color-purple)',
-                            accent: 'var(--color-accent)',
-                            danger: 'var(--color-danger)'
-                        }
-                    },
-                    fontFamily: {
-                        sans: [ 'Inter', 'sans-serif' ],
-                        display: [ 'Outfit', 'sans-serif' ],
-                    }
-                }
-            }
-        }
-    </script>
     <script src="scripts/theme.js"></script>
     <style>
         /* CSS Theme Variables */
@@ -440,6 +416,10 @@
                     <a href="index.html"
                         class="text-xs md:text-sm font-semibold text-gray-800 dark:text-gray-400 hover:text-cyber-blue dark:hover:text-cyber-neon transition flex items-center gap-1">
                         <i class="ph-bold ph-arrow-left"></i> <span data-i18n="nav.back_home">Back to Home</span>
+                    </a>
+                    <a href="user-guide.html"
+                        class="text-xs md:text-sm font-semibold text-gray-800 dark:text-gray-400 hover:text-cyber-blue dark:hover:text-cyber-neon transition flex items-center gap-1">
+                        <i class="ph-bold ph-book-open-text"></i> <span data-i18n="nav.userGuide">User Guide</span>
                     </a>
                 </div>
             </div>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Sentinext-Q User Guide Slides</title>
+</head>
+<body style="font-family: Arial, sans-serif; color: #111827;">
+  <h1>Sentinext-Q User Guide Slides</h1>
+  <p><strong>Deck Version:</strong> 1.0 | <strong>Date:</strong> 2026-02-15</p>
+
+  <h2>Slide 1 — Executive Overview</h2>
+  <ul>
+    <li>Sovereign security architecture</li>
+    <li>AI-native threat intelligence</li>
+    <li>Post-quantum resilience readiness</li>
+  </ul>
+
+  <h2>Slide 2 — Core Capabilities</h2>
+  <ul>
+    <li>Real-time data and jurisdiction mapping</li>
+    <li>Threat quantification and heatmaps</li>
+    <li>Compliance automation and audit export</li>
+  </ul>
+
+  <h2>Slide 3 — Deployment Flow</h2>
+  <ul>
+    <li>Tenant initialization and role setup</li>
+    <li>Telemetry connector onboarding</li>
+    <li>Policy and response playbook activation</li>
+  </ul>
+
+  <h2>Slide 4 — Operations & Response</h2>
+  <ul>
+    <li>Continuous monitoring dashboard</li>
+    <li>Alert triage and escalation model</li>
+    <li>Incident evidence timeline retention</li>
+  </ul>
+
+  <h2>Slide 5 — Governance & Value</h2>
+  <ul>
+    <li>Jurisdictional control and legal resilience</li>
+    <li>Predictable security TCO model</li>
+    <li>Faster executive and regulator reporting</li>
+  </ul>
+
+  <p><em>CyberQuant Systems — Sentinext-Q Enablement Deck</em></p>
+</body>
+</html>

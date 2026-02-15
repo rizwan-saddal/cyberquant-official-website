@@ -4,11 +4,12 @@
         "useCases": "Use Cases",
         "platform": "Platform (MVP)",
         "marketReport": "Market Report",
+        "userGuide": "User Guide",
         "contact": "Contact",
         "back_home": "Back to Home"
     },
     "hero": {
-        "mvp_banner": "MVP Platform Live: Exclusive Access",
+        "mvp_banner": "Now Available \u2014 Request Early Access",
         "title_prefix": "Secure Your",
         "title_highlight": "Digital Sovereignty",
         "subtitle": "Achieve absolute control over your digital territory. The first AI-driven platform protecting sovereign networks with NIST-approved Post-Quantum Cryptography.",

@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sentinext-Q User Guide | CyberQuant</title>
+    <meta name="description"
+        content="Sentinext-Q user guide, downloadable documentation, and slide deck for onboarding and operations." />
+    <link rel="icon" type="image/png" href="favicon.png" />
+    <link rel="icon" type="image/webp" href="logo.png" />
+    <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link rel="stylesheet" href="dist/output.css" />
+    <script src="https://unpkg.com/i18next@23.2.3/dist/umd/i18next.min.js"></script>
+    <script src="https://unpkg.com/i18next-http-backend@2.2.1/i18nextHttpBackend.min.js"></script>
+    <script src="scripts/theme.js"></script>
+
+    <style>
+        :root {
+            --color-dark: #0a192f;
+            --color-blue: #318e78;
+        }
+
+        .dark {
+            --color-blue: #64ffda;
+        }
+
+        body {
+            background-color: #f9fafb;
+            background-image: linear-gradient(to right, rgba(100, 100, 100, 0.04) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(100, 100, 100, 0.04) 1px, transparent 1px);
+            background-size: 24px 24px;
+            color: #111827;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .dark body {
+            background-color: var(--color-dark) !important;
+            color: #f8fafc;
+            background-image: linear-gradient(to right, rgba(100, 255, 218, 0.05) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(100, 255, 218, 0.05) 1px, transparent 1px);
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            -webkit-backdrop-filter: blur(12px);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(203, 213, 225, 0.6);
+        }
+
+        .dark .glass-card {
+            background: rgba(15, 23, 42, 0.5);
+            border: 1px solid rgba(56, 189, 248, 0.1);
+        }
+    </style>
+</head>
+
+<body class="antialiased selection:bg-cyber-blue selection:text-white pb-20">
+    <nav id="main-nav"
+        class="fixed w-full z-50 top-0 start-0 border-b border-gray-200 dark:border-white/10 glass-card transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between py-2 md:py-4 gap-4">
+                <a href="index.html" class="flex items-center gap-2 md:gap-4 group">
+                    <div class="relative w-12 h-12 md:w-20 md:h-20 flex items-center justify-center">
+                        <img src="logo.png" alt="CyberQuant Shield"
+                            class="w-full h-full object-contain filter drop-shadow-[0_0_8px_rgba(49,142,120,0.5)]" />
+                    </div>
+                    <span
+                        class="text-xl md:text-4xl font-display font-bold text-gray-900 dark:text-white uppercase tracking-tight">CYBER<span
+                            class="text-cyber-blue">QUANT</span></span>
+                </a>
+
+                <div class="flex items-center gap-2 sm:gap-4 flex-wrap justify-center text-sm">
+                    <button id="theme-toggle" type="button" aria-label="Toggle theme" title="Toggle theme"
+                        class="bg-gray-100 dark:bg-white/5 border border-transparent hover:border-gray-300 dark:hover:border-white/20 p-2 rounded-full text-gray-900 dark:text-gray-400 hover:text-cyber-blue dark:hover:text-cyber-neon transition-all">
+                        <i id="theme-icon" class="ph-duotone ph-sun text-base"></i>
+                    </button>
+
+                    <a href="index.html"
+                        class="text-xs md:text-sm font-semibold text-gray-800 dark:text-gray-400 hover:text-cyber-blue dark:hover:text-cyber-neon transition flex items-center gap-1">
+                        <i class="ph-bold ph-arrow-left"></i>
+                        <span data-i18n="nav.back_home">Back to Home</span>
+                    </a>
+                    <a href="market-report.html"
+                        class="text-xs md:text-sm font-semibold text-gray-800 dark:text-gray-400 hover:text-cyber-blue dark:hover:text-cyber-neon transition flex items-center gap-1">
+                        <i class="ph-bold ph-chart-bar"></i>
+                        <span data-i18n="nav.marketReport">Market Report</span>
+                    </a>
+                    <span
+                        class="text-xs md:text-sm font-semibold text-cyber-blue transition cursor-default whitespace-nowrap">
+                        <i class="ph-bold ph-book-open-text"></i>
+                        <span data-i18n="nav.userGuide">User Guide</span>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="pt-48 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <header class="mb-12 text-center">
+            <div
+                class="inline-block px-3 py-1 mb-4 text-xs font-semibold tracking-wider text-cyber-blue dark:text-cyber-neon uppercase bg-cyber-blue/10 dark:bg-cyber-neon/10 rounded-full border border-cyber-blue/20 dark:border-cyber-neon/20">
+                Sentinext-Q
+            </div>
+            <h1 class="text-4xl md:text-5xl font-display font-bold text-gray-900 dark:text-white mb-4">
+                User Guide & Enablement Kit
+            </h1>
+            <p class="text-gray-800 dark:text-gray-400 text-lg max-w-3xl mx-auto">
+                Access the official Sentinext-Q onboarding document and presentation slides for deployment, operations,
+                compliance workflows, and SOC enablement.
+            </p>
+        </header>
+
+        <section class="grid md:grid-cols-2 gap-6 mb-12">
+            <article class="glass-card rounded-2xl p-8 border border-gray-200 dark:border-white/10">
+                <div class="flex items-center gap-3 mb-5 text-cyber-blue">
+                    <i class="ph-duotone ph-file-doc text-3xl"></i>
+                    <h2 class="text-2xl font-display font-bold text-gray-900 dark:text-white">User Guide Document</h2>
+                </div>
+                <p class="text-gray-700 dark:text-gray-300 mb-6 leading-relaxed">
+                    Full written reference covering architecture overview, initial setup, policy controls, threat
+                    telemetry,
+                    alert handling, and troubleshooting checkpoints.
+                </p>
+                <a href="Sentinext-Q-User-Guide.doc"
+                    class="btn-cyber inline-flex items-center gap-2 px-6 py-3 bg-cyber-blue text-black dark:text-white font-bold rounded-lg hover:bg-blue-600 shadow-[0_0_20px_rgba(14,165,233,0.3)] transition-all"
+                    download>
+                    <i class="ph-bold ph-download-simple"></i>
+                    Download DOC
+                </a>
+            </article>
+
+            <article class="glass-card rounded-2xl p-8 border border-gray-200 dark:border-white/10">
+                <div class="flex items-center gap-3 mb-5 text-cyber-blue">
+                    <i class="ph-duotone ph-presentation-chart text-3xl"></i>
+                    <h2 class="text-2xl font-display font-bold text-gray-900 dark:text-white">Presentation Slides</h2>
+                </div>
+                <p class="text-gray-700 dark:text-gray-300 mb-6 leading-relaxed">
+                    Executive and technical slide deck for solution briefings, pilot workshops, partner onboarding, and
+                    internal
+                    readiness sessions.
+                </p>
+                <a href="Sentinext-Q-User-Guide-Slides.ppt"
+                    class="btn-cyber inline-flex items-center gap-2 px-6 py-3 bg-cyber-blue text-black dark:text-white font-bold rounded-lg hover:bg-blue-600 shadow-[0_0_20px_rgba(14,165,233,0.3)] transition-all"
+                    download>
+                    <i class="ph-bold ph-download-simple"></i>
+                    Download PPT
+                </a>
+            </article>
+        </section>
+
+        <section class="glass-card rounded-2xl p-8 border border-gray-200 dark:border-white/10">
+            <h3 class="text-2xl font-display font-bold text-gray-900 dark:text-white mb-4">Quick Contents</h3>
+            <ul class="space-y-3 text-gray-800 dark:text-gray-300">
+                <li class="flex items-start gap-2"><i
+                        class="ph-bold ph-check-circle text-cyber-blue mt-1"></i><span>Platform architecture and
+                        sovereign data flow model</span></li>
+                <li class="flex items-start gap-2"><i
+                        class="ph-bold ph-check-circle text-cyber-blue mt-1"></i><span>Deployment prerequisites and
+                        secure onboarding process</span></li>
+                <li class="flex items-start gap-2"><i
+                        class="ph-bold ph-check-circle text-cyber-blue mt-1"></i><span>Threat map operations, scoring,
+                        and incident response</span></li>
+                <li class="flex items-start gap-2"><i
+                        class="ph-bold ph-check-circle text-cyber-blue mt-1"></i><span>Compliance reporting and
+                        governance review workflow</span></li>
+            </ul>
+        </section>
+    </main>
+
+    <script>
+        const languageMap = { en: "EN", es: "ES", zh: "ZH", ar: "AR", pt: "PT" };
+
+        function updateContent() {
+            document.querySelectorAll("[data-i18n]").forEach((element) => {
+                try {
+                    const key = element.getAttribute("data-i18n");
+                    element.innerHTML = i18next.t(key);
+                } catch (e) {
+                    console.error("Error updating i18n element:", element, e);
+                }
+            });
+
+            const currentLang = i18next.language.split("-")[0];
+            const html = document.documentElement;
+            if (currentLang === "ar") {
+                html.setAttribute("dir", "rtl");
+                html.setAttribute("lang", "ar");
+            } else {
+                html.setAttribute("dir", "ltr");
+                html.setAttribute("lang", currentLang);
+            }
+
+            const langDisplay = document.getElementById("current-lang");
+            if (langDisplay) langDisplay.textContent = languageMap[currentLang] || "EN";
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const initLang = localStorage.getItem("user-language") || "en";
+
+            i18next.use(i18nextHttpBackend).init(
+                {
+                    lng: initLang,
+                    fallbackLng: "en",
+                    debug: false,
+                    backend: { loadPath: "locales/{{lng}}/translation.json" },
+                },
+                function (err) {
+                    if (err) return console.error("i18next init error:", err);
+                    updateContent();
+                },
+            );
+        });
+    </script>
+</body>
+
+</html>

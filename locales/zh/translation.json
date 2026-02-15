@@ -3,10 +3,13 @@
         "solutions": "解决方案",
         "useCases": "应用案例",
         "platform": "平台 (MVP)",
+        "marketReport": "市场报告",
+        "userGuide": "用户指南",
+        "back_home": "返回首页",
         "contact": "联系我们"
     },
     "hero": {
-        "mvp_banner": "MVP 平台上线：独家其通过",
+        "mvp_banner": "现已推出 — 申请抢先体验",
         "title_prefix": "捍卫您的",
         "title_highlight": "数字主权",
         "subtitle": "实现对数字领土的绝对控制。第一个保护主权网络的人工智能驱动平台，采用 NIST 批准的后量子密码学。",
