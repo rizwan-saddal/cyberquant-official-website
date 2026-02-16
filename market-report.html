@@ -110,8 +110,8 @@
         /* Adaptive Glass Card */
         .glass-card {
             background: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
+            backdrop-filter: blur(12px);
             border: 1px solid rgba(203, 213, 225, 0.6);
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
             transition: all 0.3s ease;
@@ -646,7 +646,8 @@
                 class="hover:text-cyber-blue transition-colors">Sovereign Compliance</a>
             <a href="security.html#vulnerability" data-i18n="footer.vuln"
                 class="hover:text-cyber-blue transition-colors">Vulnerability Disclosure</a>
-            <a href="market-report.html" data-i18n="footer.marketReport" class="hover:text-cyber-blue transition-colors">2026
+            <a href="market-report.html" data-i18n="footer.marketReport"
+                class="hover:text-cyber-blue transition-colors">2026
                 Market Report</a>
             <a href="user-guide.html" data-i18n="footer.userGuide" class="hover:text-cyber-blue transition-colors">User
                 Guide</a>
@@ -708,12 +709,13 @@
                         <i class="ph-bold ph-sparkle text-white"></i>
                     </div>
                     <div>
-                        <h3 class="font-display font-bold text-white text-sm">Gemini Market Analyst</h3>
-                        <p class="text-[10px] text-gray-400">Powered by Gemini 1.5 Pro</p>
+                        <h3 class="font-display font-bold text-white text-sm"> Market Analyst</h3>
+                       
                     </div>
                 </div>
-                <button onclick="closeGeminiChat()"
-                    class="p-2 text-gray-400 hover:text-white rounded-full hover:bg-white/10 transition-colors">
+                <button type="button" onclick="closeGeminiChat()" aria-label="Close chat"
+                    class="p-2 text-gray-400 hover:text-white rounded-full hover:bg-white/10 transition-colors"
+                    title="Close chat">
                     <i class="ph-bold ph-x text-lg"></i>
                 </button>
             </div>
@@ -723,8 +725,7 @@
                 <!-- Welcome Message -->
                 <div class="flex items-start gap-3">
                     <div class="w-6 h-6 rounded-full overflow-hidden shrink-0 mt-1">
-                        <img src="https://www.gstatic.com/lamda/images/gemini_sparkle_v002_d4735304ff6292a690345.svg"
-                            class="w-full h-full object-cover">
+                       
                     </div>
                     <div
                         class="text-gray-200 text-sm leading-relaxed p-3 rounded-2xl rounded-tl-none bg-[#1E1F20] border border-white/5">
@@ -742,7 +743,7 @@
                     <input type="text" id="gemini-input" placeholder="Ask about the report..."
                         class="w-full bg-[#131314] text-white text-sm rounded-full pl-5 pr-12 py-3 border border-white/10 focus:border-blue-500 focus:outline-none transition-colors"
                         autocomplete="off">
-                    <button onclick="sendGeminiMessage()"
+                    <button type="button" onclick="sendGeminiMessage()" title="Send message" aria-label="Send message"
                         class="absolute right-2 top-1/2 -translate-y-1/2 p-2 text-blue-400 hover:text-white hover:bg-blue-500 rounded-full transition-all">
                         <i class="ph-bold ph-paper-plane-right"></i>
                     </button>
@@ -761,192 +762,171 @@
             'pt': 'PT'
         };
 
-        function updateContent ()
-        {
-            document.querySelectorAll( '[data-i18n]' ).forEach( element =>
-            {
-                try
-                {
-                    const key = element.getAttribute( 'data-i18n' );
-                    const options = element.getAttribute( 'data-i18n-options' );
-                    const parsedOptions = options ? JSON.parse( options ) : {};
+        function updateContent() {
+            document.querySelectorAll('[data-i18n]').forEach(element => {
+                try {
+                    const key = element.getAttribute('data-i18n');
+                    const options = element.getAttribute('data-i18n-options');
+                    const parsedOptions = options ? JSON.parse(options) : {};
 
-                    let translation = i18next.t( key, parsedOptions );
+                    let translation = i18next.t(key, parsedOptions);
 
-                    if ( translation.includes( '<1>' ) )
-                    {
-                        translation = translation.replace( /<1>/g, '<span class="text-cyber-blue font-bold">' ).replace( /<\/1>/g, '</span>' );
+                    if (translation.includes('<1>')) {
+                        translation = translation.replace(/<1>/g, '<span class="text-cyber-blue font-bold">').replace(/<\/1>/g, '</span>');
                     }
 
                     element.innerHTML = translation;
-                } catch ( e )
-                {
-                    console.error( 'Error updating i18n element:', element, e );
+                } catch (e) {
+                    console.error('Error updating i18n element:', element, e);
                 }
-            } );
+            });
 
-            try
-            {
-                const currentLang = i18next.language.split( '-' )[ 0 ];
-                const displayLang = languageMap[ currentLang ] || 'EN';
-                const langDisplay = document.getElementById( 'current-lang' );
-                if ( langDisplay ) langDisplay.textContent = displayLang;
+            try {
+                const currentLang = i18next.language.split('-')[0];
+                const displayLang = languageMap[currentLang] || 'EN';
+                const langDisplay = document.getElementById('current-lang');
+                if (langDisplay) langDisplay.textContent = displayLang;
 
                 const html = document.documentElement;
-                if ( currentLang === 'ar' )
-                {
-                    html.setAttribute( 'dir', 'rtl' );
-                    html.setAttribute( 'lang', 'ar' );
-                } else
-                {
-                    html.setAttribute( 'dir', 'ltr' );
-                    html.setAttribute( 'lang', currentLang );
+                if (currentLang === 'ar') {
+                    html.setAttribute('dir', 'rtl');
+                    html.setAttribute('lang', 'ar');
+                } else {
+                    html.setAttribute('dir', 'ltr');
+                    html.setAttribute('lang', currentLang);
                 }
-            } catch ( e )
-            {
-                console.error( 'Error handling language UI:', e );
+            } catch (e) {
+                console.error('Error handling language UI:', e);
             }
         }
 
         // --- GEMINI CHAT LOGIC (SECURE BACKEND) ---
         let chatHistory = [];
 
-        function openGeminiChat ()
-        {
-            const modal = document.getElementById( 'gemini-modal' );
-            const panel = document.getElementById( 'gemini-panel' );
-            modal.classList.remove( 'hidden' );
+        function openGeminiChat() {
+            const modal = document.getElementById('gemini-modal');
+            const panel = document.getElementById('gemini-panel');
+            modal.classList.remove('hidden');
 
             // Initialization Logic (Optional: Clear history or Keep it)
-            if ( chatHistory.length === 0 )
-            {
+            if (chatHistory.length === 0) {
                 // Initialize context
-                const reportContext = document.body.innerText.substring( 0, 20000 );
-                chatHistory.push( {
+                const reportContext = document.body.innerText.substring(0, 20000);
+                chatHistory.push({
                     role: "user",
-                    parts: [ {
+                    parts: [{
                         text: `You are an expert Cybersecurity Analyst for "CyberQuant". 
                             You are analyzing the "2026 Market Landscape Report". 
                             Answer questions strictly based on the following report content. 
                             Keep answers concise (under 100 words) and professional.
                             
                             REPORT CONTENT:
-                            ${ reportContext }`
-                    } ]
-                } );
-                chatHistory.push( {
+                            ${reportContext}`
+                    }]
+                });
+                chatHistory.push({
                     role: "model",
-                    parts: [ { text: "Understood. I am ready to analyze the CyberQuant 2026 Market Report provided." } ]
-                } );
+                    parts: [{ text: "Understood. I am ready to analyze the CyberQuant 2026 Market Report provided." }]
+                });
             }
 
             // Slide in animation
-            setTimeout( () =>
-            {
-                panel.classList.remove( 'translate-x-full' );
-            }, 10 );
+            setTimeout(() => {
+                panel.classList.remove('translate-x-full');
+            }, 10);
         }
 
-        function closeGeminiChat ()
-        {
-            const modal = document.getElementById( 'gemini-modal' );
-            const panel = document.getElementById( 'gemini-panel' );
-            panel.classList.add( 'translate-x-full' );
-            setTimeout( () =>
-            {
-                modal.classList.add( 'hidden' );
-            }, 300 );
+        function closeGeminiChat() {
+            const modal = document.getElementById('gemini-modal');
+            const panel = document.getElementById('gemini-panel');
+            panel.classList.add('translate-x-full');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+            }, 300);
         }
 
-        const geminiInput = document.getElementById( 'gemini-input' );
-        geminiInput.addEventListener( 'keypress', ( e ) =>
-        {
-            if ( e.key === 'Enter' ) sendGeminiMessage();
-        } );
+        const geminiInput = document.getElementById('gemini-input');
+        geminiInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') sendGeminiMessage();
+        });
 
-        async function sendGeminiMessage ()
-        {
+        async function sendGeminiMessage() {
             const text = geminiInput.value.trim();
-            if ( !text ) return;
+            if (!text) return;
 
             // User UI
-            addUserMessage( text );
+            addUserMessage(text);
             geminiInput.value = '';
 
             // Bot UI (Loading)
             const loadingId = addBotLoading();
 
-            try
-            {
+            try {
                 // Secure API Call to Backend
-                const response = await fetch( '/api/analyze', {
+                const response = await fetch('/api/analyze', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify( {
+                    body: JSON.stringify({
                         prompt: text,
                         history: chatHistory
-                    } )
-                } );
+                    })
+                });
 
-                if ( !response.ok ) throw new Error( 'Network response was not ok' );
+                if (!response.ok) throw new Error('Network response was not ok');
 
                 const data = await response.json();
 
                 // Update History
-                chatHistory.push( { role: "user", parts: [ { text: text } ] } );
-                chatHistory.push( { role: "model", parts: [ { text: data.text } ] } );
+                chatHistory.push({ role: "user", parts: [{ text: text }] });
+                chatHistory.push({ role: "model", parts: [{ text: data.text }] });
 
                 // Replace loading with response
-                removeMessage( loadingId );
-                addBotMessage( data.text );
-            } catch ( e )
-            {
-                console.error( e );
-                removeMessage( loadingId );
-                addBotMessage( "Error: Could not reach the Analyst. Please check your connection." );
+                removeMessage(loadingId);
+                addBotMessage(data.text);
+            } catch (e) {
+                console.error(e);
+                removeMessage(loadingId);
+                addBotMessage("Error: Could not reach the Analyst. Please check your connection.");
             }
         }
 
-        function addUserMessage ( text )
-        {
-            const div = document.createElement( 'div' );
+        function addUserMessage(text) {
+            const div = document.createElement('div');
             div.className = "flex items-start gap-3 flex-row-reverse animate-in fade-in slide-in-from-bottom-2";
             div.innerHTML = `
                 <div class="w-6 h-6 rounded-full bg-gray-700 flex items-center justify-center shrink-0">
                     <i class="ph-bold ph-user text-white text-xs"></i>
                 </div>
                 <div class="text-white text-sm leading-relaxed p-3 rounded-2xl rounded-tr-none bg-blue-600">
-                    ${ text }
+                    ${text}
                 </div>
             `;
-            document.getElementById( 'gemini-messages' ).appendChild( div );
+            document.getElementById('gemini-messages').appendChild(div);
             scrollToBottom();
         }
 
-        function addBotMessage ( text )
-        {
-            const div = document.createElement( 'div' );
+        function addBotMessage(text) {
+            const div = document.createElement('div');
             div.className = "flex items-start gap-3 animate-in fade-in slide-in-from-bottom-2";
 
             // Simple cleaner
-            const cleanText = text.replace( /\*\*(.*?)\*\*/g, '<strong>$1</strong>' ).replace( /\n/g, '<br>' );
+            const cleanText = text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>').replace(/\n/g, '<br>');
 
             div.innerHTML = `
                 <div class="w-6 h-6 rounded-full overflow-hidden shrink-0 mt-1">
                     <img src="https://www.gstatic.com/lamda/images/gemini_sparkle_v002_d4735304ff6292a690345.svg" class="w-full h-full object-cover">
                 </div>
                 <div class="text-gray-200 text-sm leading-relaxed p-3 rounded-2xl rounded-tl-none bg-[#1E1F20] border border-white/5 bot-response">
-                    ${ cleanText }
+                    ${cleanText}
                 </div>
             `;
-            document.getElementById( 'gemini-messages' ).appendChild( div );
+            document.getElementById('gemini-messages').appendChild(div);
             scrollToBottom();
         }
 
-        function addBotLoading ()
-        {
+        function addBotLoading() {
             const id = 'loading-' + Date.now();
-            const div = document.createElement( 'div' );
+            const div = document.createElement('div');
             div.id = id;
             div.className = "flex items-start gap-3 animate-pulse";
             div.innerHTML = `
@@ -961,84 +941,76 @@
                     </div>
                 </div>
             `;
-            document.getElementById( 'gemini-messages' ).appendChild( div );
+            document.getElementById('gemini-messages').appendChild(div);
             scrollToBottom();
             return id;
         }
 
-        function removeMessage ( id )
-        {
-            const el = document.getElementById( id );
-            if ( el ) el.remove();
+        function removeMessage(id) {
+            const el = document.getElementById(id);
+            if (el) el.remove();
         }
 
 
-        function scrollToBottom ()
-        {
-            const container = document.getElementById( 'gemini-messages' );
+        function scrollToBottom() {
+            const container = document.getElementById('gemini-messages');
             container.scrollTop = container.scrollHeight;
         }
 
-        document.addEventListener( 'DOMContentLoaded', () =>
-        {
-            const initLang = localStorage.getItem( 'user-language' ) || 'en';
+        document.addEventListener('DOMContentLoaded', () => {
+            const initLang = localStorage.getItem('user-language') || 'en';
 
             i18next
-                .use( i18nextHttpBackend )
-                .init( {
+                .use(i18nextHttpBackend)
+                .init({
                     lng: initLang,
                     fallbackLng: 'en',
                     backend: {
                         loadPath: '/locales/{{lng}}/translation.json', // Use absolute path for robustness
                     }
-                }, ( err ) =>
-                {
-                    if ( err )
-                    {
+                }, (err) => {
+                    if (err) {
                         // If path fails, try relative as fallback
-                        i18next.init( {
+                        i18next.init({
                             lng: initLang,
                             fallbackLng: 'en',
                             backend: { loadPath: 'locales/{{lng}}/translation.json' }
-                        }, () =>
-                        {
+                        }, () => {
                             updateContent();
                             initCharts();
-                        } );
+                        });
                         return;
                     }
                     updateContent();
                     initCharts();
-                } );
-        } );
+                });
+        });
 
         // --- CHARTS INITIALIZATION ---
-        function initCharts ()
-        {
-            const isDark = document.documentElement.classList.contains( 'dark' );
+        function initCharts() {
+            const isDark = document.documentElement.classList.contains('dark');
             const textColor = isDark ? '#94a3b8' : '#475569';
             const gridColor = isDark ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.05)';
             const accentColor = '#318e78'; // Cyber Blue/Accent
 
             // 1. Cost Comparison Chart
-            const costCtx = document.getElementById( 'costChart' );
-            if ( costCtx )
-            {
-                new Chart( costCtx, {
+            const costCtx = document.getElementById('costChart');
+            if (costCtx) {
+                new Chart(costCtx, {
                     type: 'bar',
                     data: {
-                        labels: [ 'Mid-Market (1PB)', 'Enterprise (10PB)', 'Global (100PB)' ],
+                        labels: ['Mid-Market (1PB)', 'Enterprise (10PB)', 'Global (100PB)'],
                         datasets: [
                             {
                                 label: 'Legacy Cloud SIEM',
-                                data: [ 45000, 380000, 2900000 ],
+                                data: [45000, 380000, 2900000],
                                 backgroundColor: 'rgba(255, 99, 132, 0.5)',
                                 borderColor: 'rgb(255, 99, 132)',
                                 borderWidth: 1
                             },
                             {
                                 label: 'Sentinext-Q (Fixed TCO)',
-                                data: [ 12000, 85000, 450000 ],
+                                data: [12000, 85000, 450000],
                                 backgroundColor: 'rgba(49, 142, 120, 0.6)',
                                 borderColor: '#318e78',
                                 borderWidth: 1
@@ -1052,7 +1024,7 @@
                             y: {
                                 beginAtZero: true,
                                 grid: { color: gridColor },
-                                ticks: { color: textColor, callback: ( v ) => '$' + v.toLocaleString() }
+                                ticks: { color: textColor, callback: (v) => '$' + v.toLocaleString() }
                             },
                             x: {
                                 grid: { display: false },
@@ -1063,21 +1035,20 @@
                             legend: { labels: { color: textColor, font: { family: 'Outfit', weight: 'bold' } } }
                         }
                     }
-                } );
+                });
             }
 
             // 2. Maturity Radar
-            const radarCtx = document.getElementById( 'radarChart' );
-            if ( radarCtx )
-            {
-                new Chart( radarCtx, {
+            const radarCtx = document.getElementById('radarChart');
+            if (radarCtx) {
+                new Chart(radarCtx, {
                     type: 'radar',
                     data: {
-                        labels: [ 'PQC Readiness', 'Jurisdictional Isolation', 'AI Surveillance', 'Zero Trust', 'Edge Sovereignty' ],
+                        labels: ['PQC Readiness', 'Jurisdictional Isolation', 'AI Surveillance', 'Zero Trust', 'Edge Sovereignty'],
                         datasets: [
                             {
                                 label: 'Legacy SIEM',
-                                data: [ 20, 10, 35, 60, 25 ],
+                                data: [20, 10, 35, 60, 25],
                                 fill: true,
                                 backgroundColor: 'rgba(148, 163, 184, 0.2)',
                                 borderColor: '#94a3b8',
@@ -1085,7 +1056,7 @@
                             },
                             {
                                 label: 'Sentinext-Q',
-                                data: [ 95, 100, 90, 85, 98 ],
+                                data: [95, 100, 90, 85, 98],
                                 fill: true,
                                 backgroundColor: 'rgba(49, 142, 120, 0.2)',
                                 borderColor: '#318e78',
@@ -1107,41 +1078,39 @@
                             }
                         }
                     }
-                } );
+                });
             }
         }
 
         // --- REPORT MODAL LOGIC ---
-        function openReport ( type )
-        {
-            const modal = document.getElementById( 'report-modal' );
-            const content = document.getElementById( 'report-dynamic-content' );
+        function openReport(type) {
+            const modal = document.getElementById('report-modal');
+            const content = document.getElementById('report-dynamic-content');
             modal.style.display = 'block';
             document.body.style.overflow = 'hidden';
 
-            if ( type === 'full' )
-            {
+            if (type === 'full') {
                 content.innerHTML = `
     <div class="report-section">
-        <h3>${ i18next.t( 'market_report.report_modal.full.section1_title' ) }</h3>
-        <p>${ i18next.t( 'market_report.report_modal.full.section1_p' ) }</p>
+        <h3>${i18next.t('market_report.report_modal.full.section1_title')}</h3>
+        <p>${i18next.t('market_report.report_modal.full.section1_p')}</p>
         <div class="bg-slate-50 p-6 border-l-4 border-slate-900 my-6 italic text-sm text-slate-700">
-            "${ i18next.t( 'market_report.report_modal.full.section1_quote' ) }"
+            "${i18next.t('market_report.report_modal.full.section1_quote')}"
         </div>
     </div>
 
     <div class="report-section">
-        <h3>${ i18next.t( 'market_report.report_modal.full.section2_title' ) }</h3>
-        <p>${ i18next.t( 'market_report.report_modal.full.section2_p' ) }</p>
+        <h3>${i18next.t('market_report.report_modal.full.section2_title')}</h3>
+        <p>${i18next.t('market_report.report_modal.full.section2_p')}</p>
 
         <div class="overflow-x-auto">
             <table class="pricing-table">
                 <thead>
                     <tr>
-                        <th>${ i18next.t( 'market_report.report_modal.full.section2_table_data_volume' ) }</th>
-                        <th>${ i18next.t( 'market_report.report_modal.full.section2_table_sq' ) }</th>
-                        <th>${ i18next.t( 'market_report.report_modal.full.section2_table_ms' ) }</th>
-                        <th>${ i18next.t( 'market_report.report_modal.full.section2_table_splunk' ) }</th>
+                        <th>${i18next.t('market_report.report_modal.full.section2_table_data_volume')}</th>
+                        <th>${i18next.t('market_report.report_modal.full.section2_table_sq')}</th>
+                        <th>${i18next.t('market_report.report_modal.full.section2_table_ms')}</th>
+                        <th>${i18next.t('market_report.report_modal.full.section2_table_splunk')}</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -1175,166 +1144,162 @@
 
         <div class="grid md:grid-cols-2 gap-6 mt-6">
             <div class="p-4 bg-red-50 border-l-4 border-red-700">
-                <h4 class="text-xs font-bold uppercase text-red-900 mb-2">${ i18next.t(
-                    'market_report.report_modal.full.section2_risks_title' ) }</h4>
+                <h4 class="text-xs font-bold uppercase text-red-900 mb-2">${i18next.t(
+                    'market_report.report_modal.full.section2_risks_title')}</h4>
                 <ul class="text-[10px] space-y-1 text-red-950">
-                    <li>• ${ i18next.t( 'market_report.report_modal.full.section2_risks_item1' ) }</li>
-                    <li>• ${ i18next.t( 'market_report.report_modal.full.section2_risks_item2' ) }</li>
-                    <li>• ${ i18next.t( 'market_report.report_modal.full.section2_risks_item3' ) }</li>
+                    <li>• ${i18next.t('market_report.report_modal.full.section2_risks_item1')}</li>
+                    <li>• ${i18next.t('market_report.report_modal.full.section2_risks_item2')}</li>
+                    <li>• ${i18next.t('market_report.report_modal.full.section2_risks_item3')}</li>
                 </ul>
             </div>
             <div class="p-4 bg-emerald-50 border-l-4 border-emerald-700">
-                <h4 class="text-xs font-bold uppercase text-emerald-900 mb-2">${ i18next.t(
-                        'market_report.report_modal.full.section2_efficiency_title' ) }</h4>
+                <h4 class="text-xs font-bold uppercase text-emerald-900 mb-2">${i18next.t(
+                        'market_report.report_modal.full.section2_efficiency_title')}</h4>
                 <ul class="text-[10px] space-y-1 text-emerald-950">
-                    <li>• ${ i18next.t( 'market_report.report_modal.full.section2_efficiency_item1' ) }</li>
-                    <li>• ${ i18next.t( 'market_report.report_modal.full.section2_efficiency_item2' ) }</li>
-                    <li>• ${ i18next.t( 'market_report.report_modal.full.section2_efficiency_item3' ) }</li>
+                    <li>• ${i18next.t('market_report.report_modal.full.section2_efficiency_item1')}</li>
+                    <li>• ${i18next.t('market_report.report_modal.full.section2_efficiency_item2')}</li>
+                    <li>• ${i18next.t('market_report.report_modal.full.section2_efficiency_item3')}</li>
                 </ul>
             </div>
         </div>
     </div>
 
     <div class="report-section">
-        <h3>${ i18next.t( 'market_report.report_modal.full.section3_title' ) }</h3>
-        <p>${ i18next.t( 'market_report.report_modal.full.section3_p' ) }</p>
+        <h3>${i18next.t('market_report.report_modal.full.section3_title')}</h3>
+        <p>${i18next.t('market_report.report_modal.full.section3_p')}</p>
         <ul class="space-y-4 mt-4">
             <li class="border-b pb-2">
-                <span class="block text-xs font-bold text-gray-500 uppercase">${ i18next.t(
-                            'market_report.report_modal.full.section3_ef_title' ) }</span>
-                <p class="text-sm">${ i18next.t( 'market_report.report_modal.full.section3_ef_p' ) }</p>
+                <span class="block text-xs font-bold text-gray-500 uppercase">${i18next.t(
+                            'market_report.report_modal.full.section3_ef_title')}</span>
+                <p class="text-sm">${i18next.t('market_report.report_modal.full.section3_ef_p')}</p>
             </li>
             <li class="border-b pb-2">
-                <span class="block text-xs font-bold text-gray-500 uppercase">${ i18next.t(
-                                'market_report.report_modal.full.section3_mb_title' ) }</span>
-                <p class="text-sm">${ i18next.t( 'market_report.report_modal.full.section3_mb_p' ) }</p>
+                <span class="block text-xs font-bold text-gray-500 uppercase">${i18next.t(
+                                'market_report.report_modal.full.section3_mb_title')}</span>
+                <p class="text-sm">${i18next.t('market_report.report_modal.full.section3_mb_p')}</p>
             </li>
             <li class="border-b pb-2">
-                <span class="block text-xs font-bold text-gray-500 uppercase">${ i18next.t(
-                                    'market_report.report_modal.full.section3_sg_title' ) }</span>
-                <p class="text-sm">${ i18next.t( 'market_report.report_modal.full.section3_sg_p' ) }</p>
+                <span class="block text-xs font-bold text-gray-500 uppercase">${i18next.t(
+                                    'market_report.report_modal.full.section3_sg_title')}</span>
+                <p class="text-sm">${i18next.t('market_report.report_modal.full.section3_sg_p')}</p>
             </li>
         </ul>
     </div>
 
     <div class="report-section">
-        <h3>${ i18next.t( 'market_report.report_modal.full.section4_title' ) }</h3>
-        <p>${ i18next.t( 'market_report.report_modal.full.section4_p' ) }</p>
+        <h3>${i18next.t('market_report.report_modal.full.section4_title')}</h3>
+        <p>${i18next.t('market_report.report_modal.full.section4_p')}</p>
         <div class="grid md:grid-cols-3 gap-4 my-6">
             <div class="p-4 bg-gray-50 border border-gray-200 rounded text-center">
                 <p class="text-2xl font-black text-slate-800">QRI 9.8</p>
-                <p class="text-[10px] uppercase font-bold text-gray-500">${ i18next.t(
-                                        'market_report.report_modal.full.section4_qri' ) }</p>
+                <p class="text-[10px] uppercase font-bold text-gray-500">${i18next.t(
+                                        'market_report.report_modal.full.section4_qri')}</p>
             </div>
             <div class="p-4 bg-gray-50 border border-gray-200 rounded text-center">
                 <p class="text-2xl font-black text-slate-800">&lt; 200ms</p>
-                <p class="text-[10px] uppercase font-bold text-gray-500">${ i18next.t(
-                                            'market_report.report_modal.full.section4_sync' ) }</p>
+                <p class="text-[10px] uppercase font-bold text-gray-500">${i18next.t(
+                                            'market_report.report_modal.full.section4_sync')}</p>
             </div>
             <div class="p-4 bg-gray-50 border border-gray-200 rounded text-center">
                 <p class="text-2xl font-black text-slate-800">0.0%</p>
-                <p class="text-[10px] uppercase font-bold text-gray-500">${ i18next.t(
-                                                'market_report.report_modal.full.section4_leakage' ) }</p>
+                <p class="text-[10px] uppercase font-bold text-gray-500">${i18next.t(
+                                                'market_report.report_modal.full.section4_leakage')}</p>
             </div>
         </div>
         <ul class="list-disc ps-5 space-y-2 text-sm text-gray-700">
-            <li>${ i18next.t( 'market_report.report_modal.full.section4_item1' ) }</li>
-            <li>${ i18next.t( 'market_report.report_modal.full.section4_item2' ) }</li>
+            <li>${i18next.t('market_report.report_modal.full.section4_item1')}</li>
+            <li>${i18next.t('market_report.report_modal.full.section4_item2')}</li>
         </ul>
     </div>
 
     <div class="report-section">
-        <h3>${ i18next.t( 'market_report.report_modal.full.section5_title' ) }</h3>
+        <h3>${i18next.t('market_report.report_modal.full.section5_title')}</h3>
         <div class="grid md:grid-cols-2 gap-4">
             <div class="p-4 border border-gray-200 rounded-lg">
-                <h4 class="text-xs font-bold uppercase text-slate-800 mb-1">${ i18next.t(
-                                                    'market_report.report_modal.full.section5_defense_title' ) }</h4>
-                <p class="text-xs text-gray-700">${ i18next.t( 'market_report.report_modal.full.section5_defense_p' ) }
+                <h4 class="text-xs font-bold uppercase text-slate-800 mb-1">${i18next.t(
+                                                    'market_report.report_modal.full.section5_defense_title')}</h4>
+                <p class="text-xs text-gray-700">${i18next.t('market_report.report_modal.full.section5_defense_p')}
                 </p>
             </div>
             <div class="p-4 border border-gray-200 rounded-lg">
-                <h4 class="text-xs font-bold uppercase text-slate-800 mb-1">${ i18next.t(
-                                                        'market_report.report_modal.full.section5_banking_title' ) }</h4>
-                <p class="text-xs text-gray-700">${ i18next.t( 'market_report.report_modal.full.section5_banking_p' ) }
+                <h4 class="text-xs font-bold uppercase text-slate-800 mb-1">${i18next.t(
+                                                        'market_report.report_modal.full.section5_banking_title')}</h4>
+                <p class="text-xs text-gray-700">${i18next.t('market_report.report_modal.full.section5_banking_p')}
                 </p>
             </div>
         </div>
     </div>
 
     <div class="report-section">
-        <h3>${ i18next.t( 'market_report.report_modal.full.section6_title' ) }</h3>
+        <h3>${i18next.t('market_report.report_modal.full.section6_title')}</h3>
         <div class="grid grid-cols-2 gap-8 my-8">
             <div class="border-t border-gray-300 pt-4">
                 <p class="text-3xl font-bold font-display text-slate-900">$6.08T</p>
-                <p class="text-[10px] uppercase font-bold text-gray-500">${ i18next.t(
-                                                            'market_report.report_modal.full.section6_spending' ) }</p>
+                <p class="text-[10px] uppercase font-bold text-gray-500">${i18next.t(
+                                                            'market_report.report_modal.full.section6_spending')}</p>
             </div>
             <div class="border-t border-gray-300 pt-4">
                 <p class="text-3xl font-bold font-display text-emerald-700">92%</p>
-                <p class="text-[10px] uppercase font-bold text-gray-500">${ i18next.t(
-                                                                'market_report.report_modal.full.section6_savings' ) }</p>
+                <p class="text-[10px] uppercase font-bold text-gray-500">${i18next.t(
+                                                                'market_report.report_modal.full.section6_savings')}</p>
             </div>
         </div>
     </div>
     `;
-            } else
-            {
+            } else {
                 // Specialized Jurisdiction Reports
-                const sectors = i18next.t( `market_report.report_modal.nodes.data.${ type }.sectors`, {
+                const sectors = i18next.t(`market_report.report_modal.nodes.data.${type}.sectors`, {
                     defaultValue: i18next.t(
-                        'market_report.report_modal.nodes.data.default.sectors' )
-                } );
-                const laws = i18next.t( `market_report.report_modal.nodes.data.${ type }.laws`, {
+                        'market_report.report_modal.nodes.data.default.sectors')
+                });
+                const laws = i18next.t(`market_report.report_modal.nodes.data.${type}.laws`, {
                     defaultValue: i18next.t(
-                        'market_report.report_modal.nodes.data.default.laws' )
-                } );
-                const metric = i18next.t( `market_report.report_modal.nodes.data.${ type }.metric`, {
+                        'market_report.report_modal.nodes.data.default.laws')
+                });
+                const metric = i18next.t(`market_report.report_modal.nodes.data.${type}.metric`, {
                     defaultValue: i18next.t(
-                        'market_report.report_modal.nodes.data.default.metric' )
-                } );
+                        'market_report.report_modal.nodes.data.default.metric')
+                });
 
                 content.innerHTML = `
     <div class="report-section">
-        <h3>${ i18next.t( 'market_report.report_modal.nodes.title', { type } ) }</h3>
-        <p class="mb-6">${ i18next.t( 'market_report.report_modal.nodes.desc' ) }</p>
+        <h3>${i18next.t('market_report.report_modal.nodes.title', { type })}</h3>
+        <p class="mb-6">${i18next.t('market_report.report_modal.nodes.desc')}</p>
 
         <div class="grid grid-cols-2 gap-4 mb-8">
             <div class="p-4 bg-slate-50 rounded-lg border border-slate-100">
-                <p class="text-[10px] font-bold text-slate-500 uppercase mb-1">${ i18next.t(
-                    'market_report.report_modal.nodes.sectors_label' ) }</p>
-                <p class="text-xs font-semibold text-slate-900">${ sectors }</p>
+                <p class="text-[10px] font-bold text-slate-500 uppercase mb-1">${i18next.t(
+                    'market_report.report_modal.nodes.sectors_label')}</p>
+                <p class="text-xs font-semibold text-slate-900">${sectors}</p>
             </div>
             <div class="p-4 bg-slate-50 rounded-lg border border-slate-100">
-                <p class="text-[10px] font-bold text-slate-500 uppercase mb-1">${ i18next.t(
-                        'market_report.report_modal.nodes.residency_label' ) }</p>
-                <p class="text-xs font-semibold text-slate-900">${ laws }</p>
+                <p class="text-[10px] font-bold text-slate-500 uppercase mb-1">${i18next.t(
+                        'market_report.report_modal.nodes.residency_label')}</p>
+                <p class="text-xs font-semibold text-slate-900">${laws}</p>
             </div>
         </div>
 
         <ul class="list-disc ps-5 space-y-3 mt-4 text-sm text-gray-700">
-            <li><strong>${ i18next.t( 'market_report.report_modal.nodes.standard_label' ) }:</strong> ${ metric }</li>
-            <li>${ i18next.t( 'market_report.report_modal.nodes.residence_item', { type } ) }</li>
-            <li>${ i18next.t( 'market_report.report_modal.nodes.connectivity_item' ) }</li>
-            <li>${ i18next.t( 'market_report.report_modal.nodes.mesh_item' ) }</li>
+            <li><strong>${i18next.t('market_report.report_modal.nodes.standard_label')}:</strong> ${metric}</li>
+            <li>${i18next.t('market_report.report_modal.nodes.residence_item', { type })}</li>
+            <li>${i18next.t('market_report.report_modal.nodes.connectivity_item')}</li>
+            <li>${i18next.t('market_report.report_modal.nodes.mesh_item')}</li>
         </ul>
     </div>
     `;
             }
         }
 
-        function closeReport ()
-        {
-            document.getElementById( 'report-modal' ).style.display = 'none';
+        function closeReport() {
+            document.getElementById('report-modal').style.display = 'none';
             document.body.style.overflow = 'auto';
         }
 
-        function changeLanguage ( lang )
-        {
-            i18next.changeLanguage( lang, () =>
-            {
+        function changeLanguage(lang) {
+            i18next.changeLanguage(lang, () => {
                 updateContent();
-                localStorage.setItem( 'user-language', lang );
-            } );
+                localStorage.setItem('user-language', lang);
+            });
         }
     </script>
 </body>
