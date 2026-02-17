@@ -160,7 +160,11 @@
     <main class="flex-1 flex flex-col h-full relative w-full bg-[#131314]">
       <!-- Mobile Header -->
       <div class="md:hidden flex items-center justify-between p-4 bg-[#1E1F20]">
-        <button class="text-gray-300 hover:text-white" aria-label="Menu">
+        <button
+          id="mobile-menu-btn"
+          class="text-gray-300 hover:text-white"
+          aria-label="Menu"
+        >
           <i class="ph-bold ph-list text-xl"></i>
         </button>
         <span class="font-display font-bold text-gray-200">Gemini</span>
@@ -503,6 +507,49 @@
           "3. **AI-Native Surveillance (MCP)**\n\n" +
           "Can you be more specific about which aspect (Cost, Tech, or Strategy) you're interested in?"
         );
+      }
+
+      // Mobile Menu Logic
+      const mobileMenuBtn = document.getElementById("mobile-menu-btn");
+      const sidebar = document.getElementById("sidebar");
+
+      // Create Overlay
+      const overlay = document.createElement("div");
+      overlay.className =
+        "fixed inset-0 bg-black/60 z-30 hidden transition-opacity duration-300 backdrop-blur-sm md:hidden";
+      document.body.appendChild(overlay);
+
+      function toggleMenu() {
+        const isHidden = sidebar.classList.contains("hidden");
+        if (isHidden) {
+          // Open
+          sidebar.classList.remove("hidden");
+          sidebar.classList.add("flex", "fixed", "inset-y-0", "left-0", "z-40");
+          // Small delay to allow display:flex to apply before transition
+          setTimeout(() => {
+            sidebar.classList.remove("-translate-x-full");
+          }, 10);
+          overlay.classList.remove("hidden");
+        } else {
+          // Close
+          sidebar.classList.add("-translate-x-full");
+          overlay.classList.add("hidden");
+          setTimeout(() => {
+            sidebar.classList.add("hidden");
+            sidebar.classList.remove(
+              "flex",
+              "fixed",
+              "inset-y-0",
+              "left-0",
+              "z-40",
+            );
+          }, 300);
+        }
+      }
+
+      if (mobileMenuBtn) {
+        mobileMenuBtn.addEventListener("click", toggleMenu);
+        overlay.addEventListener("click", toggleMenu);
       }
     </script>
   </body>
